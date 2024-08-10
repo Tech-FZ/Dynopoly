@@ -18,3 +18,12 @@ class Button:
         pygame.draw.rect(screen, bgc, pygame.Rect(self.x, self.y, self.width, self.height))
         btn_lbl = fonts.default_font.render(str(self.txt), False, txtc)
         screen.blit(btn_lbl, pygame.Vector2(self.x, self.y))
+
+    def checkHover(self, screen):
+        mousepos = pygame.mouse.get_pos()
+
+        if mousepos[0] >= self.x and mousepos[1] >= self.y and mousepos[0] <= self.x + self.width and mousepos[1] <= self.y + self.height:
+            self.updateButton(screen, self.bgc_hover, self.txtc_hover)
+
+            if pygame.mouse.get_pressed()[0]:
+                pass # Call function
