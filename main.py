@@ -7,6 +7,7 @@ import fields.fields as fields
 import fields.fcontainer as fc
 import player.player as pl
 import dice.dice as dc
+import universal.button as btn
 
 # pygame setup
 pygame.init()
@@ -64,6 +65,8 @@ while running:
     dc2.spawnDice(screen)
 
     # insert buttons here
+    rodi_btn = btn.Button(screen, "roll_dice", "Roll dice", (255, 255, 255), (0, 0, 0), (5, 5, 5), (0, 0, 0), 205, 480, 65, 25)
+    rodi_btn.updateButton(rodi_btn.bg_colour, rodi_btn.txt_colour)
 
     # flip() the display to put your work on screen
     pygame.display.flip()
