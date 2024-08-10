@@ -63,6 +63,8 @@ while running:
     dc2.x = 175
     dc2.spawnDice(screen)
 
+    # insert buttons here
+
     # flip() the display to put your work on screen
     pygame.display.flip()
 
