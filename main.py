@@ -4,6 +4,7 @@ import pygame
 # Other code files
 import rules.rule_ui as r_ui
 import fields.fields as fields
+import fields.fcontainer as fc
 import player.player as pl
 
 # pygame setup
@@ -25,31 +26,31 @@ while running:
     # RENDER YOUR GAME HERE
     r_ui.rule_ui_setup(screen)
 
-    # Field rendering
-    fields.field_placement(screen, 5, 5)
-    fields.field_placement(screen, 135, 5)
-    fields.field_placement(screen, 265, 5)
-    fields.field_placement(screen, 395, 5)
-    fields.field_placement(screen, 525, 5)
-    fields.field_placement(screen, 655, 5)
-    fields.field_placement(screen, 785, 5)
+    y = 5
 
-    fields.field_placement(screen, 5, 135)
-    fields.field_placement(screen, 785, 135)
+    while y <= 525:
+        x = 5
 
-    fields.field_placement(screen, 5, 265)
-    fields.field_placement(screen, 785, 265)
+        while x <= 785:
+            if x == 5 and y == 5:
+                fc.contain(screen, "freeparking", "Free parking", "None", 0, 0, x, y)
+            
+            elif x == 785 and y == 5:
+                fc.contain(screen, "gotojail", "Go to jail", "None", 0, 0, x, y)
 
-    fields.field_placement(screen, 5, 395)
-    fields.field_placement(screen, 785, 395)
+            elif x == 5 and y == 525:
+                fc.contain(screen, "jail", "Jail", "None", 50, 0, x, y)
 
-    fields.field_placement(screen, 5, 525)
-    fields.field_placement(screen, 135, 525)
-    fields.field_placement(screen, 265, 525)
-    fields.field_placement(screen, 395, 525)
-    fields.field_placement(screen, 525, 525)
-    fields.field_placement(screen, 655, 525)
-    fields.field_placement(screen, 785, 525)
+            elif x == 785 and y == 525:
+                fc.contain(screen, "start", "Start", "None", 200, 0, x, y)
+
+            else:
+                if y == 5 or y == 525 or x == 5 or x == 785:
+                    fc.contain(screen, "street", "Street", "Bank", 60, 8, x, y)
+
+            x += 130
+
+        y += 130
 
     player1 = pl.Player()
     player1.spawn(screen)
