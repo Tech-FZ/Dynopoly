@@ -7,6 +7,7 @@ This build is not intended for submission, but rather for the developers to keep
 ## Changes
 
 - The dice is in preparation.
+- The dice could be rolled (no initiator yet).
 
 # Misonic Project Internal Development Build 2
 
