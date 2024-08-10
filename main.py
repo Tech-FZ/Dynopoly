@@ -1,5 +1,8 @@
-# Example file showing a basic pygame "game loop"
+# Third-party libraries
 import pygame
+
+# Other code files
+import rules.rule_ui as r_ui
 
 # pygame setup
 pygame.init()
@@ -18,6 +21,7 @@ while running:
     screen.fill("purple")
 
     # RENDER YOUR GAME HERE
+    r_ui.rule_ui_setup(screen)
 
     # flip() the display to put your work on screen
     pygame.display.flip()
