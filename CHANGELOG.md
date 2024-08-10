@@ -10,3 +10,4 @@
 - The dev env setup guide is fairly finished (for) now.
 - The first text is being displayed.
 - The field function is sort of there.
+- The game layout has been prepared and should no longer require major changes. 
