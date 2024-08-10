@@ -4,6 +4,7 @@ import pygame
 # Other code files
 import rules.rule_ui as r_ui
 import fields.fields as fields
+import player.player as pl
 
 # pygame setup
 pygame.init()
@@ -49,6 +50,9 @@ while running:
     fields.field_placement(screen, 525, 525)
     fields.field_placement(screen, 655, 525)
     fields.field_placement(screen, 785, 525)
+
+    player1 = pl.Player()
+    player1.spawn(screen)
 
     # flip() the display to put your work on screen
     pygame.display.flip()
