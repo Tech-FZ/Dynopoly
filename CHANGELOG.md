@@ -5,7 +5,8 @@
 - The player has been prepared.
 - The field generator has been rewritten.
 - A transactions file has been prepared.
-- Makala Mabotja has been credited for the idea.
+- Makala Mabotja has been credited for the idea and the code.
+- The player logic has been extended.
 
 ## Misonic Project Internal Development Build 1
 
