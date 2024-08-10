@@ -6,6 +6,7 @@ import rules.rule_ui as r_ui
 import fields.fields as fields
 import fields.fcontainer as fc
 import player.player as pl
+import dice.dice as dc
 
 # pygame setup
 pygame.init()
@@ -54,6 +55,13 @@ while running:
 
     player1 = pl.Player()
     player1.spawn(screen)
+
+    dc1 = dc.Dice()
+    dc1.spawnDice(screen)
+
+    dc2 = dc.Dice()
+    dc2.x = 175
+    dc2.spawnDice(screen)
 
     # flip() the display to put your work on screen
     pygame.display.flip()

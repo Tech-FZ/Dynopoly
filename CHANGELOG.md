@@ -1,6 +1,14 @@
-# Misonic Project Changelog
+# Misonic Project Internal Development Build 3
 
-## Misonic Project Internal Development Build 2
+## Attention
+
+This build is not intended for submission, but rather for the developers to keep track of development while working on the game.
+
+## Changes
+
+- The dice is in preparation.
+
+# Misonic Project Internal Development Build 2
 
 - The player has been prepared.
 - The field generator has been rewritten.
@@ -9,7 +17,7 @@
 - The player logic has been extended.
 - A circular import has been removed.
 
-## Misonic Project Internal Development Build 1
+# Misonic Project Internal Development Build 1
 
 - A basic Pygame code from the Pygame documentation has been copied over as a base.
 - The contributors file has been made.
