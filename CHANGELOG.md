@@ -3,6 +3,7 @@
 ## Misonic Project Internal Development Build 2
 
 - The player has been prepared.
+- The field generator has been rewritten.
 
 ## Misonic Project Internal Development Build 1
 
