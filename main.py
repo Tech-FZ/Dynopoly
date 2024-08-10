@@ -8,6 +8,7 @@ import rules.rule_ui as r_ui
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
+pygame.font.init()
 running = True
 
 while running:

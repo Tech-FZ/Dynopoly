@@ -8,3 +8,4 @@
 - A dev env setup guide is in the works.
 - A minor issue has been corrected within that dev env setup guide.
 - The dev env setup guide is fairly finished (for) now.
+- The first text is being displayed.
