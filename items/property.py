@@ -1,16 +1,14 @@
-from player.player import Player
-
 class Property:
-    def __init__(self, price: int, rent: float, owner: Player):
+    def __init__(self, price: int, rent: float, owner):
         self.price = price
         self.rent = rent
         self.owner = owner
         self.is_mortgaged: bool = False  
         
-    def change_owner(self, new_owner: Player):
+    def change_owner(self, new_owner):
         self.owner = new_owner
         
-    def mortgage_property(self, player: Player):
+    def mortgage_property(self, player):
         if not self.is_mortgaged:
             player.balance += self.price // 2
             self.is_mortgaged = True

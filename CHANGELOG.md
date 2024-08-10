@@ -7,6 +7,7 @@
 - A transactions file has been prepared.
 - Makala Mabotja has been credited for the idea and the code.
 - The player logic has been extended.
+- A circular import has been removed.
 
 ## Misonic Project Internal Development Build 1
 
