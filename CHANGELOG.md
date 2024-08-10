@@ -5,6 +5,7 @@
 - The player has been prepared.
 - The field generator has been rewritten.
 - A transactions file has been prepared.
+- Makala Mabotja has been credited for the idea.
 
 ## Misonic Project Internal Development Build 1
 
