@@ -9,6 +9,8 @@ class Field:
         self.price = 60
         self.rent = 8
         self.players = []
+        self.houseCount = 0
+        self.hotelAvailable = False
 
     def field_placement(self, screen, x, y):
         field_lbl_pos = pygame.Vector2(x + 10, y + 10)

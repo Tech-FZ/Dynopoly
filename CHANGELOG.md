@@ -4,6 +4,7 @@
 
 - The player has been prepared.
 - The field generator has been rewritten.
+- A transactions file has been prepared.
 
 ## Misonic Project Internal Development Build 1
 
