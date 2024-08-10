@@ -3,12 +3,12 @@ import pygame
 
 # Other code files
 import rules.rule_ui as r_ui
+import fields.fields as fields
 
 # pygame setup
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
-pygame.font.init()
 running = True
 
 while running:
@@ -23,6 +23,7 @@ while running:
 
     # RENDER YOUR GAME HERE
     r_ui.rule_ui_setup(screen)
+    fields.field_placement(screen, 0, 0)
 
     # flip() the display to put your work on screen
     pygame.display.flip()
