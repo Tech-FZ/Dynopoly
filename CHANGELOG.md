@@ -38,6 +38,7 @@ This build is not intended for submission, but rather for the developers to keep
 - Go to jail now has mechanism for sending player to jail
 - Handled redrawing of both player when one player is moving
 - Change of ownership for streets need to be correct coded
+- fixed typo error in gotojail mechanism
 
 ## Known issues
 
