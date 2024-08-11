@@ -33,6 +33,11 @@ This build is not intended for submission, but rather for the developers to keep
 - The after-turn steps have been moved to a separate function to make automation of the computer easier.
 - Added new movement mechinism to avoid rolling outside of the list of available fields
 - Added bounce movement for player token movement
+- Street ownership intialized to bank
+- Bank defined a player to treat ownership the same across the board
+- Go to jail now has mechanism for sending player to jail
+- Handled redrawing of both player when one player is moving
+- Change of ownership for streets need to be correct coded
 
 ## Known issues
 

@@ -23,8 +23,6 @@ class Button:
 
     def checkClick(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
-            print(event)
             if self.rect.collidepoint(event.pos):
-                print(f"Mouse clicked at: {event.pos}")
                 if self.ftc:
                     self.ftc()
