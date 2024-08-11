@@ -16,6 +16,8 @@ This build is not intended for submission, but rather for the developers to keep
 - The second player is being shown.
 - The second player works as a computer.
 - The after-turn steps have been moved to a separate function to make automation of the computer easier.
+- Added new movement mechinism to avoid rolling outside of the list of available fields
+- Added bounce movement for player token movement
 
 ## Known issues
 
@@ -82,4 +84,4 @@ This build is not intended for submission, but rather for the developers to keep
 - The dev env setup guide is fairly finished (for) now.
 - The first text is being displayed.
 - The field function is sort of there.
-- The game layout has been prepared and should no longer require major changes. 
+- The game layout has been prepared and should no longer require major changes.
