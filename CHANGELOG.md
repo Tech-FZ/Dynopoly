@@ -12,6 +12,8 @@ This build is not intended for submission, but rather for the developers to keep
 - An unnecessary comma has been removed from the button script.
 - Changes to the field container have been conducted to make fixing the game easier.
 - Git will now ignore pycache.
+- The player card UI has been added to the right.
+- The field placement had to be re-added.
 
 ## Known issues
 

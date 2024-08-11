@@ -21,7 +21,6 @@ dc1 = dc.Dice()
 dc2 = dc.Dice()
 dc2.x = 175
 
-
 y = 525
 x = 785
 
@@ -115,6 +114,8 @@ while running:
     # RENDER YOUR GAME HERE
     r_ui.rule_ui_setup(screen)
     
+    for fld in fc.f_container:
+        fld.field_placement(screen)
 
     """ while y <= 525:
         x = 5
