@@ -2,7 +2,7 @@ import pygame
 import universal.fonts as fonts
 
 class Button:
-    def __init__(self, screen, ftc, txt, bg_colour, txt_colour, bgc_hover, txtc_hover, x, y, width, height):
+    def __init__(self, screen, txt, bg_colour, txt_colour, bgc_hover, txtc_hover, x, y, width, height, ftc=None, ):
         self.screen = screen
         self.ftc = ftc
         self.txt = txt
@@ -14,14 +14,15 @@ class Button:
         self.y = y
         self.width = width
         self.height = height
+        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
 
     def updateButton(self, bgc, txtc):
-        pygame.draw.rect(self.screen, bgc, pygame.Rect(self.x, self.y, self.width, self.height))
+        pygame.draw.rect(self.screen, bgc, self.rect)
         btn_lbl = fonts.default_font.render(str(self.txt), False, txtc)
         self.screen.blit(btn_lbl, pygame.Vector2(self.x, self.y))
 
     def checkClick(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.rect.collidepoint(event.pos):
-                if self.onclick_function:
-                    self.onclick_function()
+                if self.ftc:
+                    self.ftc()

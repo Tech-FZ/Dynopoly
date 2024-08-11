@@ -20,8 +20,12 @@ dc1 = dc.Dice()
 dc2 = dc.Dice()
 dc2.x = 175
 
+def rollDices():
+    dc1.rollDice(screen)
+    dc2.rollDice(screen)
+
 # insert buttons here
-rodi_btn = btn.Button(screen, dc1.rollDice(screen), "Roll dice", (255, 255, 255), (0, 0, 0), (5, 5, 5), (0, 0, 0), 205, 480, 65, 25)
+rodi_btn = btn.Button(screen, "Roll dice", (255, 255, 255), (0, 0, 0), (5, 5, 5), (0, 0, 0), 205, 480, 65, 25, rollDices)
 
 while running:
     # poll for events

@@ -10,7 +10,7 @@ This build is not intended for submission, but rather for the developers to keep
 
 ## Known issues
 
-- The button doesn't work yet.
+- ~~The button doesn't work yet.~~ Resolved by Nicolas
 
 # Misonic Project Internal Development Build 3
 
