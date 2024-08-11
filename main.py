@@ -18,6 +18,11 @@ clock = pygame.time.Clock()
 running = True
 
 player1 = pl.Player("Nicolas")
+f = open('player/winConditions.json')
+win_conditions = json.load(f)
+player1.win_condition.append(win_conditions["1"])
+player1.win_condition.append(win_conditions["2"])
+    
 
 dc1 = dc.Dice()
 
@@ -152,12 +157,6 @@ while running:
         y += 130 """
 
     player1.spawn(screen)
-    
-    f = open('player/winConditions.json')
-    win_conditions = json.load(f)
-    player1.win_condition.append(win_conditions["1"])
-    player1.win_condition.append(win_conditions["2"])
-    
     pc.player_card(screen, player1)
     pc.win_condition_Card(screen,player1)
 
