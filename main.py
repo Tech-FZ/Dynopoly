@@ -22,7 +22,6 @@ f = open('player/winConditions.json')
 win_conditions = json.load(f)
 player1.win_condition.append(win_conditions["1"])
 player1.win_condition.append(win_conditions["2"])
-    
 
 dc1 = dc.Dice()
 
@@ -34,13 +33,13 @@ x = 785
 
 while x >= 5:
     if x == 785 and y == 525:
-        fc.contain(screen, "start", "Start", "None", 200, 0, x, y)
+        fc.contain("start", "Start", "None", 200, 0, x, y)
 
     elif x == 5 and y == 525:
-        fc.contain(screen, "jail", "Jail", "None", 50, 0, x, y)
+        fc.contain("jail", "Jail", "None", 50, 0, x, y)
 
     else:
-        fc.contain(screen, "street", "Street", "Bank", 60, 8, x, y)
+        fc.genRegularField(x, y)
 
     x -= 130
 
@@ -49,10 +48,10 @@ x = 5
 
 while y >= 5:
     if x == 5 and y == 5:
-        fc.contain(screen, "freeparking", "Free parking", "None", 0, 0, x, y)
+        fc.contain("freeparking", "Free parking", "None", 0, 0, x, y)
 
     else:
-        fc.contain(screen, "street", "Street", "Bank", 60, 8, x, y)
+        fc.genRegularField(x, y)
 
     y -= 130
 
@@ -61,10 +60,10 @@ x += 130
 
 while x <= 785:
     if x == 785 and y == 5:
-        fc.contain(screen, "gotojail", "Go to jail", "None", 0, 0, x, y)
+        fc.contain("gotojail", "Go to jail", "None", 0, 0, x, y)
         
     else:
-        fc.contain(screen, "street", "Street", "Bank", 60, 8, x, y)
+        fc.genRegularField(x, y)
 
     x += 130
 
@@ -73,10 +72,10 @@ y += 130
 
 while y <= 395:
     if x == 785 and y == 5:
-        fc.contain(screen, "gotojail", "Go to jail", "None", 0, 0, x, y)
+        fc.contain("gotojail", "Go to jail", "None", 0, 0, x, y)
 
     else:
-        fc.contain(screen, "street", "Street", "Bank", 60, 8, x, y)
+        fc.genRegularField(x, y)
         
     y += 130
 
