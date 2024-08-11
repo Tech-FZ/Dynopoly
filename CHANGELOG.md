@@ -8,6 +8,9 @@ This build is not intended for submission, but rather for the developers to keep
 
 - The jail has been re-implemented.
 - Investments are now on the board.
+- Streets can now be bought.
+- Streets should now be treated properly.
+- Investments should now work.
 
 ## Known issues
 
