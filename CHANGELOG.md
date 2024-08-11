@@ -11,10 +11,11 @@ This build is not intended for submission, but rather for the developers to keep
 - Streets can now be bought.
 - Streets should now be treated properly.
 - Investments should now work.
+- "Roll dice" spamming will now be handled with a "Slow down, please!" on the terminal.
 
 ## Known issues
 
-- Spamming "Roll dice" can cause the game to crash with an IndexError.
+- ~~Spamming "Roll dice" can cause the game to crash with an IndexError.~~ Fixed by Nicolas
 
 # Misonic Project Internal Development Build 4
 
