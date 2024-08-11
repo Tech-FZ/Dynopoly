@@ -22,6 +22,60 @@ dc2.x = 175
 
 player1 = pl.Player()
 
+y = 525
+x = 785
+
+while x >= 5:
+    if x == 785 and y == 525:
+        fc.contain(screen, "start", "Start", "None", 200, 0, x, y)
+
+    elif x == 785 and y == 5:
+        fc.contain(screen, "gotojail", "Go to jail", "None", 0, 0, x, y)
+
+    else:
+        fc.contain(screen, "street", "Street", "Bank", 60, 8, x, y)
+
+    x -= 130
+
+y -= 130
+x = 5
+
+while y >= 5:
+    if x == 5 and y == 5:
+        fc.contain(screen, "freeparking", "Free parking", "None", 0, 0, x, y)
+
+    elif x == 785 and y == 5:
+        fc.contain(screen, "gotojail", "Go to jail", "None", 0, 0, x, y)
+
+    else:
+        fc.contain(screen, "street", "Street", "Bank", 60, 8, x, y)
+
+    y -= 130
+
+y = 5
+x += 130
+
+while x <= 785:
+    if x == 785 and y == 5:
+        fc.contain(screen, "gotojail", "Go to jail", "None", 0, 0, x, y)
+        
+    else:
+        fc.contain(screen, "street", "Street", "Bank", 60, 8, x, y)
+
+    x += 130
+
+x = 785
+y += 130
+
+while y <= 395:
+    if x == 785 and y == 5:
+        fc.contain(screen, "gotojail", "Go to jail", "None", 0, 0, x, y)
+
+    else:
+        fc.contain(screen, "street", "Street", "Bank", 60, 8, x, y)
+        
+    y += 130
+
 def rollDices():
     dc1.rollDice(screen)
     dc2.rollDice(screen)
@@ -30,8 +84,21 @@ def rollDices():
 
     player1.move_to(screen, fc.f_container[0 + total_value])
 
+
 # insert buttons here
-rodi_btn = btn.Button(screen, "Roll dice", (255, 255, 255), (0, 0, 0), (5, 5, 5), (0, 0, 0), 205, 480, 65, 25, rollDices)
+rodi_btn = btn.Button(
+    screen,
+    "Roll dice",
+    (255, 255, 255),
+    (0, 0, 0),
+    (5, 5, 5),
+    (0, 0, 0),
+    205,
+    480,
+    65,
+    25,
+    rollDices,
+)
 
 while running:
     # poll for events
@@ -47,10 +114,11 @@ while running:
 
     # RENDER YOUR GAME HERE
     r_ui.rule_ui_setup(screen)
+    
+    for fld in fc.f_container:
+        fld.field_placement(screen)
 
-    y = 5
-
-    while y <= 525:
+    """ while y <= 525:
         x = 5
 
         while x <= 785:
@@ -72,7 +140,7 @@ while running:
 
             x += 130
 
-        y += 130
+        y += 130 """
 
     player1.spawn(screen)
 
