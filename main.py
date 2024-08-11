@@ -89,41 +89,38 @@ while y <= 395:
     y += 130
 
 def rollDices():
-    try:
-        total_value = 0
-        
-        for dice in dices:
-            dice.rollDice(screen)
-            total_value += dice.value
 
-        new_fid = player1.fid + total_value
+    total_value = 0
+
+    for dice in dices:
+        dice.rollDice(screen)
+        total_value += dice.value
+
+    new_fid = player1.fid + total_value
     
-        if new_fid > len(fc.f_container):
-            new_fid = 0 + (new_fid - len(fc.f_container))
+    if new_fid >= len(fc.f_container):
+        new_fid = 0 + (new_fid - len(fc.f_container))
         
-        player1.fid = new_fid
+    player1.fid = new_fid
 
-        player1.move_to(screen, fc.f_container[player1.fid])
+    player1.move_to(screen, fc.f_container[player1.fid])
 
-        if fc.f_container[player1.fid].type == "street":
-            if fc.f_container[player1.fid].owner == "Bank":
-                st_transact.buyStreet(player1, fc.f_container[player1.fid])
+    if fc.f_container[player1.fid].type == "street":
+        if fc.f_container[player1.fid].owner == "Bank":
+            st_transact.buyStreet(player1, fc.f_container[player1.fid])
             
-            elif fc.f_container[player1.fid].owner == player1:
-                pass # Insert code to buy stuff here
+        elif fc.f_container[player1.fid].owner == player1:
+            pass # Insert code to buy stuff here
         
-            else:
-                st_transact.payRent(player1, fc.f_container[player1.fid])
+        else:
+            st_transact.payRent(player1, fc.f_container[player1.fid])
             
-        elif fc.f_container[player1.fid].type == "investment":
-            if fc.f_container[player1.fid].owner == "Bank":
-                invest_transact.invest(player1, fc.f_container[player1.fid])
+    elif fc.f_container[player1.fid].type == "investment":
+        if fc.f_container[player1.fid].owner == "Bank":
+            invest_transact.invest(player1, fc.f_container[player1.fid])
             
-            elif fc.f_container[player1.fid].owner != player1:
-                invest_transact.earn_money(player1, fc.f_container[player1.fid])
-                
-    except:
-        print("Slow down, please!")
+        elif fc.f_container[player1.fid].owner != player1:
+            invest_transact.earn_money(player1, fc.f_container[player1.fid])
 
 # insert buttons here
 rodi_btn = btn.Button(
