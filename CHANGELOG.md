@@ -11,6 +11,7 @@ This build is not intended for submission, but rather for the developers to keep
 - The movement is basically working.
 - An unnecessary comma has been removed from the button script.
 - Changes to the field container have been conducted to make fixing the game easier.
+- Git will now ignore pycache.
 
 ## Known issues
 
