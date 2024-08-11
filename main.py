@@ -116,11 +116,6 @@ while running:
     # RENDER YOUR GAME HERE
     r_ui.rule_ui_setup(screen)
     
-<<<<<<< HEAD
-=======
-    for fld in fc.f_container:
-        fld.field_placement(screen)
->>>>>>> refs/remotes/origin/main
 
     """ while y <= 525:
         x = 5
@@ -146,10 +141,7 @@ while running:
 
         y += 130 """
 
-<<<<<<< HEAD
     player1 = pl.Player("Nicolas")
-=======
->>>>>>> refs/remotes/origin/main
     player1.spawn(screen)
     
     pc.player_card(screen, player1)
