@@ -7,6 +7,7 @@ This build is not intended for submission, but rather for the developers to keep
 ## Changes
 
 - The buttons and dices are now defined outside of the loop.
+- The rule UI on the right has changed its background colour to grey.
 
 ## Known issues
 
