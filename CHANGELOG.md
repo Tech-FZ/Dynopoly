@@ -1,3 +1,18 @@
+# Misonic Project Internal Development Build 6
+
+## Attention
+
+This build is not intended for submission, but rather for the developers to keep track of development while working on the game.
+
+## Changes
+
+- Some code has been restructured.
+- That means a fix for the player logic had to be made.
+
+## Known issues
+
+- The players aren't moving at all.
+
 # Misonic Project Internal Development Build 5
 
 ## Attention

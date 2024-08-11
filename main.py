@@ -45,49 +45,53 @@ dices.append(dc2)
 
 gb.draw_board()
 
-def rollDices():
+def afterTurn(player, pl_type):
+    if fc.f_container[player.fid].type == "street":
+        if fc.f_container[player.fid].owner == "Bank":
+            st_transact.buyStreet(player, fc.f_container[player.fid])
+            
+        elif fc.f_container[player.fid].owner == player:
+            pass # Insert code to buy stuff here
+        
+        else:
+            st_transact.payRent(player, fc.f_container[player.fid])
+            
+    elif fc.f_container[player1.fid].type == "investment":
+        if fc.f_container[player1.fid].owner == "Bank":
+            invest_transact.invest(player1, fc.f_container[player.fid])
+            
+        elif fc.f_container[player.fid].owner != player:
+            invest_transact.earn_money(player, fc.f_container[player.fid])
 
+def rollDices(player, pl_type):
     total_value = 0
 
     for dice in dices:
         dice.rollDice(screen)
         total_value += dice.value
 
-        new_fid = player.fid + total_value
+    new_fid = player.fid + total_value
     
     if new_fid >= len(fc.f_container):
             new_fid = 0 + (new_fid - len(fc.f_container))
+            
+    player.fid = new_fid
     
-    while player1.fid != new_fid:
-        if player1.fid == len(fc.f_container)-1:
-            player1.fid = 0
-            player1.move_to(screen, fc.f_container[player1.fid], dices=dices)
+    while player.fid != new_fid:
+        if player.fid == len(fc.f_container)-1:
+            player.fid = 0
+            player.move_to(screen, fc.f_container[player.fid], dices=dices)
         
         else:
-            player1.fid += 1
-            player1.move_to(screen, fc.f_container[player1.fid], dices=dices)
-        
-    player1.fid = new_fid
-        
-
-    if fc.f_container[player1.fid].type == "street":
-        if fc.f_container[player1.fid].owner == "Bank":
-            st_transact.buyStreet(player1, fc.f_container[player1.fid])
-            
-        elif fc.f_container[player1.fid].owner == player1:
-            pass # Insert code to buy stuff here
-        
-        else:
-            st_transact.payRent(player1, fc.f_container[player1.fid])
-            
-    elif fc.f_container[player1.fid].type == "investment":
-        if fc.f_container[player1.fid].owner == "Bank":
-            invest_transact.invest(player1, fc.f_container[player1.fid])
-            
-        elif fc.f_container[player1.fid].owner != player1:
-            invest_transact.earn_money(player1, fc.f_container[player1.fid])
+            player.fid += 1
+            player.move_to(screen, fc.f_container[player.fid], dices=dices)
             
     print("Done rolling")
+    afterTurn(player, pl_type)
+    
+def turns():
+    rollDices(player1, "player")
+    rollDices(player2, "computer")
 
 # insert buttons here
 rodi_btn = btn.Button(
@@ -101,7 +105,7 @@ rodi_btn = btn.Button(
     480,
     65,
     25,
-    rollDices
+    turns
 )
 
 while running:
