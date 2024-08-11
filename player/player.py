@@ -7,10 +7,11 @@ import pygame
 import math
 
 class Player:
-    def __init__(self, name):
+    def __init__(self, name, colour):
         self.name = name
+        self.colour = colour
         self.balance = 1500.00
-        self.position = pygame.Vector2(848, 588)
+        self.position = pygame.Vector2(835, 575)
         self.ability = {}
         self.win_condition = []
         self.task = []
@@ -20,7 +21,7 @@ class Player:
         
     def spawn(self, screen):
         """Draw the player's token on the screen."""
-        pygame.draw.circle(screen, "red", self.position, 20)
+        pygame.draw.circle(screen, self.colour, self.position, 20)
         
     def move_to(self, screen, field, dices, steps=20, hop_height=30):
         """Move the player to a new position with a hopping animation."""

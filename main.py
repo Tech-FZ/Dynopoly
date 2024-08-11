@@ -22,11 +22,16 @@ screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 
-player1 = pl.Player("Nicolas")
+player1 = pl.Player("Nicolas", "red")
 f = open('player/winConditions.json')
 win_conditions = json.load(f)
 player1.win_condition.append(win_conditions["1"])
 player1.win_condition.append(win_conditions["2"])
+
+player2 = pl.Player("Player 2", "blue")
+player2.win_condition.append(win_conditions["1"])
+player2.win_condition.append(win_conditions["2"])
+player2.position = pygame.Vector2(860, 600)
 
 dices = []
 
@@ -48,7 +53,7 @@ def rollDices():
         dice.rollDice(screen)
         total_value += dice.value
 
-    new_fid = player1.fid + total_value
+        new_fid = player.fid + total_value
     
     if new_fid >= len(fc.f_container):
             new_fid = 0 + (new_fid - len(fc.f_container))
@@ -143,6 +148,8 @@ while running:
     player1.spawn(screen)
     pc.player_card(screen, player1)
     pc.win_condition_Card(screen,player1)
+    
+    player2.spawn(screen)
 
     dc1.spawnDice(screen)
     dc2.spawnDice(screen)
