@@ -14,6 +14,7 @@ This build is not intended for submission, but rather for the developers to keep
 - Git will now ignore pycache.
 - The player card UI has been added to the right.
 - The field placement had to be re-added.
+- The still faulty movement had to be fixed as well.
 
 ## Known issues
 

@@ -16,6 +16,8 @@ screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 
+player1 = pl.Player("Nicolas")
+
 dc1 = dc.Dice()
 
 dc2 = dc.Dice()
@@ -141,7 +143,6 @@ while running:
 
         y += 130 """
 
-    player1 = pl.Player("Nicolas")
     player1.spawn(screen)
     
     pc.player_card(screen, player1)
