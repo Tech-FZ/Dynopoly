@@ -10,7 +10,8 @@ import player.player as pl
 import player.player_card as pc
 import dice.dice as dc
 import universal.button as btn
-import transactions.transactions as transact
+import transactions.street_transact as st_transact
+import transactions.invest_transact as invest_transact
 import items.property as prop
 import items.investment as invest
 
@@ -99,13 +100,20 @@ def rollDices():
 
     if fc.f_container[player1.fid].type == "street":
         if fc.f_container[player1.fid].owner == "Bank":
-            transact.buyStreet(player1, fc.f_container[player1.fid])
+            st_transact.buyStreet(player1, fc.f_container[player1.fid])
             
         elif fc.f_container[player1.fid].owner == player1:
             pass # Insert code to buy stuff here
         
         else:
-            transact.payRent(player1, fc.f_container[player1.fid])
+            st_transact.payRent(player1, fc.f_container[player1.fid])
+            
+    elif fc.f_container[player1.fid].type == "investment":
+        if fc.f_container[player1.fid].owner == "Bank":
+            invest_transact.invest(player1, fc.f_container[player1.fid])
+            
+        elif fc.f_container[player1.fid].owner != player1:
+            invest_transact.earn_money(player1, fc.f_container[player1.fid])
 
 # insert buttons here
 rodi_btn = btn.Button(
