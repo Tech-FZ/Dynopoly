@@ -27,10 +27,15 @@ win_conditions = json.load(f)
 player1.win_condition.append(win_conditions["1"])
 player1.win_condition.append(win_conditions["2"])
 
+dices = []
+
 dc1 = dc.Dice()
 
 dc2 = dc.Dice()
 dc2.x = 175
+
+dices.append(dc1)
+dices.append(dc2)
 
 y = 525
 x = 785
@@ -85,10 +90,11 @@ while y <= 395:
 
 def rollDices():
     try:
-        dc1.rollDice(screen)
-        dc2.rollDice(screen)
-
-        total_value = dc1.value + dc2.value
+        total_value = 0
+        
+        for dice in dices:
+            dice.rollDice(screen)
+            total_value += dice.value
 
         new_fid = player1.fid + total_value
     

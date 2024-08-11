@@ -12,6 +12,7 @@ This build is not intended for submission, but rather for the developers to keep
 - Streets should now be treated properly.
 - Investments should now work.
 - "Roll dice" spamming will now be handled with a "Slow down, please!" on the terminal.
+- The dicing system is more dynamic now.
 
 ## Known issues
 
