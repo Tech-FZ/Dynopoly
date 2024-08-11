@@ -8,6 +8,7 @@ This build is not intended for submission, but rather for the developers to keep
 
 - The buttons and dices are now defined outside of the loop.
 - The rule UI on the right has changed its background colour to grey.
+- The movement is basically working.
 
 ## Known issues
 

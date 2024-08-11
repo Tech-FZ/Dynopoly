@@ -16,7 +16,7 @@ class Player:
         
     def move_to(self, screen, field):
         """Move the player to a new position and redraw them."""
-        self.position = pygame.Vector2(field)
+        self.position = pygame.Vector2(field.x, field.y)
         self.spawn(screen)
     
     def collect_rent(self, player: 'Player', property: Property):

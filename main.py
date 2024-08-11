@@ -20,9 +20,15 @@ dc1 = dc.Dice()
 dc2 = dc.Dice()
 dc2.x = 175
 
+player1 = pl.Player()
+
 def rollDices():
     dc1.rollDice(screen)
     dc2.rollDice(screen)
+
+    total_value = dc1.value + dc2.value
+
+    player1.move_to(screen, fc.f_container[0 + total_value])
 
 # insert buttons here
 rodi_btn = btn.Button(screen, "Roll dice", (255, 255, 255), (0, 0, 0), (5, 5, 5), (0, 0, 0), 205, 480, 65, 25, rollDices)
@@ -68,7 +74,6 @@ while running:
 
         y += 130
 
-    player1 = pl.Player()
     player1.spawn(screen)
 
     dc1.spawnDice(screen)
