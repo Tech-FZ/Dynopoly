@@ -2,7 +2,7 @@ import pygame
 import universal.fonts as fonts
 
 class Button:
-    def __init__(self, screen, txt, bg_colour, txt_colour, bgc_hover, txtc_hover, x, y, width, height, ftc=None, ):
+    def __init__(self, screen, txt, bg_colour, txt_colour, bgc_hover, txtc_hover, x, y, width, height, ftc=None):
         self.screen = screen
         self.ftc = ftc
         self.txt = txt
