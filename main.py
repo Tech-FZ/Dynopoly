@@ -121,8 +121,8 @@ def rollDices(player, pl_type):
 
         new_fid = player.fid + total_value
     
-        if new_fid > len(fc.f_container):
-            new_fid = 0 + (new_fid - len(fc.f_container))
+    if new_fid >= len(fc.f_container):
+        new_fid = 0 + (new_fid - len(fc.f_container))
         
         player.fid = new_fid
 
