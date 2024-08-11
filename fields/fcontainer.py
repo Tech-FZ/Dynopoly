@@ -9,5 +9,5 @@ def contain(screen, f_type, f_name, f_owner, f_price, f_rent, fx, fy):
     field.owner = f_owner
     field.price = f_price
     field.rent = f_rent
-    field.field_placement(screen, fx, fy)
+    #field.field_placement(screen, fx, fy)
     f_container.append(field)

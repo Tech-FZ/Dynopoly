@@ -14,7 +14,7 @@ class Field:
         self.x = x
         self.y = y
 
-    def field_placement(self, screen, x, y):
+    def field_placement(self, screen):
         field_lbl_pos = pygame.Vector2(self.x + 10, self.y + 10)
         pygame.draw.rect(screen, "white", pygame.Rect(self.x, self.y, 125, 125))
 
