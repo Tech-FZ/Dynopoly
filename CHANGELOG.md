@@ -1,3 +1,17 @@
+# Misonic Project Internal Development Build 5
+
+## Attention
+
+This build is not intended for submission, but rather for the developers to keep track of development while working on the game.
+
+## Changes
+
+- The jail has been re-implemented.
+
+## Known issues
+
+- Spamming "Roll dice" can cause the game to crash with an IndexError.
+
 # Misonic Project Internal Development Build 4
 
 ## Attention

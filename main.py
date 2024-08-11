@@ -36,8 +36,8 @@ while x >= 5:
     if x == 785 and y == 525:
         fc.contain(screen, "start", "Start", "None", 200, 0, x, y)
 
-    elif x == 785 and y == 5:
-        fc.contain(screen, "gotojail", "Go to jail", "None", 0, 0, x, y)
+    elif x == 5 and y == 525:
+        fc.contain(screen, "jail", "Jail", "None", 50, 0, x, y)
 
     else:
         fc.contain(screen, "street", "Street", "Bank", 60, 8, x, y)
@@ -50,9 +50,6 @@ x = 5
 while y >= 5:
     if x == 5 and y == 5:
         fc.contain(screen, "freeparking", "Free parking", "None", 0, 0, x, y)
-
-    elif x == 785 and y == 5:
-        fc.contain(screen, "gotojail", "Go to jail", "None", 0, 0, x, y)
 
     else:
         fc.contain(screen, "street", "Street", "Bank", 60, 8, x, y)
