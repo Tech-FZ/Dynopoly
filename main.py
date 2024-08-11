@@ -21,7 +21,6 @@ dc1 = dc.Dice()
 dc2 = dc.Dice()
 dc2.x = 175
 
-player1 = pl.Player()
 
 y = 525
 x = 785
