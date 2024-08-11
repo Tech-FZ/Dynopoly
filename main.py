@@ -21,11 +21,16 @@ screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 
-player1 = pl.Player("Nicolas")
+player1 = pl.Player("Nicolas", "red")
 f = open('player/winConditions.json')
 win_conditions = json.load(f)
 player1.win_condition.append(win_conditions["1"])
 player1.win_condition.append(win_conditions["2"])
+
+player2 = pl.Player("Player 2", "blue")
+player2.win_condition.append(win_conditions["1"])
+player2.win_condition.append(win_conditions["2"])
+player2.position = pygame.Vector2(860, 600)
 
 dices = []
 
@@ -87,40 +92,49 @@ while y <= 395:
         fc.genRegularField(x, y)
         
     y += 130
+    
+def afterTurn(player, pl_type):
+    if fc.f_container[player.fid].type == "street":
+        if fc.f_container[player.fid].owner == "Bank":
+            st_transact.buyStreet(player, fc.f_container[player.fid])
+            
+        elif fc.f_container[player.fid].owner == player:
+            pass # Insert code to buy stuff here
+        
+        else:
+            st_transact.payRent(player, fc.f_container[player.fid])
+            
+    elif fc.f_container[player.fid].type == "investment":
+        if fc.f_container[player.fid].owner == "Bank":
+            invest_transact.invest(player1, fc.f_container[player.fid])
+            
+        elif fc.f_container[player.fid].owner != player:
+            invest_transact.earn_money(player, fc.f_container[player.fid])
 
-def rollDices():
+def rollDices(player, pl_type):
+    try:
+        total_value = 0
+        
+        for dice in dices:
+            dice.rollDice(screen)
+            total_value += dice.value
 
-    total_value = 0
-
-    for dice in dices:
-        dice.rollDice(screen)
-        total_value += dice.value
-
-    new_fid = player1.fid + total_value
+        new_fid = player.fid + total_value
     
     if new_fid >= len(fc.f_container):
         new_fid = 0 + (new_fid - len(fc.f_container))
         
-    player1.fid = new_fid
+        player.fid = new_fid
 
-    player1.move_to(screen, fc.f_container[player1.fid])
-
-    if fc.f_container[player1.fid].type == "street":
-        if fc.f_container[player1.fid].owner == "Bank":
-            st_transact.buyStreet(player1, fc.f_container[player1.fid])
-            
-        elif fc.f_container[player1.fid].owner == player1:
-            pass # Insert code to buy stuff here
+        player.move_to(screen, fc.f_container[player.fid])
+        afterTurn(player, pl_type)
+                
+    except:
+        print("Slow down, please!")
         
-        else:
-            st_transact.payRent(player1, fc.f_container[player1.fid])
-            
-    elif fc.f_container[player1.fid].type == "investment":
-        if fc.f_container[player1.fid].owner == "Bank":
-            invest_transact.invest(player1, fc.f_container[player1.fid])
-            
-        elif fc.f_container[player1.fid].owner != player1:
-            invest_transact.earn_money(player1, fc.f_container[player1.fid])
+def turns():
+    rollDices(player1, "player")
+    rollDices(player2, "computer")
 
 # insert buttons here
 rodi_btn = btn.Button(
@@ -134,7 +148,7 @@ rodi_btn = btn.Button(
     480,
     65,
     25,
-    rollDices,
+    turns,
 )
 
 while running:
@@ -182,6 +196,8 @@ while running:
     player1.spawn(screen)
     pc.player_card(screen, player1)
     pc.win_condition_Card(screen,player1)
+    
+    player2.spawn(screen)
 
     dc1.spawnDice(screen)
     dc2.spawnDice(screen)
