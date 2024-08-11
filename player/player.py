@@ -2,7 +2,8 @@ from items.property import Property
 import pygame
 
 class Player:
-    def __init__(self):
+    def __init__(self, name):
+        self.name = name
         self.balance = 1500.00
         self.position = pygame.Vector2(848, 588)
         self.ability = {}

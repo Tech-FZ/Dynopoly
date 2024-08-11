@@ -6,6 +6,7 @@ import rules.rule_ui as r_ui
 import fields.fields as fields
 import fields.fcontainer as fc
 import player.player as pl
+import player.player_card as pc
 import dice.dice as dc
 import universal.button as btn
 
@@ -41,6 +42,7 @@ while running:
 
     # RENDER YOUR GAME HERE
     r_ui.rule_ui_setup(screen)
+    
 
     y = 5
 
@@ -68,8 +70,10 @@ while running:
 
         y += 130
 
-    player1 = pl.Player()
+    player1 = pl.Player("Nicolas")
     player1.spawn(screen)
+    
+    pc.player_card(screen, player1)
 
     dc1.spawnDice(screen)
     dc2.spawnDice(screen)
