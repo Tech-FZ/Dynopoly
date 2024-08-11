@@ -3,7 +3,7 @@ import fields.fcontainer as fc
 def buyStreet(player, street):
     if player.balance >= street.price:
         player.balance -= street.price
-        street.owner == player.name # Replacement variable
+        street.owner == player
 
 def payRent(player, owner, street):
     player.balance -= street.rent

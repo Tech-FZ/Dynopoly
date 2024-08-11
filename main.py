@@ -10,6 +10,9 @@ import player.player as pl
 import player.player_card as pc
 import dice.dice as dc
 import universal.button as btn
+import transactions.transactions as transact
+import items.property as prop
+import items.investment as invest
 
 # pygame setup
 pygame.init()
@@ -94,6 +97,9 @@ def rollDices():
 
     player1.move_to(screen, fc.f_container[player1.fid])
 
+    if fc.f_container[player1.fid].type == "street":
+        if fc.f_container[player1.fid].owner == "Bank":
+            transact.buyStreet(player1, fc.f_container[player1.fid])
 
 # insert buttons here
 rodi_btn = btn.Button(
