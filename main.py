@@ -17,11 +17,12 @@ screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 
+player1 = pl.Player("Nicolas")
+
 dc1 = dc.Dice()
 
 dc2 = dc.Dice()
 dc2.x = 175
-
 
 y = 525
 x = 785
@@ -83,7 +84,14 @@ def rollDices():
 
     total_value = dc1.value + dc2.value
 
-    player1.move_to(screen, fc.f_container[0 + total_value])
+    new_fid = player1.fid + total_value
+    
+    if new_fid > len(fc.f_container):
+        new_fid = 0 + (new_fid - len(fc.f_container))
+        
+    player1.fid = new_fid
+
+    player1.move_to(screen, fc.f_container[player1.fid])
 
 
 # insert buttons here
@@ -116,6 +124,8 @@ while running:
     # RENDER YOUR GAME HERE
     r_ui.rule_ui_setup(screen)
     
+    for fld in fc.f_container:
+        fld.field_placement(screen)
 
     """ while y <= 525:
         x = 5
@@ -141,7 +151,6 @@ while running:
 
         y += 130 """
 
-    player1 = pl.Player("Nicolas")
     player1.spawn(screen)
     
     f = open('player/winConditions.json')

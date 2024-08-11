@@ -9,6 +9,7 @@ class Player:
         self.ability = {}
         self.win_condition = []
         self.task = []
+        self.fid = 0 # Starting point
         self.properties = []  # Changed to plural for clarity
         
     def spawn(self, screen):
@@ -17,7 +18,7 @@ class Player:
         
     def move_to(self, screen, field):
         """Move the player to a new position and redraw them."""
-        self.position = pygame.Vector2(field.x, field.y)
+        self.position = pygame.Vector2(field.x + 50, field.y + 50)
         self.spawn(screen)
     
     def collect_rent(self, player: 'Player', property: Property):
