@@ -92,8 +92,26 @@ while y <= 395:
         fc.genRegularField(x, y)
         
     y += 130
+    
+def afterTurn(player, pl_type):
+    if fc.f_container[player.fid].type == "street":
+        if fc.f_container[player.fid].owner == "Bank":
+            st_transact.buyStreet(player, fc.f_container[player.fid])
+            
+        elif fc.f_container[player.fid].owner == player:
+            pass # Insert code to buy stuff here
+        
+        else:
+            st_transact.payRent(player, fc.f_container[player.fid])
+            
+    elif fc.f_container[player.fid].type == "investment":
+        if fc.f_container[player.fid].owner == "Bank":
+            invest_transact.invest(player1, fc.f_container[player.fid])
+            
+        elif fc.f_container[player.fid].owner != player:
+            invest_transact.earn_money(player, fc.f_container[player.fid])
 
-def rollDices(player):
+def rollDices(player, pl_type):
     try:
         total_value = 0
         
@@ -109,30 +127,14 @@ def rollDices(player):
         player.fid = new_fid
 
         player.move_to(screen, fc.f_container[player.fid])
-
-        if fc.f_container[player.fid].type == "street":
-            if fc.f_container[player.fid].owner == "Bank":
-                st_transact.buyStreet(player, fc.f_container[player.fid])
-            
-            elif fc.f_container[player.fid].owner == player:
-                pass # Insert code to buy stuff here
-        
-            else:
-                st_transact.payRent(player, fc.f_container[player.fid])
-            
-        elif fc.f_container[player.fid].type == "investment":
-            if fc.f_container[player.fid].owner == "Bank":
-                invest_transact.invest(player1, fc.f_container[player.fid])
-            
-            elif fc.f_container[player.fid].owner != player:
-                invest_transact.earn_money(player, fc.f_container[player.fid])
+        afterTurn(player, pl_type)
                 
     except:
         print("Slow down, please!")
         
 def turns():
-    rollDices(player1)
-    rollDices(player2)
+    rollDices(player1, "player")
+    rollDices(player2, "computer")
 
 # insert buttons here
 rodi_btn = btn.Button(
