@@ -7,6 +7,7 @@ This build is not intended for submission, but rather for the developers to keep
 ## Changes
 
 - The jail has been re-implemented.
+- Investments are now on the board.
 
 ## Known issues
 
