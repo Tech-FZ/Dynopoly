@@ -1,1 +1,8 @@
 hackathon/
+dice/__pycache__/
+fields/__pycache__/
+items/__pycache__/
+player/__pycache__/
+rules/__pycache__/
+transactions/__pycache__/
+universal/__pycache__/
