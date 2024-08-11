@@ -10,6 +10,7 @@ import player.player as pl
 import player.player_card as pc
 import dice.dice as dc
 import universal.button as btn
+import universal.game_board as gb
 import transactions.street_transact as st_transact
 import transactions.invest_transact as invest_transact
 import items.property as prop
@@ -42,99 +43,51 @@ dc2.x = 175
 dices.append(dc1)
 dices.append(dc2)
 
-y = 525
-x = 785
+gb.draw_board()
 
-while x >= 5:
-    if x == 785 and y == 525:
-        fc.contain("start", "Start", "None", 200, 0, x, y)
+def rollDices():
 
-    elif x == 5 and y == 525:
-        fc.contain("jail", "Jail", "None", 50, 0, x, y)
+    total_value = 0
 
-    else:
-        fc.genRegularField(x, y)
-
-    x -= 130
-
-y -= 130
-x = 5
-
-while y >= 5:
-    if x == 5 and y == 5:
-        fc.contain("freeparking", "Free parking", "None", 0, 0, x, y)
-
-    else:
-        fc.genRegularField(x, y)
-
-    y -= 130
-
-y = 5
-x += 130
-
-while x <= 785:
-    if x == 785 and y == 5:
-        fc.contain("gotojail", "Go to jail", "None", 0, 0, x, y)
-        
-    else:
-        fc.genRegularField(x, y)
-
-    x += 130
-
-x = 785
-y += 130
-
-while y <= 395:
-    if x == 785 and y == 5:
-        fc.contain("gotojail", "Go to jail", "None", 0, 0, x, y)
-
-    else:
-        fc.genRegularField(x, y)
-        
-    y += 130
-    
-def afterTurn(player, pl_type):
-    if fc.f_container[player.fid].type == "street":
-        if fc.f_container[player.fid].owner == "Bank":
-            st_transact.buyStreet(player, fc.f_container[player.fid])
-            
-        elif fc.f_container[player.fid].owner == player:
-            pass # Insert code to buy stuff here
-        
-        else:
-            st_transact.payRent(player, fc.f_container[player.fid])
-            
-    elif fc.f_container[player.fid].type == "investment":
-        if fc.f_container[player.fid].owner == "Bank":
-            invest_transact.invest(player1, fc.f_container[player.fid])
-            
-        elif fc.f_container[player.fid].owner != player:
-            invest_transact.earn_money(player, fc.f_container[player.fid])
-
-def rollDices(player, pl_type):
-    try:
-        total_value = 0
-        
-        for dice in dices:
-            dice.rollDice(screen)
-            total_value += dice.value
+    for dice in dices:
+        dice.rollDice(screen)
+        total_value += dice.value
 
         new_fid = player.fid + total_value
     
     if new_fid >= len(fc.f_container):
-        new_fid = 0 + (new_fid - len(fc.f_container))
+            new_fid = 0 + (new_fid - len(fc.f_container))
+    
+    while player1.fid != new_fid:
+        if player1.fid == len(fc.f_container)-1:
+            player1.fid = 0
+            player1.move_to(screen, fc.f_container[player1.fid], dices=dices)
         
-        player.fid = new_fid
+        else:
+            player1.fid += 1
+            player1.move_to(screen, fc.f_container[player1.fid], dices=dices)
+        
+    player1.fid = new_fid
+        
 
-        player.move_to(screen, fc.f_container[player.fid])
-        afterTurn(player, pl_type)
-                
-    except:
-        print("Slow down, please!")
+    if fc.f_container[player1.fid].type == "street":
+        if fc.f_container[player1.fid].owner == "Bank":
+            st_transact.buyStreet(player1, fc.f_container[player1.fid])
+            
+        elif fc.f_container[player1.fid].owner == player1:
+            pass # Insert code to buy stuff here
         
-def turns():
-    rollDices(player1, "player")
-    rollDices(player2, "computer")
+        else:
+            st_transact.payRent(player1, fc.f_container[player1.fid])
+            
+    elif fc.f_container[player1.fid].type == "investment":
+        if fc.f_container[player1.fid].owner == "Bank":
+            invest_transact.invest(player1, fc.f_container[player1.fid])
+            
+        elif fc.f_container[player1.fid].owner != player1:
+            invest_transact.earn_money(player1, fc.f_container[player1.fid])
+            
+    print("Done rolling")
 
 # insert buttons here
 rodi_btn = btn.Button(
@@ -148,7 +101,7 @@ rodi_btn = btn.Button(
     480,
     65,
     25,
-    turns,
+    rollDices
 )
 
 while running:
@@ -157,7 +110,6 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
         rodi_btn.checkClick(event)
 
     # fill the screen with a color to wipe away anything from last frame
