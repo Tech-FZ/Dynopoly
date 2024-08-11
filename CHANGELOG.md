@@ -15,6 +15,7 @@ This build is not intended for submission, but rather for the developers to keep
 - The player card UI has been added to the right.
 - The field placement had to be re-added.
 - The still faulty movement had to be fixed as well.
+- The player movement is behaving properly now.
 
 ## Known issues
 

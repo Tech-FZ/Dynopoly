@@ -83,7 +83,14 @@ def rollDices():
 
     total_value = dc1.value + dc2.value
 
-    player1.move_to(screen, fc.f_container[0 + total_value])
+    new_fid = player1.fid + total_value
+    
+    if new_fid > len(fc.f_container):
+        new_fid = 0 + (new_fid - len(fc.f_container))
+        
+    player1.fid = new_fid
+
+    player1.move_to(screen, fc.f_container[player1.fid])
 
 
 # insert buttons here
