@@ -2,8 +2,9 @@ from items.property import Property
 import pygame
 
 class Player:
-    def __init__(self, name):
+    def __init__(self, name, colour):
         self.name = name
+        self.colour = colour
         self.balance = 1500.00
         self.position = pygame.Vector2(835, 575)
         self.ability = {}
@@ -14,7 +15,7 @@ class Player:
         
     def spawn(self, screen):
         """Draw the player's token on the screen."""
-        pygame.draw.circle(screen, "red", self.position, 20)
+        pygame.draw.circle(screen, self.colour, self.position, 20)
         
     def move_to(self, screen, field):
         """Move the player to a new position and redraw them."""
