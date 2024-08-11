@@ -13,6 +13,7 @@ This build is not intended for submission, but rather for the developers to keep
 - Investments should now work.
 - "Roll dice" spamming will now be handled with a "Slow down, please!" on the terminal.
 - The dicing system is more dynamic now.
+- The second player is being shown.
 
 ## Known issues
 

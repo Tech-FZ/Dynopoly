@@ -5,7 +5,7 @@ class Player:
     def __init__(self, name):
         self.name = name
         self.balance = 1500.00
-        self.position = pygame.Vector2(848, 588)
+        self.position = pygame.Vector2(835, 575)
         self.ability = {}
         self.win_condition = []
         self.task = []

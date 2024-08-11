@@ -27,6 +27,11 @@ win_conditions = json.load(f)
 player1.win_condition.append(win_conditions["1"])
 player1.win_condition.append(win_conditions["2"])
 
+player2 = pl.Player("Player 2")
+player2.win_condition.append(win_conditions["1"])
+player2.win_condition.append(win_conditions["2"])
+player2.position = pygame.Vector2(860, 600)
+
 dices = []
 
 dc1 = dc.Dice()
@@ -185,6 +190,8 @@ while running:
     player1.spawn(screen)
     pc.player_card(screen, player1)
     pc.win_condition_Card(screen,player1)
+    
+    player2.spawn(screen)
 
     dc1.spawnDice(screen)
     dc2.spawnDice(screen)
