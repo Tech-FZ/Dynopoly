@@ -1,5 +1,6 @@
 # Third-party libraries
 import pygame
+import json
 
 # Other code files
 import rules.rule_ui as r_ui
@@ -143,7 +144,13 @@ while running:
     player1 = pl.Player("Nicolas")
     player1.spawn(screen)
     
+    f = open('player/winConditions.json')
+    win_conditions = json.load(f)
+    player1.win_condition.append(win_conditions["1"])
+    player1.win_condition.append(win_conditions["2"])
+    
     pc.player_card(screen, player1)
+    pc.win_condition_Card(screen,player1)
 
     dc1.spawnDice(screen)
     dc2.spawnDice(screen)
