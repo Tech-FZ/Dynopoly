@@ -1,3 +1,17 @@
+# Misonic Project Internal Development Build 4
+
+## Attention
+
+This build is not intended for submission, but rather for the developers to keep track of development while working on the game.
+
+## Changes
+
+- The buttons and dices are now defined outside of the loop.
+
+## Known issues
+
+- The button doesn't work yet.
+
 # Misonic Project Internal Development Build 3
 
 ## Attention

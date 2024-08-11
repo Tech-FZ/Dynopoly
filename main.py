@@ -15,12 +15,22 @@ screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 
+dc1 = dc.Dice()
+
+dc2 = dc.Dice()
+dc2.x = 175
+
+# insert buttons here
+rodi_btn = btn.Button(screen, dc1.rollDice(screen), "Roll dice", (255, 255, 255), (0, 0, 0), (5, 5, 5), (0, 0, 0), 205, 480, 65, 25)
+
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+        rodi_btn.checkClick(event)
 
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("purple")
@@ -57,15 +67,9 @@ while running:
     player1 = pl.Player()
     player1.spawn(screen)
 
-    dc1 = dc.Dice()
     dc1.spawnDice(screen)
-
-    dc2 = dc.Dice()
-    dc2.x = 175
     dc2.spawnDice(screen)
 
-    # insert buttons here
-    rodi_btn = btn.Button(screen, "roll_dice", "Roll dice", (255, 255, 255), (0, 0, 0), (5, 5, 5), (0, 0, 0), 205, 480, 65, 25)
     rodi_btn.updateButton(rodi_btn.bg_colour, rodi_btn.txt_colour)
 
     # flip() the display to put your work on screen
