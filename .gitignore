@@ -1,4 +1,5 @@
 hackathon/
+__pycache__/
 dice/__pycache__/
 fields/__pycache__/
 items/__pycache__/
