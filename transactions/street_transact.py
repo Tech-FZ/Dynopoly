@@ -1,4 +1,5 @@
 import fields.fcontainer as fc
+import rules.rule_algo as r_algo
 
 def buyStreet(player, street):
     if player.balance >= street.price:
@@ -10,13 +11,15 @@ def payRent(player, street):
     street.owner.balance += street.rent
 
 def buyHouse(player, street):
-    if player.name == street.owner and player.balance >= 50: # house price, can be changed
-        player.balance -= 50
+    if player.name == street.owner and player.balance >= r_algo.house_price:
+        player.balance -= r_algo.house_price
         street.houseCount += 1
-        # street.rent should increase
+        street.price += r_algo.house_price * 1.2
+        street.rent += r_algo.house_price / 8
 
 def buyHotel(player, street):
-    if player.name == street.owner and player.balance >= 75 and street.hotelAvailable == False: # hotel price, can be changed
-        player.balance -= 75
+    if player.name == street.owner and player.balance >= r_algo.hotel_price and street.hotelAvailable == False:
+        player.balance -= r_algo.hotel_price
         street.hotelAvailable = True
-        # street.rent should increase
+        street.price += r_algo.hotel_price * 1.2
+        street.rent += r_algo.hotel_price / 8

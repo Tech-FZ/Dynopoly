@@ -1,6 +1,10 @@
 import fields.fcontainer as fc
 import random
 
+# Variables we can change
+house_price = 50
+hotel_price = 100
+
 def stockMarketCrash(divisor):
     for field in fc.f_container:
         if field.type == "investment":

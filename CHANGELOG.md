@@ -9,6 +9,7 @@ This build is not intended for submission, but rather for the developers to keep
 - Some code has been restructured.
 - That means a fix for the player logic had to be made.
 - The dynamic rules are in development.
+    - The house and hotel prices are now variables which can be changed.
 
 ## Known issues
 
