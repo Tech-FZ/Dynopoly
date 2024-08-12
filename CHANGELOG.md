@@ -8,10 +8,11 @@ This build is not intended for submission, but rather for the developers to keep
 
 - Some code has been restructured.
 - That means a fix for the player logic had to be made.
+- The players can move again.
 
 ## Known issues
 
-- The players aren't moving at all.
+- ~~The players aren't moving at all.~~ Fixed by MakalaMabotja
 
 # Misonic Project Internal Development Build 5
 
