@@ -1,16 +1,5 @@
 import pygame
 import universal.fonts as fonts
-
-# This is just the sidebar. It has been moved to the universal folder in a separate branch and is to be removed from the main branch
-# in case GitHub merges this function into it. - Nicolas Lucien/lucien-rowan/Tech-FZ
-def rule_ui_setup(screen):
-    rule_ui_width = int(screen.get_width() / 4)
-    rule_ui_location = pygame.Vector2((screen.get_width() / 4) * 3 + 50, 10)
-    
-    pygame.draw.rect(screen, "gray", pygame.Rect((screen.get_width() / 4) * 3, 0, rule_ui_width, screen.get_height()))
-
-    r_header = fonts.default_font.render("Misonic Project", False, (0, 0, 0))
-    screen.blit(r_header, rule_ui_location)
     
 def ruleCard(screen):
     card_width = int(screen.get_width() / 4)
