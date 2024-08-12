@@ -17,6 +17,7 @@ This build is not intended for submission, but rather for the developers to keep
     - The events "Shop closure", "Housing crisis" and "Housing abundance" have been prepared.
     - The events "Birthday" and "Come out of jail" have been prepared.
     - The jailbreak event is now random. You don't have 100 % luck anymore.
+    - The jail event is there.
 - The rule card is in preparation.
 - The rules are now displayed again, even if a player is there.
 

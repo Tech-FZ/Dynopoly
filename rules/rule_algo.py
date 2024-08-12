@@ -74,3 +74,8 @@ def jailFreeEvent(player):
     
     if get_free == 3 or get_free == 7 or get_free == 12:
         player.isInJail = False
+        
+def jailEvent(screen, player, jail, players, dices, jail_fid):
+    player.move_to(screen, jail, players=players, dices=dices)
+    player.fid = jail_fid
+    player.isInJail = True
