@@ -4,10 +4,10 @@ import rules.rule_algo as r_algo
 def buyStreet(player, street):
     if player.balance >= street.price:
         player.balance -= street.price
-        street.owner == player
+        street.owner == player.name
 
 def payRent(player, street):
-    player.balance -= street.rent
+    player.balance -= street.rent[street.houseCount]
     street.owner.balance += street.rent
 
 def buyHouse(player, street):
