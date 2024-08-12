@@ -10,6 +10,7 @@ This build is not intended for submission, but rather for the developers to keep
 - That means a fix for the player logic had to be made.
 - The players can move again.
 - The ownership issues have been fixed.
+- The investment issues have been fixed.
 
 ## Known issues
 
