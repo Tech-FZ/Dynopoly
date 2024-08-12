@@ -3,7 +3,7 @@ import pygame
 import json
 
 # Other code files
-import rules.rule_ui as r_ui
+import universal.side_bar as sb
 import fields.fields as fields
 import fields.fcontainer as fc
 import player.player as pl
@@ -120,7 +120,7 @@ while running:
     screen.fill("purple")
 
     # RENDER YOUR GAME HERE
-    r_ui.rule_ui_setup(screen)
+    sb.sb_setup(screen)
     
     for fld in fc.f_container:
         fld.field_placement(screen)
