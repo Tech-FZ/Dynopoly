@@ -26,8 +26,6 @@ running = True
 bank = pl.Player("Bank", "white")
 bank.balance = 1000000
 
-#Initialize jail for moving mechanism
-jail = fields.Field(5,525,None)
 
 player1 = pl.Player("Nicolas", "red")
 f = open('player/winConditions.json')
@@ -55,6 +53,13 @@ players[1] = player1
 players[2] = player2
 
 gb.draw_board(bank)
+
+#Initialize jail for moving mechanism
+for index, field in enumerate(fc.f_container):
+    # jail = fields.Field(5,525,None)
+    if field.type == "jail":
+        jail = field
+        jail_fid = index
 
 turns = 1
 
@@ -91,6 +96,7 @@ def rollDices(players=players):
     
     if new_fid >= len(fc.f_container):
             new_fid = 0 + (new_fid - len(fc.f_container))
+            player.balance += 200
     
     while player.fid != new_fid:
         if player.fid == len(fc.f_container)-1:
@@ -104,8 +110,11 @@ def rollDices(players=players):
     afterTurn(player)
     if fc.f_container[player.fid].type == "gotojail":
         player.move_to(screen, jail, players=players, dices=dices)
-    
-    print(fc.f_container[player.fid].type)
+        player.fid = jail_fid
+        player.isInJail = True
+        
+    print(player.isInJail)
+
     turns += 1
     
 # def turns():

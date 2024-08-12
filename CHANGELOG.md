@@ -39,6 +39,8 @@ This build is not intended for submission, but rather for the developers to keep
 - Handled redrawing of both player when one player is moving
 - Change of ownership for streets need to be correct coded
 - fixed typo error in gotojail mechanism
+- added $200 to player balance on passing start field
+- "free" spaces need to be fixed to avoid added balance to non-existing owner
 
 ## Known issues
 
