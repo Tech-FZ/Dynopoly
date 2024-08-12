@@ -1,8 +1,7 @@
 import pygame
 import universal.fonts as fonts
-from .player import Player
 
-def player_card(screen, player: Player):
+def player_card(screen, player):
     # Card dimensions and location
     card_width = int(screen.get_width() / 4)
     card_x = (screen.get_width() / 4) * 3  # x position for the card
@@ -27,7 +26,7 @@ def player_card(screen, player: Player):
     screen.blit(player_property_count, property_position)
     screen.blit(player_balance, balance_position)
 
-def win_condition_Card(screen, player:Player):
+def win_condition_Card(screen, player):
     card_width = int(screen.get_width() / 4)
     card_x = (screen.get_width() / 4) * 3  # x position for the card
     card_y = 240  # y position for the card
