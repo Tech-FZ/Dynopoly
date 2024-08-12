@@ -75,9 +75,9 @@ def afterTurn(player):
         else:
             st_transact.payRent(player, fc.f_container[player.fid])
             
-    elif fc.f_container[player1.fid].type == "investment":
-        if fc.f_container[player1.fid].owner == "Bank":
-            invest_transact.invest(player1, fc.f_container[player.fid])
+    elif fc.f_container[player.fid].type == "investment":
+        if fc.f_container[player.fid].owner == "Bank":
+            invest_transact.invest(player, fc.f_container[player.fid])
             
         elif fc.f_container[player.fid].owner != player:
             invest_transact.earn_money(player, fc.f_container[player.fid])
