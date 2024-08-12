@@ -102,7 +102,7 @@ def rollDices(players=players):
             player.move_to(screen, fc.f_container[player.fid], players=players, dices=dices)
             
     afterTurn(player)
-    if fc.f_container[player.fid].type == "gotojoil":
+    if fc.f_container[player.fid].type == "gotojail":
         player.move_to(screen, jail, players=players, dices=dices)
     
     print(fc.f_container[player.fid].type)
