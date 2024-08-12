@@ -153,6 +153,8 @@ while running:
     pc.player_card(screen, player1)
     pc.win_condition_Card(screen,player1)
     
+    r_ui.ruleCard(screen)
+    
     player2.spawn(screen)
 
     dc1.spawnDice(screen)
