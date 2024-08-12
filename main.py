@@ -15,6 +15,7 @@ import transactions.street_transact as st_transact
 import transactions.invest_transact as invest_transact
 import items.property as prop
 import items.investment as invest
+import rules.rule_ui as r_ui
 
 # pygame setup
 pygame.init()

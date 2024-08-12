@@ -17,6 +17,7 @@ This build is not intended for submission, but rather for the developers to keep
     - The events "Shop closure", "Housing crisis" and "Housing abundance" have been prepared.
     - The events "Birthday" and "Come out of jail" have been prepared.
 - The rule card is in preparation.
+- The rules are now displayed again.
 
 ## Known issues
 
