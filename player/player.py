@@ -23,7 +23,7 @@ class Player:
         """Draw the player's token on the screen."""
         pygame.draw.circle(screen, self.colour, self.position, 20)
         
-    def move_to(self, screen, field, dices, steps=20, hop_height=30):
+    def move_to(self, screen, field, dices, players, steps=20, hop_height=30):
         """Move the player to a new position with a hopping animation."""
         target_position = pygame.Vector2(field.x + 50, field.y + 50)
         start_position = self.position
@@ -38,8 +38,8 @@ class Player:
 
             # Apply a hopping effect by adjusting the y-coordinate
             # Using a sine wave to simulate the hop
-            hop = math.sin(math.pi * step / steps) * hop_height
-            hop_position = pygame.Vector2(self.position.x, self.position.y - hop)
+            # hop = math.sin(math.pi * step / steps) * hop_height
+            # hop_position = pygame.Vector2(self.position.x, self.position.y - hop)
 
             # Clear the screen (or redraw the background)
             screen.fill("purple")
@@ -51,8 +51,19 @@ class Player:
             dices[0].spawnDice(screen)
             dices[1].spawnDice(screen)
             
+            # Draw all players, including the moving player and the others
+            for player in players.values():
+                if player == self:
+                    # Draw the moving player with the hop effect
+                    hop = math.sin(math.pi * step / steps) * hop_height
+                    hop_position = pygame.Vector2(self.position.x, self.position.y - hop)
+                    pygame.draw.circle(screen, player.colour, hop_position, 20)
+                else:
+                    # Draw the non-moving player
+                    player.spawn(screen)
+            
             # Draw the player at the new position with the hop
-            pygame.draw.circle(screen, "red", hop_position, 20)
+            pygame.draw.circle(screen, self.colour, hop_position, 20)
             
             # Update the display
             pygame.display.flip()

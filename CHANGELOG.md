@@ -9,10 +9,13 @@ This build is not intended for submission, but rather for the developers to keep
 - Some code has been restructured.
 - That means a fix for the player logic had to be made.
 - The rule UI file is now the sidebar file in `universal`.
-
+=======
+- The players can move again.
+- The ownership issues have been fixed.
+- The investment issues have been fixed.
 ## Known issues
 
-- The players aren't moving at all.
+- ~~The players aren't moving at all.~~ Fixed by MakalaMabotja
 
 # Misonic Project Internal Development Build 5
 
@@ -32,6 +35,16 @@ This build is not intended for submission, but rather for the developers to keep
 - The second player is being shown.
 - The second player works as a computer.
 - The after-turn steps have been moved to a separate function to make automation of the computer easier.
+- Added new movement mechinism to avoid rolling outside of the list of available fields
+- Added bounce movement for player token movement
+- Street ownership intialized to bank
+- Bank defined a player to treat ownership the same across the board
+- Go to jail now has mechanism for sending player to jail
+- Handled redrawing of both player when one player is moving
+- Change of ownership for streets need to be correct coded
+- fixed typo error in gotojail mechanism
+- added $200 to player balance on passing start field
+- "free" spaces need to be fixed to avoid added balance to non-existing owner
 
 ## Known issues
 
@@ -98,4 +111,4 @@ This build is not intended for submission, but rather for the developers to keep
 - The dev env setup guide is fairly finished (for) now.
 - The first text is being displayed.
 - The field function is sort of there.
-- The game layout has been prepared and should no longer require major changes. 
+- The game layout has been prepared and should no longer require major changes.
