@@ -18,7 +18,7 @@ This build is not intended for submission, but rather for the developers to keep
     - The events "Birthday" and "Come out of jail" have been prepared.
     - The jailbreak event is now random. You don't have 100 % luck anymore.
 - The rule card is in preparation.
-- The rules are now displayed again.
+- The rules are now displayed again, even if a player is there.
 
 ## Known issues
 

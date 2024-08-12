@@ -5,6 +5,7 @@ import fields.fcontainer as fc
 import universal.side_bar as sb
 import pygame
 import math
+import rules.rule_ui as r_ui
 
 class Player:
     def __init__(self, name, colour):
@@ -46,6 +47,7 @@ class Player:
             sb.sb_setup(screen)
             pc.player_card(screen,self)
             pc.win_condition_Card(screen, self)
+            r_ui.ruleCard(screen)
             for fld in fc.f_container:
                 fld.field_placement(screen)
             dices[0].spawnDice(screen)
