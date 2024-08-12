@@ -1,18 +1,18 @@
 import fields.fcontainer as fc
 
-def draw_board():
+def draw_board(player):
     y = 525
     x = 785
 
     while x >= 5:
         if x == 785 and y == 525:
-            fc.contain("start", "Start", "None", 200, 0, x, y)
+            fc.contain("start", "Start", None, 200, 0, x, y)
 
         elif x == 5 and y == 525:
-            fc.contain("jail", "Jail", "None", 50, 0, x, y)
+            fc.contain("jail", "Jail", None, 50, 0, x, y)
 
         else:
-            fc.genRegularField(x, y)
+            fc.genRegularField(x, y, player)
 
         x -= 130
 
@@ -21,10 +21,10 @@ def draw_board():
 
     while y >= 5:
         if x == 5 and y == 5:
-            fc.contain("freeparking", "Free parking", "None", 0, 0, x, y)
+            fc.contain("freeparking", "Free parking", None, 0, 0, x, y)
 
         else:
-            fc.genRegularField(x, y)
+            fc.genRegularField(x, y, player)
 
         y -= 130
 
@@ -33,10 +33,10 @@ def draw_board():
 
     while x <= 785:
         if x == 785 and y == 5:
-            fc.contain("gotojail", "Go to jail", "None", 0, 0, x, y)
+            fc.contain("gotojail", "Go to jail", None, 0, 0, x, y)
             
         else:
-            fc.genRegularField(x, y)
+            fc.genRegularField(x, y, player)
 
         x += 130
 
@@ -45,9 +45,9 @@ def draw_board():
 
     while y <= 395:
         if x == 785 and y == 5:
-            fc.contain("gotojail", "Go to jail", "None", 0, 0, x, y)
+            fc.contain("gotojail", "Go to jail", None, 0, 0, x, y)
 
         else:
-            fc.genRegularField(x, y)
+            fc.genRegularField(x, y, player)
             
         y += 130
