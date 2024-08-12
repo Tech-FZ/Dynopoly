@@ -69,4 +69,8 @@ def birthday(bd_player, other_players):
     bd_player.balance += total_bd_money
     
 def jailFreeEvent(player):
-    player.isInJail = False
+    get_free = random.randint(0, 12)
+    print(get_free)
+    
+    if get_free == 3 or get_free == 7 or get_free == 12:
+        player.isInJail = False
