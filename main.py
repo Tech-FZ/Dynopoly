@@ -15,6 +15,8 @@ import transactions.street_transact as st_transact
 import transactions.invest_transact as invest_transact
 import items.property as prop
 import items.investment as invest
+import rules.rule_ui as r_ui
+import rules.rule_algo as r_algo
 
 # pygame setup
 pygame.init()
@@ -109,9 +111,10 @@ def rollDices(players=players):
             
     afterTurn(player)
     if fc.f_container[player.fid].type == "gotojail":
-        player.move_to(screen, jail, players=players, dices=dices)
+        r_algo.jailEvent(screen, player, jail, players, dices, jail_fid)
+        """ player.move_to(screen, jail, players=players, dices=dices)
         player.fid = jail_fid
-        player.isInJail = True
+        player.isInJail = True """
         
     print(player.isInJail)
 
