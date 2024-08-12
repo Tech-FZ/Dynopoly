@@ -122,6 +122,9 @@ def rollDices(players=players):
         print(player.isInJail)
 
         turns += 1
+        
+    else:
+        pass # Insert code for those who stay in jail here.
     
 # def turns():
 #     turn = 0

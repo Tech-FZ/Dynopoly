@@ -18,6 +18,7 @@ This build is not intended for submission, but rather for the developers to keep
     - The events "Birthday" and "Come out of jail" have been prepared.
 - The rule card is in preparation.
 - If you get to jail, you should have to have luck going out without doing anything (but your chances are 100 % right now because the jailbreak function is yet to be updated).
+- An empty else-clause for those who stay in jail has been added.
 
 ## Known issues
 
