@@ -58,3 +58,15 @@ def housingCrisis(multiplier, house_pr=house_price, hotel_pr=hotel_price):
 def housingAbundance(divisor, house_pr=house_price, hotel_pr=hotel_price):
     house_pr /= divisor
     hotel_pr /= divisor
+    
+def birthday(bd_player, other_players):
+    total_bd_money = 0
+    
+    for player in other_players:
+        player.balance -= 10
+        total_bd_money += 10
+        
+    bd_player.balance += total_bd_money
+    
+def jailFreeEvent(player):
+    player.isInJail = False
