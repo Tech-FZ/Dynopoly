@@ -46,3 +46,15 @@ def propertyDamage(field, housesDamaged, hotelDamaged):
 def shopOpens(field):
     field.price *= 1.5
     field.rent *= 1.5
+    
+def shopCloses(field):
+    field.price /= 1.5
+    field.rent /= 1.5
+    
+def housingCrisis(multiplier, house_pr=house_price, hotel_pr=hotel_price):
+    house_pr *= multiplier
+    hotel_pr *= multiplier
+    
+def housingAbundance(divisor, house_pr=house_price, hotel_pr=hotel_price):
+    house_pr /= divisor
+    hotel_pr /= divisor
