@@ -170,7 +170,7 @@ def rollDices(players=players):
             player.jailStatus = True
         
         print(player.jailStatus)
-
+        r_algo.eventSelector(screen, jail, players, dices, jail_fid)
         turns += 1
         
 # insert buttons here

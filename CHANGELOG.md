@@ -4,13 +4,24 @@
 
 This build is not intended for submission, but rather for the developers to keep track of development while working on the game.
 
-## Changes:
+## Changes
 
 - added display card to aask player if they want to buy the property in question
 - changed button class to accept keyword arguments for passed functions
+- The event selector has been prepared and in use.
+- The free parking variable is in rule_algo.
+- The rule UI is becoming useful.
+    - Events are printed in the terminal.
+    - Events can now be shown... in only one line.
 
-## Known issue:
+## Known issues
 
+- The rules aren't shown yet.
+- Birthdays crash the game, so they won't be initiated.
+- People won't be put to jail when they don't land on "Go to jail". This is because the event can't be randomised.
+- ~~The events aren't shown in the game itself **as intended**.~~ (Partially) fixed by Tech-FZ
+- ~~Houses in investments can be damaged.~~ Fixed by Tech-FZ
+- Houses and hotels can change and stay at their price at the same time!
 - go to jail now crashes the game due to changes in the player.mo_to method (will be fixed: Makala)
 - changes to button class may cause issues (might need to create an inheritance class for seperate buttons)
 
