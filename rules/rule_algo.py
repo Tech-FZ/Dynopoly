@@ -79,3 +79,56 @@ def jailEvent(screen, player, jail, players, dices, jail_fid):
     player.move_to(screen, jail, players=players, dices=dices)
     player.fid = jail_fid
     player.isInJail = True
+    
+def eventSelector(screen, jail, players, dices, jail_fid):
+    """
+    Event IDs
+    0. Stock Market Crash
+    1. Stock Market Goes Up
+    2. Income Tax
+    3. Property Damage
+    4. Shop opens
+    5. Shop Closure
+    6. Housing Crisis
+    7. Housing Abundance
+    8. Birthday
+    9. Jail Event (A player is brought to jail)
+    10. Jailbreak Event (A prisoner gets out of jail if lucky enough)
+    """
+    
+    eventSel = random.randint(0, 9)
+    
+    if eventSel == 0:
+        stockMarketCrash(random.randint(1, 4) + random.random())
+        
+    elif eventSel == 1:
+        stockMarketGoesUp(random.randint(1, 4) + random.random())
+        
+    elif eventSel == 2:
+        incomeTax(players, random.randint(50, 200))
+        
+    elif eventSel == 3:
+        # Temporary, needs to be replaced
+        propertyDamage(fc.f_container[random.randint(0, len(fc.f_container) - 1)], random.randint(1, 4), random.choice([True, False]))
+        
+    elif eventSel == 4:
+        shopOpens(fc.f_container[random.randint(0, len(fc.f_container) - 1)])
+        
+    elif eventSel == 5:
+        shopCloses(fc.f_container[random.randint(0, len(fc.f_container) - 1)])
+        
+    elif eventSel == 6:
+        housingCrisis(random.randint(1, 4) + random.random())
+        
+    elif eventSel == 7:
+        housingAbundance(random.randint(1, 4) + random.random())
+        
+    elif eventSel == 8:
+        bd_player_idx = random.randint(0, len(players) - 1)
+        bd_player = players[bd_player_idx]
+        other_players = players.pop(bd_player_idx)
+        birthday(bd_player, other_players)
+        
+    elif eventSel == 9:
+        # May or may not be removed
+        jailEvent(screen, random.choice(players), jail, players, dices, jail_fid)

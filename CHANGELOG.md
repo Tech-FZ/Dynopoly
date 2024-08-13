@@ -1,3 +1,18 @@
+# Misonic Project Internal Development Build 7
+
+## Attention
+
+This build is not intended for submission, but rather for the developers to keep track of development while working on the game.
+
+## Changes
+
+- The event selector has been prepared.
+
+## Known issues
+
+- The event selector isn't used yet.
+- The rules aren't shown yet.
+
 # Misonic Project Internal Development Build 6
 
 ## Attention
