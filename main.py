@@ -3,7 +3,7 @@ import pygame
 import json
 
 # Other code files
-import rules.rule_ui as r_ui
+import universal.side_bar as sb
 import fields.fields as fields
 import fields.fcontainer as fc
 import player.player as pl
@@ -15,6 +15,8 @@ import transactions.street_transact as st_transact
 import transactions.invest_transact as invest_transact
 import items.property as prop
 import items.investment as invest
+import rules.rule_ui as r_ui
+import rules.rule_algo as r_algo
 
 # pygame setup
 pygame.init()
@@ -79,9 +81,8 @@ def afterTurn(player):
             print(f"{player.name} Paid rent to {fc.f_container[player.fid].owner.name}")
             
     elif fc.f_container[player.fid].type == "investment":
-        if fc.f_container[player.fid].owner.name == "Bank":
+        if fc.f_container[player.fid].owner == "Bank":
             invest_transact.invest(player, fc.f_container[player.fid])
-            print(f"Bought investment for {player.name}")
             
         elif fc.f_container[player.fid].owner != player and not None:
             invest_transact.earn_money(player, fc.f_container[player.fid])
@@ -93,32 +94,47 @@ def rollDices(players=players):
 
     total_value = 0
     
-    for dice in dices:
-        dice.rollDice(screen)
-        total_value += dice.value
-
-    new_fid = player.fid + total_value
+    if player.isInJail:
+        r_algo.jailFreeEvent(player)
     
-    if new_fid >= len(fc.f_container):
+    if player.isInJail == False:
+        for dice in dices:
+            dice.rollDice(screen)
+            total_value += dice.value
+
+        new_fid = player.fid + total_value
+    
+        if new_fid >= len(fc.f_container):
             new_fid = 0 + (new_fid - len(fc.f_container))
             player.balance += 200
     
-    while player.fid != new_fid:
-        if player.fid == len(fc.f_container)-1:
-            player.fid = 0
-            player.move_to(screen, fc.f_container[player.fid], players=players, dices=dices)
+        while player.fid != new_fid:
+            if player.fid == len(fc.f_container)-1:
+                player.fid = 0
+                player.move_to(screen, fc.f_container[player.fid], players=players, dices=dices)
         
-        else:
-            player.fid += 1
-            player.move_to(screen, fc.f_container[player.fid], players=players, dices=dices)
+            else:
+                player.fid += 1
+                player.move_to(screen, fc.f_container[player.fid], players=players, dices=dices)
             
-    afterTurn(player)
-    if fc.f_container[player.fid].type == "gotojail":
-        player.move_to(screen, jail, players=players, dices=dices)
-        player.fid = jail_fid
-        player.jailStatus = {'in_jail':True, "jail_turn":turns, "has_jail_card":False}
+        afterTurn(player)
+        if fc.f_container[player.fid].type == "gotojail":
+            player.move_to(screen, jail, players=players, dices=dices)
+            player.fid = jail_fid
+            player.isInJail = True
         
-    turns += 1
+        print(player.isInJail)
+
+        turns += 1
+        
+    else:
+        pass # Insert code for those who stay in jail here.
+    
+# def turns():
+#     turn = 0
+#     if turn 
+#     rollDices(player1, "player")
+#     rollDices(player2, "computer")
 
 # insert buttons here
 rodi_btn = btn.Button(
@@ -147,7 +163,7 @@ while running:
     screen.fill("purple")
 
     # RENDER YOUR GAME HERE
-    r_ui.rule_ui_setup(screen)
+    sb.sb_setup(screen)
     
     for fld in fc.f_container:
         fld.field_placement(screen)
@@ -179,6 +195,8 @@ while running:
     player1.spawn(screen)
     pc.player_card(screen, players[(turns-1) % len(players)+1])
     pc.win_condition_Card(screen,  players[(turns-1) % len(players)+1])
+    
+    r_ui.ruleCard(screen)
     
     player2.spawn(screen)
 

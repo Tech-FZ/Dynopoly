@@ -2,9 +2,10 @@ from items.property import Property
 from player import player_card as pc
 import universal.game_board as gb
 import fields.fcontainer as fc
-import rules.rule_ui as r_ui
+import universal.side_bar as sb
 import pygame
 import math
+import rules.rule_ui as r_ui
 
 class Player:
     def __init__(self, name, colour):
@@ -43,9 +44,10 @@ class Player:
 
             # Clear the screen (or redraw the background)
             screen.fill("purple")
-            r_ui.rule_ui_setup(screen)
+            sb.sb_setup(screen)
             pc.player_card(screen,self)
             pc.win_condition_Card(screen, self)
+            r_ui.ruleCard(screen)
             for fld in fc.f_container:
                 fld.field_placement(screen)
             dices[0].spawnDice(screen)
