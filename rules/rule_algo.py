@@ -145,14 +145,31 @@ def eventSelector(screen, jail, players, dices, jail_fid):
         incomeTax(players, random.randint(50, 200))
         
     elif eventSel == 3:
-        # Temporary, needs to be replaced
-        propertyDamage(fc.f_container[random.randint(0, len(fc.f_container) - 1)], random.randint(1, 4), random.choice([True, False]))
+        st_container = []
+        
+        for field in fc.f_container:
+            if field.type == "street":
+                st_container.append(field)
+        
+        propertyDamage(st_container[random.randint(0, len(st_container) - 1)], random.randint(1, 4), random.choice([True, False]))
         
     elif eventSel == 4:
-        shopOpens(fc.f_container[random.randint(0, len(fc.f_container) - 1)])
+        st_container = []
+        
+        for field in fc.f_container:
+            if field.type == "street":
+                st_container.append(field)
+                
+        shopOpens(st_container[random.randint(0, len(st_container) - 1)])
         
     elif eventSel == 5:
-        shopCloses(fc.f_container[random.randint(0, len(fc.f_container) - 1)])
+        st_container = []
+        
+        for field in fc.f_container:
+            if field.type == "street":
+                st_container.append(field)
+                
+        shopCloses(st_container[random.randint(0, len(st_container) - 1)])
         
     elif eventSel == 6:
         housingCrisis(random.randint(1, 4) + random.random())

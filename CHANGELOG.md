@@ -17,7 +17,8 @@ This build is not intended for submission, but rather for the developers to keep
 - Birthdays crash the game, so they won't be initiated.
 - People won't be put to jail when they don't land on "Go to jail". This is because the event can't be randomised.
 - The events aren't shown in the game itself as intended.
-- Houses in investments can be damaged.
+- ~~Houses in investments can be damaged.~~ Fixed by Tech-FZ
+- Houses and hotels can change and stay at their price at the same time!
 
 # Misonic Project Internal Development Build 6
 
