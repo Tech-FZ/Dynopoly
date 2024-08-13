@@ -4,7 +4,15 @@
 
 This build is not intended for submission, but rather for the developers to keep track of development while working on the game.
 
-## Changes
+## Changes:
+
+- added display card to aask player if they want to buy the property in question
+- changed button class to accept keyword arguments for passed functions
+
+## Known issue:
+
+- go to jail now crashes the game due to changes in the player.mo_to method (will be fixed: Makala)
+- changes to button class may cause issues (might need to create an inheritance class for seperate buttons)
 
 # Misonic Project Internal Development Build 6
 
