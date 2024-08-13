@@ -108,13 +108,13 @@ def jailFreeEvent(player):
     print(get_free)
     
     if get_free == 3 or get_free == 7 or get_free == 12:
-        player.isInJail = False
+        player.jailStatus['in_jail'] = False
         r_ui.latest_event = f"{player.name} is no longer in jail."
         
 def jailEvent(screen, player, jail, players, dices, jail_fid):
     player.move_to(screen, jail, players=players, dices=dices)
     player.fid = jail_fid
-    player.isInJail = True
+    player.jailStatus['in_jail'] = True
     r_ui.latest_event = f"{player.name} went to jail."
     
 def eventSelector(screen, jail, players, dices, jail_fid):
