@@ -64,23 +64,28 @@ for index, field in enumerate(fc.f_container):
 turns = 1
 
 def afterTurn(player):
-    if fc.f_container[player.fid].type == "street":
+    if fc.f_container[player.fid].owner is None:
+        pass
+        
+    elif fc.f_container[player.fid].type == "street":
         if fc.f_container[player.fid].owner.name == "Bank":
             st_transact.buyStreet(player, fc.f_container[player.fid])
-            player.properties.append(fc.f_container[player.fid])
-            
+            print(f"Bought house for {player.name}")
         elif fc.f_container[player.fid].owner == player:
             pass # Insert code to buy stuff here
         
         else:
             st_transact.payRent(player, fc.f_container[player.fid])
+            print(f"{player.name} Paid rent to {fc.f_container[player.fid].owner.name}")
             
-    elif fc.f_container[player1.fid].type == "investment":
-        if fc.f_container[player1.fid].owner == "Bank":
-            invest_transact.invest(player1, fc.f_container[player.fid])
+    elif fc.f_container[player.fid].type == "investment":
+        if fc.f_container[player.fid].owner.name == "Bank":
+            invest_transact.invest(player, fc.f_container[player.fid])
+            print(f"Bought investment for {player.name}")
             
-        elif fc.f_container[player.fid].owner != player:
+        elif fc.f_container[player.fid].owner != player and not None:
             invest_transact.earn_money(player, fc.f_container[player.fid])
+            print(f"{player.name} Paid interest to {fc.f_container[player.fid].owner.name}")
 
 def rollDices(players=players):
     global turns
@@ -111,17 +116,9 @@ def rollDices(players=players):
     if fc.f_container[player.fid].type == "gotojail":
         player.move_to(screen, jail, players=players, dices=dices)
         player.fid = jail_fid
-        player.isInJail = True
+        player.jailStatus = {'in_jail':True, "jail_turn":turns, "has_jail_card":False}
         
-    print(player.isInJail)
-
     turns += 1
-    
-# def turns():
-#     turn = 0
-#     if turn 
-#     rollDices(player1, "player")
-#     rollDices(player2, "computer")
 
 # insert buttons here
 rodi_btn = btn.Button(

@@ -17,13 +17,13 @@ class Player:
         self.task = []
         self.fid = 0 # Starting point
         self.properties = []  # Changed to plural for clarity
-        self.isInJail = False
+        self.jailStatus = {'in_jail':False, "jail_turn":0, "has_jail_card":False}
         
     def spawn(self, screen):
         """Draw the player's token on the screen."""
         pygame.draw.circle(screen, self.colour, self.position, 20)
         
-    def move_to(self, screen, field, dices, players, steps=20, hop_height=30):
+    def move_to(self, screen, field, dices, players, steps=5, hop_height=30):
         """Move the player to a new position with a hopping animation."""
         target_position = pygame.Vector2(field.x + 50, field.y + 50)
         start_position = self.position
