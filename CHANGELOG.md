@@ -7,11 +7,12 @@ This build is not intended for submission, but rather for the developers to keep
 ## Changes
 
 - The event selector has been prepared and in use.
+- The free parking variable is in rule_algo.
 
 ## Known issues
 
 - The rules aren't shown yet.
-- Birthdays crash the game.
+- Birthdays crash the game, so they won't be initiated.
 
 # Misonic Project Internal Development Build 6
 

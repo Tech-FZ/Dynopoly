@@ -4,6 +4,7 @@ import random
 # Variables we can change
 house_price = 50
 hotel_price = 100
+free_parking = 0
 
 def stockMarketCrash(divisor):
     for field in fc.f_container:
@@ -17,9 +18,15 @@ def stockMarketGoesUp(multiplier):
             field.price *= multiplier
             field.rent *= multiplier
             
-def incomeTax(players, tax):
+def incomeTax(players, tax, fp = free_parking):
+    i = 0
+    while i > len(players):
+        players[list(players.keys())[i - 1 % len(players)]].balance -= tax
+        fp += tax
+        i += 1
+    """ player = players[list(players.keys())[(turns -1) % len(players)]]
     for player in players:
-        player.balance -= tax
+        player.balance -= tax """
         # insert tax added to free parking here
         
 def propertyDamage(field, housesDamaged, hotelDamaged):
@@ -123,12 +130,14 @@ def eventSelector(screen, jail, players, dices, jail_fid):
     elif eventSel == 7:
         housingAbundance(random.randint(1, 4) + random.random())
         
-    elif eventSel == 8:
-        bd_player_idx = random.randint(1, len(players))
-        bd_player = players[bd_player_idx]
-        other_players = players.pop(bd_player_idx)
-        birthday(bd_player, other_players)
-        
     elif eventSel == 9:
         # May or may not be removed
         jailEvent(screen, random.choice(players), jail, players, dices, jail_fid)
+        
+    """ elif eventSel == 8:
+        bd_player_idx = random.randint(1, len(players))
+        bd_player = players[bd_player_idx]
+        other_players = players.pop(bd_player_idx)
+        birthday(bd_player, other_players) """
+        
+    
