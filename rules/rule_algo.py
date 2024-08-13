@@ -23,11 +23,12 @@ def stockMarketGoesUp(multiplier):
             
     r_ui.latest_event = f"Stock market went up! Stock has {str(multiplier)}x more worth."
             
-def incomeTax(players, tax, fp = free_parking):
+def incomeTax(players, tax):
+    global free_parking
     i = 0
     while i > len(players):
         players[list(players.keys())[i - 1 % len(players)]].balance -= tax
-        fp += tax
+        free_parking += tax
         i += 1
         
     r_ui.latest_event = f"Income tax of {str(tax)} went into free parking."
@@ -82,14 +83,18 @@ def shopCloses(field):
     field.rent /= 1.5
     r_ui.latest_event = f"A shop has closed in {field.name}. Price and rent decrease by 50 %."
     
-def housingCrisis(multiplier, house_pr=house_price, hotel_pr=hotel_price):
-    house_pr *= multiplier
-    hotel_pr *= multiplier
+def housingCrisis(multiplier):
+    global house_price
+    global hotel_price
+    house_price *= multiplier
+    hotel_price *= multiplier
     r_ui.latest_event = f"A housing crisis is ongoing. Prices for houses & hotels {str(multiplier)}x higher."
     
-def housingAbundance(divisor, house_pr=house_price, hotel_pr=hotel_price):
-    house_pr /= divisor
-    hotel_pr /= divisor
+def housingAbundance(divisor):
+    global house_price
+    global hotel_price
+    house_price /= divisor
+    hotel_price /= divisor
     r_ui.latest_event = f"A housing abundance is ongoing. Prices for houses & hotels {str(divisor)}x lower."
     
 def birthday(bd_player, other_players):
