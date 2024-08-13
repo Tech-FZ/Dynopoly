@@ -42,13 +42,13 @@ def propertyDamage(field, housesDamaged, hotelDamaged):
     
     if housesDamaged > 0:
         if hotelDamaged:
-            r_ui.latest_event = f"{str(housesDamaged)} house(s) and the hotel in {field.name} have been damaged."
+            r_ui.latest_event = f"{str(housesDamaged)} house(s) & the hotel in {field.name} damaged."
             
         else:
-            r_ui.latest_event = f"{str(housesDamaged)} house(s) in {field.name} has/have been damaged."
+            r_ui.latest_event = f"{str(housesDamaged)} house(s) in {field.name} damaged."
             
     elif hotelDamaged:
-        r_ui.latest_event = f"The hotel in {field.name} has been damaged."
+        r_ui.latest_event = f"Hotel in {field.name} damaged."
     
     if decision == 0:
         if field.houseCount > 0:
@@ -61,7 +61,7 @@ def propertyDamage(field, housesDamaged, hotelDamaged):
             field.price -= 40
             field.rent -= 4
             
-        r_ui.latest_event += "Price decreased by 40. Rent decreased by 4."
+        r_ui.latest_event += "Price 40 less. Rent 4 less."
     
     elif decision == 1:
         if field.owner != "Bank":
@@ -70,7 +70,7 @@ def propertyDamage(field, housesDamaged, hotelDamaged):
             if hotelDamaged:
                 field.owner.balance -= 50
                 
-        r_ui.latest_event += "Repairs: 25 for houses and 50 for hotels"
+        r_ui.latest_event += "Repairs: 25 per house & 50 for hotel"
     
 def shopOpens(field):
     field.price *= 1.5
@@ -85,12 +85,12 @@ def shopCloses(field):
 def housingCrisis(multiplier, house_pr=house_price, hotel_pr=hotel_price):
     house_pr *= multiplier
     hotel_pr *= multiplier
-    r_ui.latest_event = f"A housing crisis is ongoing. Prices for houses and hotels {str(multiplier)}x higher."
+    r_ui.latest_event = f"A housing crisis is ongoing. Prices for houses & hotels {str(multiplier)}x higher."
     
 def housingAbundance(divisor, house_pr=house_price, hotel_pr=hotel_price):
     house_pr /= divisor
     hotel_pr /= divisor
-    r_ui.latest_event = f"A housing abundance is ongoing. Prices for houses and hotels {str(divisor)}x lower."
+    r_ui.latest_event = f"A housing abundance is ongoing. Prices for houses & hotels {str(divisor)}x lower."
     
 def birthday(bd_player, other_players):
     total_bd_money = 0
@@ -136,10 +136,10 @@ def eventSelector(screen, jail, players, dices, jail_fid):
     eventSel = random.randint(0, 9)
     
     if eventSel == 0:
-        stockMarketCrash(random.randint(1, 4) + random.random())
+        stockMarketCrash(round(random.randint(1, 4) + random.random(), 2))
         
     elif eventSel == 1:
-        stockMarketGoesUp(random.randint(1, 4) + random.random())
+        stockMarketGoesUp(round(random.randint(1, 4) + random.random(), 2))
         
     elif eventSel == 2:
         incomeTax(players, random.randint(50, 200))
@@ -172,10 +172,10 @@ def eventSelector(screen, jail, players, dices, jail_fid):
         shopCloses(st_container[random.randint(0, len(st_container) - 1)])
         
     elif eventSel == 6:
-        housingCrisis(random.randint(1, 4) + random.random())
+        housingCrisis(round(random.randint(1, 4) + random.random(), 2))
         
     elif eventSel == 7:
-        housingAbundance(random.randint(1, 4) + random.random())
+        housingAbundance(round(random.randint(1, 4) + random.random(), 2))
         
     #elif eventSel == 9:
         # May or may not be removed

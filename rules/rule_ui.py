@@ -19,7 +19,7 @@ def ruleCard(screen):
     house_pr_lbl = fonts.default_font.render(f"House Price: {r_algo.house_price}", False, "black")
     hotel_pr_lbl = fonts.default_font.render(f"Hotel Price: {r_algo.hotel_price}", False, "black")
     fp_lbl = fonts.default_font.render(f"Free Parking: {r_algo.free_parking}", False, "black")
-    lat_ev_lbl = fonts.default_font.render(latest_event, False, "black")
+    lat_ev_lbl = fonts.small_font.render(latest_event, False, "black")
     
     house_pr_loc = pygame.Vector2(card_x + 10, card_y + 10)
     hotel_pr_loc = pygame.Vector2(card_x + 10, card_y + 40)
