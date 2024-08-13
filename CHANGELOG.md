@@ -13,6 +13,7 @@ This build is not intended for submission, but rather for the developers to keep
 - The rule UI is becoming useful.
     - Events are printed in the terminal.
     - Events can now be shown... in only one line.
+    - Income tax has been fixed.
 
 ## Known issues
 

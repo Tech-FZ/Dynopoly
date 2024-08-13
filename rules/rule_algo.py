@@ -23,11 +23,12 @@ def stockMarketGoesUp(multiplier):
             
     r_ui.latest_event = f"Stock market went up! Stock has {str(multiplier)}x more worth."
             
-def incomeTax(players, tax, fp = free_parking):
+def incomeTax(players, tax):
+    global free_parking
     i = 0
     while i > len(players):
         players[list(players.keys())[i - 1 % len(players)]].balance -= tax
-        fp += tax
+        free_parking += tax
         i += 1
         
     r_ui.latest_event = f"Income tax of {str(tax)} went into free parking."
