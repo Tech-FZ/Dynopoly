@@ -8,11 +8,13 @@ This build is not intended for submission, but rather for the developers to keep
 
 - The event selector has been prepared and in use.
 - The free parking variable is in rule_algo.
+- The rule UI is becoming useful.
 
 ## Known issues
 
 - The rules aren't shown yet.
 - Birthdays crash the game, so they won't be initiated.
+- People won't be put to jail when they don't land on "Go to jail". This is because the event can't be randomised.
 
 # Misonic Project Internal Development Build 6
 

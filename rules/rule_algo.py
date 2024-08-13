@@ -130,9 +130,9 @@ def eventSelector(screen, jail, players, dices, jail_fid):
     elif eventSel == 7:
         housingAbundance(random.randint(1, 4) + random.random())
         
-    elif eventSel == 9:
+    #elif eventSel == 9:
         # May or may not be removed
-        jailEvent(screen, random.choice(players), jail, players, dices, jail_fid)
+        #jailEvent(screen, random.choice(players), jail, players, dices, jail_fid)
         
     """ elif eventSel == 8:
         bd_player_idx = random.randint(1, len(players))
