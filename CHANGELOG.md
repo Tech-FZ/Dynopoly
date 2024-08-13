@@ -1,3 +1,11 @@
+# Misonic Project Internal Development Build 7
+
+## Attention
+
+This build is not intended for submission, but rather for the developers to keep track of development while working on the game.
+
+## Changes
+
 # Misonic Project Internal Development Build 6
 
 ## Attention
@@ -13,11 +21,11 @@ This build is not intended for submission, but rather for the developers to keep
 - The ownership issues have been fixed.
 - The investment issues have been fixed.
 - The dynamic rules are in development.
-    - The house and hotel prices are now variables which can be changed.
-    - The events "Shop closure", "Housing crisis" and "Housing abundance" have been prepared.
-    - The events "Birthday" and "Come out of jail" have been prepared.
-    - The jailbreak event is now random. You don't have 100 % luck anymore.
-    - The jail event is there.
+  - The house and hotel prices are now variables which can be changed.
+  - The events "Shop closure", "Housing crisis" and "Housing abundance" have been prepared.
+  - The events "Birthday" and "Come out of jail" have been prepared.
+  - The jailbreak event is now random. You don't have 100 % luck anymore.
+  - The jail event is there.
 - The rule card is in preparation.
 - If you get to jail, you should have to have luck going out without doing anything (but your chances are 100 % right now because the jailbreak function is yet to be updated).
 - An empty else-clause for those who stay in jail has been added.
