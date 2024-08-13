@@ -13,8 +13,9 @@ This build is not intended for submission, but rather for the developers to keep
 - The rule UI is becoming useful.
     - Events are printed in the terminal.
     - Events can now be shown... in only one line.
-- The free parking money could now be retrieved.
 
+- The free parking money could now be retrieved.
+    - Income tax has been fixed.
 ## Known issues
 
 - The rules aren't shown yet.
@@ -23,6 +24,7 @@ This build is not intended for submission, but rather for the developers to keep
 - ~~The events aren't shown in the game itself **as intended**.~~ (Partially) fixed by Tech-FZ
 - ~~Houses in investments can be damaged.~~ Fixed by Tech-FZ
 - Houses and hotels can change and stay at their price at the same time! (Same with free parking)
+- ~~Houses and hotels can change and stay at their price at the same time!~~ Fixed by Tech-FZ
 - go to jail now crashes the game due to changes in the player.mo_to method (will be fixed: Makala)
 - changes to button class may cause issues (might need to create an inheritance class for seperate buttons)
 
