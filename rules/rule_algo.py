@@ -124,7 +124,7 @@ def eventSelector(screen, jail, players, dices, jail_fid):
         housingAbundance(random.randint(1, 4) + random.random())
         
     elif eventSel == 8:
-        bd_player_idx = random.randint(0, len(players) - 1)
+        bd_player_idx = random.randint(1, len(players))
         bd_player = players[bd_player_idx]
         other_players = players.pop(bd_player_idx)
         birthday(bd_player, other_players)

@@ -6,12 +6,12 @@ This build is not intended for submission, but rather for the developers to keep
 
 ## Changes
 
-- The event selector has been prepared.
+- The event selector has been prepared and in use.
 
 ## Known issues
 
-- The event selector isn't used yet.
 - The rules aren't shown yet.
+- Birthdays crash the game.
 
 # Misonic Project Internal Development Build 6
 
