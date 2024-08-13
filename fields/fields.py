@@ -1,14 +1,15 @@
 import pygame
 import universal.fonts as fonts
 from player.player import Player
+from typing import List
 
 class Field:
-    def __init__(self, x, y, player:Player):
+    def __init__(self, x, y, player:Player, rent:List[int] = [8, 20, 35, 50, 65, 100]):
         self.type = "street"
         self.name = "Street"
         self.owner = player
         self.price = 60
-        self.rent = [8, 20, 35, 50, 65, 100]
+        self.rent = rent
         self.players = []
         self.houseCount = 0
         self.hotelAvailable = False
@@ -29,4 +30,6 @@ class Field:
             owner_lbl = fonts.default_font.render(f"{self.owner}", False, (0,0,0))
         screen.blit(owner_lbl, owner_lbl_pos)
 
+    def change_owner(self, player:Player):
+        self.owner = player
     

@@ -2,9 +2,10 @@ import pygame
 import universal.fonts as fonts
 
 class Button:
-    def __init__(self, screen, txt, bg_colour, txt_colour, bgc_hover, txtc_hover, x, y, width, height, ftc=None):
+    def __init__(self, screen, txt, bg_colour, txt_colour, bgc_hover, txtc_hover, x, y, width, height, ftc=None, kw_args:dict=None):
         self.screen = screen
         self.ftc = ftc
+        self.kw_args = kw_args
         self.txt = txt
         self.bg_colour = bg_colour
         self.txt_colour = txt_colour
@@ -25,4 +26,7 @@ class Button:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.rect.collidepoint(event.pos):
                 if self.ftc:
-                    self.ftc()
+                    if self.kw_args:
+                        self.ftc(**self.kw_args)
+                    else:
+                        self.ftc()
