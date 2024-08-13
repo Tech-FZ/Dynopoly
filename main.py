@@ -90,35 +90,41 @@ def rollDices(players=players):
 
     total_value = 0
     
-    for dice in dices:
-        dice.rollDice(screen)
-        total_value += dice.value
-
-    new_fid = player.fid + total_value
+    if player.isInJail:
+        r_algo.jailFreeEvent(player)
     
-    if new_fid >= len(fc.f_container):
+    if player.isInJail == False:
+        for dice in dices:
+            dice.rollDice(screen)
+            total_value += dice.value
+
+        new_fid = player.fid + total_value
+    
+        if new_fid >= len(fc.f_container):
             new_fid = 0 + (new_fid - len(fc.f_container))
             player.balance += 200
     
-    while player.fid != new_fid:
-        if player.fid == len(fc.f_container)-1:
-            player.fid = 0
-            player.move_to(screen, fc.f_container[player.fid], players=players, dices=dices)
+        while player.fid != new_fid:
+            if player.fid == len(fc.f_container)-1:
+                player.fid = 0
+                player.move_to(screen, fc.f_container[player.fid], players=players, dices=dices)
         
-        else:
-            player.fid += 1
-            player.move_to(screen, fc.f_container[player.fid], players=players, dices=dices)
+            else:
+                player.fid += 1
+                player.move_to(screen, fc.f_container[player.fid], players=players, dices=dices)
             
-    afterTurn(player)
-    if fc.f_container[player.fid].type == "gotojail":
-        r_algo.jailEvent(screen, player, jail, players, dices, jail_fid)
-        """ player.move_to(screen, jail, players=players, dices=dices)
-        player.fid = jail_fid
-        player.isInJail = True """
+        afterTurn(player)
+        if fc.f_container[player.fid].type == "gotojail":
+            player.move_to(screen, jail, players=players, dices=dices)
+            player.fid = jail_fid
+            player.isInJail = True
         
-    print(player.isInJail)
+        print(player.isInJail)
 
-    turns += 1
+        turns += 1
+        
+    else:
+        pass # Insert code for those who stay in jail here.
     
 # def turns():
 #     turn = 0
