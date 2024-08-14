@@ -36,12 +36,12 @@ def event_card(screen, phase, kw_args = None):
     global latest_event
     reject = btn.Button(
     screen,
-    "No",
+    "OK",
     (255, 255, 255),
     (0, 0, 0),
     (5, 5, 5),
     (0, 0, 0),
-    ((screen.get_width() / 4)  + 140),
+    ((screen.get_width() / 4) + (screen.get_width() / 5) / 2.5),
     (screen.get_height()/2+100),
     65,
     25,
