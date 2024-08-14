@@ -18,6 +18,10 @@ class Player:
         self.task = []
         self.fid = 0 # Starting point
         self.properties = []  # Changed to plural for clarity
+        self.jailStatus = False
+        self.jailTurns = 0
+        self.jailCard = False
+        # {'in_jail':False, "jail_turn":0, "has_jail_card":False}
         self.jailStatus = {'in_jail':False, "jail_turn":0, "has_jail_card":False}
         self.drunkStatus = 0
         
