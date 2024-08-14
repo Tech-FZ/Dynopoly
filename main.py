@@ -153,7 +153,7 @@ def rollDices(players=players):
             total_value += dice.value
             
         if player_drunk:
-            total_value = random.randint(- total_value, total_value)
+            total_value = random.randint(0, total_value)
 
         new_fid = player.fid + total_value
     
