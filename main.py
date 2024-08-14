@@ -1,6 +1,7 @@
 # Third-party libraries
 import pygame
 import json
+import random
 
 # Other code files
 import universal.side_bar as sb
@@ -128,6 +129,11 @@ def afterTurn(player):
 def rollDices(players=players):
     global turns
     player = players[list(players.keys())[(turns -1) % len(players)]]
+    player_drunk = False
+    
+    if player.drunkStatus > 0:
+        player_drunk = True
+        player.drunkStatus -= 1
 
     total_value = 0
     
@@ -138,6 +144,9 @@ def rollDices(players=players):
         for dice in dices:
             dice.rollDice(screen)
             total_value += dice.value
+            
+        if player_drunk:
+            total_value = random.randint(- total_value, total_value)
 
         new_fid = player.fid + total_value
     
@@ -165,14 +174,20 @@ def rollDices(players=players):
                                dices=dices)
             
         afterTurn(player)
-        if fc.f_container[player.fid].type == "gotojail":
-            player.move_to(screen, jail, players=players, dices=dices)
-            player.fid = jail_fid
-            player.jailStatus = True
+        if fc.f_container[player.fid].type == "bar":
+            player.balance -= r_algo.bar_price
+            player.drunkStatus = 3
             
         elif fc.f_container[player.fid].type == "freeparking":
             player.balance += r_algo.free_parking
             r_algo.free_parking = 0
+            
+        player_buys_anyway = random.randint(0, 1)
+            
+        if player_drunk and player_buys_anyway == 1:
+            if fc.f_container[player.fid].owner.name == player.name:
+                player.balance -= fc.f_container[player.fid].rent
+                players[list(players.keys())[((turns -1) % len(players)) + 1]].balance += fc.f_container[player.fid].rent
         
         print(player.jailStatus)
         r_algo.eventSelector(screen, jail, players, dices, jail_fid)

@@ -19,6 +19,7 @@ class Player:
         self.fid = 0 # Starting point
         self.properties = []  # Changed to plural for clarity
         self.jailStatus = {'in_jail':False, "jail_turn":0, "has_jail_card":False}
+        self.drunkStatus = 0
         
     def spawn(self, screen):
         """Draw the player's token on the screen."""
