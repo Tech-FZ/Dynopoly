@@ -205,6 +205,7 @@ def rollDices(players=players):
                 players[list(players.keys())[((turns -1) % len(players)) + 1]].balance += fc.f_container[player.fid].rent
         
         print(player.jailStatus)
+        r_algo.checkBankruptcy(screen, player, bank, players, turns)
         r_algo.eventSelector(screen, jail, players, dices, jail_fid)
         turns += 1
         
