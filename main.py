@@ -168,6 +168,10 @@ def rollDices(players=players):
             player.move_to(screen, jail, players=players, dices=dices)
             player.fid = jail_fid
             player.jailStatus = True
+            
+        elif fc.f_container[player.fid].type == "freeparking":
+            player.balance += r_algo.free_parking
+            r_algo.free_parking = 0
         
         print(player.jailStatus)
         r_algo.eventSelector(screen, jail, players, dices, jail_fid)
