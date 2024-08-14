@@ -107,6 +107,7 @@ def afterTurn(player):
             
             else:
                 st_transact.payRent(player, fc.f_container[player.fid])
+                trade_phase = False
                 print(f"{player.name} Paid rent to {fc.f_container[player.fid].owner.name}")
                 
         elif fc.f_container[player.fid].type == "investment":
@@ -120,6 +121,7 @@ def afterTurn(player):
                 
             elif fc.f_container[player.fid].owner != player and not None:
                 invest_transact.earn_money(player, fc.f_container[player.fid])
+                trade_phase = False
                 print(f"{player.name} Paid interest to {fc.f_container[player.fid].owner.name}")
                 
         else: 
@@ -131,10 +133,16 @@ def rollDices(players=players):
 
     total_value = 0
     
-    if player.jailStatus['in_jail']:
-        r_algo.jailFreeEvent(player)
+    if player.jailStatus:
+        for dice in dices:
+            dice.rollDice(screen)
+            total_value += dice.value
+        
+        if dices[0].value == dices[1].value:
+            is_doubles = True
+            r_algo.jailFreeEvent(screen, turns, display_board, player, players, dices, is_doubles, total_value)
     
-    if player.jailStatus['in_jail'] == False:
+    if not player.jailStatus:
         for dice in dices:
             dice.rollDice(screen)
             total_value += dice.value
@@ -166,9 +174,10 @@ def rollDices(players=players):
             
         afterTurn(player)
         if fc.f_container[player.fid].type == "gotojail":
-            player.move_to(screen, jail, players=players, dices=dices)
+            player.move_to(screen, turns, display_board, jail, dices=dices, players=players)
             player.fid = jail_fid
             player.jailStatus = True
+            player.jailStatus = 1
             
         elif fc.f_container[player.fid].type == "freeparking":
             player.balance += r_algo.free_parking
