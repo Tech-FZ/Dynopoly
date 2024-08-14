@@ -6,6 +6,7 @@ import rules.rule_ui as r_ui
 house_price = 50
 hotel_price = 100
 free_parking = 0
+bar_price = 5
 
 def stockMarketCrash(divisor):
     for field in fc.f_container:
@@ -13,7 +14,7 @@ def stockMarketCrash(divisor):
             field.price /= divisor
             field.rent /= divisor
             
-    r_ui.latest_event = f"Stock market crashed! Stock has {str(divisor)}x less worth."
+    r_ui.latest_event = [f"Stock market crashed! Stock has", f"{str(divisor)}x less worth."]
             
 def stockMarketGoesUp(multiplier):
     for field in fc.f_container:
@@ -21,7 +22,7 @@ def stockMarketGoesUp(multiplier):
             field.price *= multiplier
             field.rent *= multiplier
             
-    r_ui.latest_event = f"Stock market went up! Stock has {str(multiplier)}x more worth."
+    r_ui.latest_event = [f"Stock market went up! Stock has", f"{str(multiplier)}x more worth."]
             
 def incomeTax(players, tax):
     global free_parking
@@ -31,7 +32,7 @@ def incomeTax(players, tax):
         free_parking += tax
         i += 1
         
-    r_ui.latest_event = f"Income tax of {str(tax)} went into free parking."
+    r_ui.latest_event = [f"Income tax of {str(tax)} went into free", "parking."]
         
     """ player = players[list(players.keys())[(turns -1) % len(players)]]
     for player in players:
@@ -43,13 +44,13 @@ def propertyDamage(field, housesDamaged, hotelDamaged):
     
     if housesDamaged > 0:
         if hotelDamaged:
-            r_ui.latest_event = f"{str(housesDamaged)} house(s) & the hotel in {field.name} damaged."
+            r_ui.latest_event = [f"{str(housesDamaged)} house(s) & the hotel in {field.name} damaged."]
             
         else:
-            r_ui.latest_event = f"{str(housesDamaged)} house(s) in {field.name} damaged."
+            r_ui.latest_event = [f"{str(housesDamaged)} house(s) in {field.name} damaged."]
             
     elif hotelDamaged:
-        r_ui.latest_event = f"Hotel in {field.name} damaged."
+        r_ui.latest_event = [f"Hotel in {field.name} damaged."]
     
     if decision == 0:
         if field.houseCount > 0:
@@ -62,7 +63,7 @@ def propertyDamage(field, housesDamaged, hotelDamaged):
             field.price -= 40
             field.rent -= 4
             
-        r_ui.latest_event += "Price 40 less. Rent 4 less."
+        r_ui.latest_event.append("Price 40 less. Rent 4 less.")
     
     elif decision == 1:
         if field.owner != "Bank":
@@ -71,31 +72,32 @@ def propertyDamage(field, housesDamaged, hotelDamaged):
             if hotelDamaged:
                 field.owner.balance -= 50
                 
-        r_ui.latest_event += "Repairs: 25 per house & 50 for hotel"
+        r_ui.latest_event.append("Repairs: 25 per house & 50 for")
+        r_ui.latest_event.append("hotel")
     
 def shopOpens(field):
     field.price *= 1.5
     field.rent *= 1.5
-    r_ui.latest_event = f"A shop has opened in {field.name}. Price and rent increase by 50 %."
+    r_ui.latest_event = [f"A shop has opened in {field.name}.", "Price and rent increase by 50 %."]
     
 def shopCloses(field):
     field.price /= 1.5
     field.rent /= 1.5
-    r_ui.latest_event = f"A shop has closed in {field.name}. Price and rent decrease by 50 %."
+    r_ui.latest_event = [f"A shop has closed in {field.name}.", "Price and rent decrease by 50 %."]
     
 def housingCrisis(multiplier):
     global house_price
     global hotel_price
     house_price *= multiplier
     hotel_price *= multiplier
-    r_ui.latest_event = f"A housing crisis is ongoing. Prices for houses & hotels {str(multiplier)}x higher."
+    r_ui.latest_event = [f"A housing crisis is ongoing.", f"Prices for houses & hotels {str(multiplier)}x", "higher."]
     
 def housingAbundance(divisor):
     global house_price
     global hotel_price
     house_price /= divisor
     hotel_price /= divisor
-    r_ui.latest_event = f"A housing abundance is ongoing. Prices for houses & hotels {str(divisor)}x lower."
+    r_ui.latest_event = [f"A housing abundance is ongoing.", f"Prices for houses & hotels {str(divisor)}x", "lower."]
     
 def birthday(bd_player, other_players):
     total_bd_money = 0
@@ -106,7 +108,7 @@ def birthday(bd_player, other_players):
         
     bd_player.balance += total_bd_money
     
-    r_ui.latest_event = f"{bd_player.name}'s birthday - They get 10 dollars from everyone else"
+    r_ui.latest_event = [f"{bd_player.name}'s birthday - They get 10 dollars from everyone else"]
     
 def jailFreeEvent(player):
     get_free = random.randint(0, 12)
@@ -114,13 +116,13 @@ def jailFreeEvent(player):
     
     if get_free == 3 or get_free == 7 or get_free == 12:
         player.jailStatus['in_jail'] = False
-        r_ui.latest_event = f"{player.name} is no longer in jail."
+        r_ui.latest_event = [f"{player.name} is no longer in jail."]
         
 def jailEvent(screen, player, jail, players, dices, jail_fid):
     player.move_to(screen, jail, players=players, dices=dices)
     player.fid = jail_fid
     player.jailStatus['in_jail'] = True
-    r_ui.latest_event = f"{player.name} went to jail."
+    r_ui.latest_event = [f"{player.name} went to jail."]
     
 def eventSelector(screen, jail, players, dices, jail_fid):
     """
@@ -193,3 +195,8 @@ def eventSelector(screen, jail, players, dices, jail_fid):
         birthday(bd_player, other_players) """
         
     print(r_ui.latest_event)
+    
+    ecp = True
+    
+    while ecp:
+        ecp = r_ui.event_card(screen, True)
