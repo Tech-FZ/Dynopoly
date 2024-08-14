@@ -181,12 +181,17 @@ def rollDices(players=players):
             
         player_buys_anyway = random.randint(0, 1)
             
-        if player_drunk and fc.f_container[player.fid].owner.name == "Bank" and player_buys_anyway == 1:
-            if fc.f_container[player.fid].type == "street":
-                st_transact.buyStreet(player, fc.f_container[player.fid])
+        if player_drunk and player_buys_anyway == 1:
+            if fc.f_container[player.fid].owner.name == "Bank":
+                if fc.f_container[player.fid].type == "street":
+                    st_transact.buyStreet(player, fc.f_container[player.fid])
                 
-            elif fc.f_container[player.fid].type == "investment":
-                invest_transact.invest(player, fc.f_container[player.fid])
+                elif fc.f_container[player.fid].type == "investment":
+                    invest_transact.invest(player, fc.f_container[player.fid])
+                    
+            elif fc.f_container[player.fid].owner.name == player.name:
+                player.balance -= fc.f_container[player.fid].rent
+                players[list(players.keys())[((turns -1) % len(players)) + 1]].balance += fc.f_container[player.fid].rent
         
         print(player.jailStatus)
         r_algo.eventSelector(screen, jail, players, dices, jail_fid)
