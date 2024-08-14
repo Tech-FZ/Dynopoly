@@ -1,4 +1,4 @@
-# Misonic Project
+# Dynopoly
 
 Basically Monopoly with a twist.
 
