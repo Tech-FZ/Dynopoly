@@ -1,6 +1,7 @@
 # Third-party libraries
 import pygame
 import json
+import random
 
 # Other code files
 import universal.side_bar as sb
@@ -128,6 +129,11 @@ def afterTurn(player):
 def rollDices(players=players):
     global turns
     player = players[list(players.keys())[(turns -1) % len(players)]]
+    player_drunk = False
+    
+    if player.drunkStatus > 0:
+        player_drunk = True
+        player.drunkStatus -= 1
 
     total_value = 0
     
@@ -172,6 +178,15 @@ def rollDices(players=players):
         elif fc.f_container[player.fid].type == "freeparking":
             player.balance += r_algo.free_parking
             r_algo.free_parking = 0
+            
+        player_buys_anyway = random.randint(0, 1)
+            
+        if player_drunk and fc.f_container[player.fid].owner.name == "Bank" and player_buys_anyway == 1:
+            if fc.f_container[player.fid].type == "street":
+                st_transact.buyStreet(player, fc.f_container[player.fid])
+                
+            elif fc.f_container[player.fid].type == "investment":
+                invest_transact.invest(player, fc.f_container[player.fid])
         
         print(player.jailStatus)
         r_algo.eventSelector(screen, jail, players, dices, jail_fid)

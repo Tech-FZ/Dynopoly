@@ -16,6 +16,7 @@ This build is not intended for submission, but rather for the developers to keep
 - The bar field has been added.
   - It takes the balance away and makes you drunk for a few turns.
 - The player could now get drunk.
+  - In that case, there is a chance the player might buy a property even if you said no.
     
 ## Known issues
 
