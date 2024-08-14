@@ -97,7 +97,8 @@ def afterTurn(player):
             
         elif fc.f_container[player.fid].type == "street":
             if fc.f_container[player.fid].owner.name == "Bank":
-                trade_phase = offer.offer_card(screen, 
+                trade_phase = offer.offer_card(screen,
+                                               fc.f_container[player.fid],
                                                phase = trade_phase,
                                                ftc = st_transact.buyStreet, 
                                                kw_args={"player":player,
@@ -119,6 +120,7 @@ def afterTurn(player):
         elif fc.f_container[player.fid].type == "investment":
             if fc.f_container[player.fid].owner.name == "Bank":
                 trade_phase = offer.offer_card(screen, 
+                                               fc.f_container[player.fid],
                                                phase = trade_phase,
                                                ftc = invest_transact.invest, 
                                                kw_args={"player":player,
