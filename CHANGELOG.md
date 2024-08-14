@@ -23,6 +23,7 @@ This build is not intended for submission, but rather for the developers to keep
   - Or they move to the wrong field.
 - On the player info, you can see how drunk the current player is.
 - A bug where the game crashed when you're drunk and the owner of the field is non-existant has been fixed.
+- Income taxes got fixed.
     
 ## Known issues
 
@@ -31,6 +32,7 @@ This build is not intended for submission, but rather for the developers to keep
 - People won't be put to jail when they don't land on "Go to jail". This is because the event can't be randomised.
 - go to jail now crashes the game due to changes in the player.mo_to method (will be fixed: Makala)
 - changes to button class may cause issues (might need to create an inheritance class for seperate buttons)
+- Sometimes, being drunk causes the game to crash.
 
 # Misonic Project Internal Development Build 7
 
