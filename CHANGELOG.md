@@ -14,6 +14,7 @@ This build is not intended for submission, but rather for the developers to keep
 - In the side bar, the label "Misonic Project" now shows "Current Player Info" instead.
 - The window title is now "Dynopoly".
 - You can now buy a house and a hotel.
+- Paying rent no longer crashes the game.
     
 ## Known issues
 

@@ -113,6 +113,7 @@ def afterTurn(player):
             else:
                 st_transact.payRent(player, fc.f_container[player.fid])
                 print(f"{player.name} Paid rent to {fc.f_container[player.fid].owner.name}")
+                break
                 
         elif fc.f_container[player.fid].type == "investment":
             if fc.f_container[player.fid].owner.name == "Bank":
@@ -126,6 +127,7 @@ def afterTurn(player):
             elif fc.f_container[player.fid].owner != player and not None:
                 invest_transact.earn_money(player, fc.f_container[player.fid])
                 print(f"{player.name} Paid interest to {fc.f_container[player.fid].owner.name}")
+                break
                 
         else: 
             break
