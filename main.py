@@ -22,6 +22,7 @@ import rules.rule_algo as r_algo
 # pygame setup
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
+pygame.display.set_caption("Dynopoly")
 clock = pygame.time.Clock()
 running = True
 

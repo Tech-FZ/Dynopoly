@@ -1,4 +1,4 @@
-# Contributors to Misonic Project
+# Contributors to Dynopoly
 
 | Name | User | Contributions |
 | ---- | ---- | ------------- |
