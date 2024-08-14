@@ -11,11 +11,13 @@ This build is not intended for submission, but rather for the developers to keep
 - The event selector has been prepared and in use.
 - The free parking variable is in rule_algo.
 - The rule UI is becoming useful.
-    - Events are printed in the terminal.
-    - Events can now be shown... in only one line.
+
+  - Events are printed in the terminal.
+  - Events can now be shown... in only one line.
 
 - The free parking money could now be retrieved.
-    - Income tax has been fixed.
+  - Income tax has been fixed.
+
 ## Known issues
 
 - The rules aren't shown yet.
@@ -27,6 +29,7 @@ This build is not intended for submission, but rather for the developers to keep
 - ~~Houses and hotels can change and stay at their price at the same time!~~ Fixed by Tech-FZ
 - go to jail now crashes the game due to changes in the player.mo_to method (will be fixed: Makala)
 - changes to button class may cause issues (might need to create an inheritance class for seperate buttons)
+- pay rent function not working as intended and freezes game
 
 # Misonic Project Internal Development Build 6
 
