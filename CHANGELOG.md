@@ -13,6 +13,8 @@ This build is not intended for submission, but rather for the developers to keep
 - "Misonic Project" is now called "Dynopoly".
 - In the side bar, the label "Misonic Project" now shows "Current Player Info" instead.
 - The window title is now "Dynopoly".
+- You can now buy a house and a hotel.
+- Paying rent no longer crashes the game.
 - The bar field has been added.
   - It takes the balance away and makes you drunk for a few turns.
 - The player could now get drunk.

@@ -104,11 +104,17 @@ def afterTurn(player):
                                                "street":fc.f_container[player.fid]} )
                 # st_transact.buyStreet(player, fc.f_container[player.fid])
             elif fc.f_container[player.fid].owner == player:
-                break # Insert code to buy stuff here
+                trade_phase = offer.house_hotel_card(screen, 
+                                               phase = trade_phase,
+                                               ftc_house= st_transact.buyHouse, 
+                                               ftc_hotel= st_transact.buyHotel,
+                                               kw_args={"player":player,
+                                               "street":fc.f_container[player.fid]} )
             
             else:
                 st_transact.payRent(player, fc.f_container[player.fid])
                 print(f"{player.name} Paid rent to {fc.f_container[player.fid].owner.name}")
+                break
                 
         elif fc.f_container[player.fid].type == "investment":
             if fc.f_container[player.fid].owner.name == "Bank":
@@ -122,6 +128,7 @@ def afterTurn(player):
             elif fc.f_container[player.fid].owner != player and not None:
                 invest_transact.earn_money(player, fc.f_container[player.fid])
                 print(f"{player.name} Paid interest to {fc.f_container[player.fid].owner.name}")
+                break
                 
         else: 
             break
