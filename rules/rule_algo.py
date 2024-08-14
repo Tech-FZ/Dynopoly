@@ -1,7 +1,6 @@
 import fields.fcontainer as fc
 import random
 import rules.rule_ui as r_ui
-import transactions.offers as offer
 
 # Variables we can change
 house_price = 50
