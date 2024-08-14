@@ -165,10 +165,9 @@ def rollDices(players=players):
                                dices=dices)
             
         afterTurn(player)
-        if fc.f_container[player.fid].type == "gotojail":
-            player.move_to(screen, jail, players=players, dices=dices)
-            player.fid = jail_fid
-            player.jailStatus = True
+        if fc.f_container[player.fid].type == "bar":
+            player.balance -= r_algo.bar_price
+            player.drunkStatus = 3
             
         elif fc.f_container[player.fid].type == "freeparking":
             player.balance += r_algo.free_parking

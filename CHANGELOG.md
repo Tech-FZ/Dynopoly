@@ -14,6 +14,7 @@ This build is not intended for submission, but rather for the developers to keep
 - In the side bar, the label "Misonic Project" now shows "Current Player Info" instead.
 - The window title is now "Dynopoly".
 - The bar field has been added.
+  - It takes the balance away and makes you drunk for a few turns.
 - The player could now get drunk.
     
 ## Known issues
