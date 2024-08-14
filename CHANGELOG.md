@@ -17,7 +17,18 @@ This build is not intended for submission, but rather for the developers to keep
   - roll doubles
   - pay fine
   - get a lucky roll
-
+- You can now buy a house and a hotel.
+- Paying rent no longer crashes the game.
+- The bar field has been added.
+  - It takes the balance away and makes you drunk for a few turns.
+- The player could now get drunk.
+  - ~~In that case, there is a chance the player might buy a property even if you said no.~~ removed
+  - Or they could pay rent to another player even though they own the property.
+  - Or they move to the wrong field.
+- On the player info, you can see how drunk the current player is.
+- A bug where the game crashed when you're drunk and the owner of the field is non-existant has been fixed.
+- Income taxes got fixed.
+    
 ## Known issues
 
 - The rules aren't shown yet.
@@ -30,6 +41,7 @@ This build is not intended for submission, but rather for the developers to keep
 ## Potential improvements:
 
 - placing game mechanics into a class to be easier to generate during game states such as trading and rolling
+- Sometimes, being drunk causes the game to crash.
 
 # Misonic Project Internal Development Build 7
 
