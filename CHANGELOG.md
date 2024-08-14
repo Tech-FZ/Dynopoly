@@ -1,3 +1,37 @@
+# Dynopoly Internal Development Build 8
+
+## Attention
+
+This build is not intended for submission, but rather for the developers to keep track of development while working on the game.
+
+## Changes
+
+- The events are now shown in a separate card.
+  - The button has been repositioned and renamed to "OK".
+  - The line issues have been fixed
+  - The rule algo file no longer imports the offer module.
+- "Misonic Project" is now called "Dynopoly".
+- In the side bar, the label "Misonic Project" now shows "Current Player Info" instead.
+- The window title is now "Dynopoly".
+- You can now buy a house and a hotel.
+- Paying rent no longer crashes the game.
+- The bar field has been added.
+  - It takes the balance away and makes you drunk for a few turns.
+- The player could now get drunk.
+  - ~~In that case, there is a chance the player might buy a property even if you said no.~~ removed
+  - Or they could pay rent to another player even though they own the property.
+  - Or they move to the wrong field.
+- On the player info, you can see how drunk the current player is.
+- A bug where the game crashed when you're drunk and the owner of the field is non-existant has been fixed.
+    
+## Known issues
+
+- The rules aren't shown yet.
+- Birthdays crash the game, so they won't be initiated.
+- People won't be put to jail when they don't land on "Go to jail". This is because the event can't be randomised.
+- go to jail now crashes the game due to changes in the player.mo_to method (will be fixed: Makala)
+- changes to button class may cause issues (might need to create an inheritance class for seperate buttons)
+
 # Misonic Project Internal Development Build 7
 
 ## Attention
@@ -16,6 +50,7 @@ This build is not intended for submission, but rather for the developers to keep
 
 - The free parking money could now be retrieved.
     - Income tax has been fixed.
+
 ## Known issues
 
 - The rules aren't shown yet.

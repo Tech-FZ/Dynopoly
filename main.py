@@ -1,6 +1,7 @@
 # Third-party libraries
 import pygame
 import json
+import random
 
 # Other code files
 import universal.side_bar as sb
@@ -22,6 +23,7 @@ import rules.rule_algo as r_algo
 # pygame setup
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
+pygame.display.set_caption("Dynopoly")
 clock = pygame.time.Clock()
 running = True
 
@@ -102,11 +104,17 @@ def afterTurn(player):
                                                "street":fc.f_container[player.fid]} )
                 # st_transact.buyStreet(player, fc.f_container[player.fid])
             elif fc.f_container[player.fid].owner == player:
-                break # Insert code to buy stuff here
+                trade_phase = offer.house_hotel_card(screen, 
+                                               phase = trade_phase,
+                                               ftc_house= st_transact.buyHouse, 
+                                               ftc_hotel= st_transact.buyHotel,
+                                               kw_args={"player":player,
+                                               "street":fc.f_container[player.fid]} )
             
             else:
                 st_transact.payRent(player, fc.f_container[player.fid])
                 print(f"{player.name} Paid rent to {fc.f_container[player.fid].owner.name}")
+                break
                 
         elif fc.f_container[player.fid].type == "investment":
             if fc.f_container[player.fid].owner.name == "Bank":
@@ -120,6 +128,7 @@ def afterTurn(player):
             elif fc.f_container[player.fid].owner != player and not None:
                 invest_transact.earn_money(player, fc.f_container[player.fid])
                 print(f"{player.name} Paid interest to {fc.f_container[player.fid].owner.name}")
+                break
                 
         else: 
             break
@@ -127,6 +136,11 @@ def afterTurn(player):
 def rollDices(players=players):
     global turns
     player = players[list(players.keys())[(turns -1) % len(players)]]
+    player_drunk = False
+    
+    if player.drunkStatus > 0:
+        player_drunk = True
+        player.drunkStatus -= 1
 
     total_value = 0
     
@@ -137,6 +151,9 @@ def rollDices(players=players):
         for dice in dices:
             dice.rollDice(screen)
             total_value += dice.value
+            
+        if player_drunk:
+            total_value = random.randint(- total_value, total_value)
 
         new_fid = player.fid + total_value
     
@@ -164,14 +181,20 @@ def rollDices(players=players):
                                dices=dices)
             
         afterTurn(player)
-        if fc.f_container[player.fid].type == "gotojail":
-            player.move_to(screen, jail, players=players, dices=dices)
-            player.fid = jail_fid
-            player.jailStatus = True
+        if fc.f_container[player.fid].type == "bar":
+            player.balance -= r_algo.bar_price
+            player.drunkStatus = 3
             
         elif fc.f_container[player.fid].type == "freeparking":
             player.balance += r_algo.free_parking
             r_algo.free_parking = 0
+            
+        player_buys_anyway = random.randint(0, 1)
+            
+        if player_drunk and player_buys_anyway == 1 and fc.f_container[player.fid].owner != None:
+            if fc.f_container[player.fid].owner.name == player.name:
+                player.balance -= fc.f_container[player.fid].rent
+                players[list(players.keys())[((turns -1) % len(players)) + 1]].balance += fc.f_container[player.fid].rent
         
         print(player.jailStatus)
         r_algo.eventSelector(screen, jail, players, dices, jail_fid)
