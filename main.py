@@ -144,6 +144,9 @@ def rollDices(players=players):
         for dice in dices:
             dice.rollDice(screen)
             total_value += dice.value
+            
+        if player_drunk:
+            total_value = random.randint(0, total_value)
 
         new_fid = player.fid + total_value
     
