@@ -22,6 +22,7 @@ This build is not intended for submission, but rather for the developers to keep
   - Or they could pay rent to another player even though they own the property.
   - Or they move to the wrong field.
 - On the player info, you can see how drunk the current player is.
+- A bug where the game crashed when you're drunk and the owner of the field is non-existant has been fixed.
     
 ## Known issues
 
