@@ -27,12 +27,12 @@ def stockMarketGoesUp(multiplier):
 def incomeTax(players, tax):
     global free_parking
     i = 0
-    while i > len(players):
+    while i < len(players):
         players[list(players.keys())[i - 1 % len(players)]].balance -= tax
         free_parking += tax
         i += 1
         
-    r_ui.latest_event = [f"Income tax of {str(tax)} went into free", "parking."]
+    r_ui.latest_event = [f"Income tax of {str(tax)} per player went into free", "parking."]
         
     """ player = players[list(players.keys())[(turns -1) % len(players)]]
     for player in players:
