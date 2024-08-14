@@ -7,5 +7,5 @@ def sb_setup(screen):
     
     pygame.draw.rect(screen, "gray", pygame.Rect((screen.get_width() / 4) * 3, 0, sb_width, screen.get_height()))
 
-    r_header = fonts.default_font.render("Misonic Project", False, (0, 0, 0))
+    r_header = fonts.default_font.render("Current Player Info", False, (0, 0, 0))
     screen.blit(r_header, sb_location)

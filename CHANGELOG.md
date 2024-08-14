@@ -1,3 +1,27 @@
+# Dynopoly Internal Development Build 8
+
+## Attention
+
+This build is not intended for submission, but rather for the developers to keep track of development while working on the game.
+
+## Changes
+
+- The events are now shown in a separate card.
+  - The button has been repositioned and renamed to "OK".
+  - The line issues have been fixed
+  - The rule algo file no longer imports the offer module.
+- "Misonic Project" is now called "Dynopoly".
+- In the side bar, the label "Misonic Project" now shows "Current Player Info" instead.
+- The window title is now "Dynopoly".
+
+## Known issues
+
+- The rules aren't shown yet.
+- Birthdays crash the game, so they won't be initiated.
+- People won't be put to jail when they don't land on "Go to jail". This is because the event can't be randomised.
+- go to jail now crashes the game due to changes in the player.mo_to method (will be fixed: Makala)
+- changes to button class may cause issues (might need to create an inheritance class for seperate buttons)
+
 # Misonic Project Internal Development Build 7
 
 ## Attention
