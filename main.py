@@ -13,6 +13,7 @@ import universal.button as btn
 import universal.game_board as gb
 import transactions.street_transact as st_transact
 import transactions.invest_transact as invest_transact
+import transactions.offers as offer
 import items.property as prop
 import items.investment as invest
 import rules.rule_ui as r_ui
@@ -21,6 +22,7 @@ import rules.rule_algo as r_algo
 # pygame setup
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
+pygame.display.set_caption("Dynopoly")
 clock = pygame.time.Clock()
 running = True
 
@@ -54,7 +56,27 @@ dices.append(dc2)
 players[1] = player1
 players[2] = player2
 
+# Initialize game fields
 gb.draw_board(bank)
+
+# Function to spawn game components
+def display_board(screen,turns,dices):
+    screen.fill("purple")
+    
+    # fc.genBoard(screen)
+    
+    fc.genBoard(screen),
+    sb.sb_setup(screen),
+    r_ui.ruleCard(screen),
+    pc.player_card(screen, players[(turns-1) % len(players)+1])
+    pc.win_condition_Card(screen,  players[(turns-1) % len(players)+1])
+
+    # Dice spawning
+    for dice in dices:
+        dice.spawnDice(screen)
+        
+    rodi_btn.updateButton(rodi_btn.bg_colour, rodi_btn.txt_colour)
+        
 
 #Initialize jail for moving mechanism
 for index, field in enumerate(fc.f_container):
@@ -66,23 +88,44 @@ for index, field in enumerate(fc.f_container):
 turns = 1
 
 def afterTurn(player):
-    if fc.f_container[player.fid].type == "street":
-        if fc.f_container[player.fid].owner.name == "Bank":
-            st_transact.buyStreet(player, fc.f_container[player.fid])
-            player.properties.append(fc.f_container[player.fid])
+    trade_phase = True
+    
+    while trade_phase:
+        if fc.f_container[player.fid].owner is None:
+            break
             
-        elif fc.f_container[player.fid].owner == player:
-            pass # Insert code to buy stuff here
-        
-        else:
-            st_transact.payRent(player, fc.f_container[player.fid])
+        elif fc.f_container[player.fid].type == "street":
+            if fc.f_container[player.fid].owner.name == "Bank":
+                trade_phase = offer.offer_card(screen, 
+                                               phase = trade_phase,
+                                               ftc = st_transact.buyStreet, 
+                                               kw_args={"player":player,
+                                               "street":fc.f_container[player.fid]} )
+                # st_transact.buyStreet(player, fc.f_container[player.fid])
+            elif fc.f_container[player.fid].owner == player:
+                break # Insert code to buy stuff here
             
-    elif fc.f_container[player.fid].type == "investment":
-        if fc.f_container[player.fid].owner == "Bank":
-            invest_transact.invest(player, fc.f_container[player.fid])
-            
-        elif fc.f_container[player.fid].owner != player:
-            invest_transact.earn_money(player, fc.f_container[player.fid])
+            else:
+                st_transact.payRent(player, fc.f_container[player.fid])
+                trade_phase = False
+                print(f"{player.name} Paid rent to {fc.f_container[player.fid].owner.name}")
+                
+        elif fc.f_container[player.fid].type == "investment":
+            if fc.f_container[player.fid].owner.name == "Bank":
+                trade_phase = offer.offer_card(screen, 
+                                               phase = trade_phase,
+                                               ftc = invest_transact.invest, 
+                                               kw_args={"player":player,
+                                               "investment":fc.f_container[player.fid]} )
+                # invest_transact.invest(player, fc.f_container[player.fid])
+                
+            elif fc.f_container[player.fid].owner != player and not None:
+                invest_transact.earn_money(player, fc.f_container[player.fid])
+                trade_phase = False
+                print(f"{player.name} Paid interest to {fc.f_container[player.fid].owner.name}")
+                
+        else: 
+            break
 
 def rollDices(players=players):
     global turns
@@ -90,10 +133,16 @@ def rollDices(players=players):
 
     total_value = 0
     
-    if player.isInJail:
-        r_algo.jailFreeEvent(player)
+    if player.jailStatus:
+        for dice in dices:
+            dice.rollDice(screen)
+            total_value += dice.value
+        
+        if dices[0].value == dices[1].value:
+            is_doubles = True
+            r_algo.jailFreeEvent(screen, turns, display_board, player, players, dices, is_doubles, total_value)
     
-    if player.isInJail == False:
+    if not player.jailStatus:
         for dice in dices:
             dice.rollDice(screen)
             total_value += dice.value
@@ -107,31 +156,37 @@ def rollDices(players=players):
         while player.fid != new_fid:
             if player.fid == len(fc.f_container)-1:
                 player.fid = 0
-                player.move_to(screen, fc.f_container[player.fid], players=players, dices=dices)
+                player.move_to(screen,
+                               turns, 
+                               display_board, 
+                               fc.f_container[player.fid], 
+                               players=players, 
+                               dices=dices)
         
             else:
                 player.fid += 1
-                player.move_to(screen, fc.f_container[player.fid], players=players, dices=dices)
+                player.move_to(screen,
+                               turns, 
+                               display_board, 
+                               fc.f_container[player.fid], 
+                               players=players, 
+                               dices=dices)
             
         afterTurn(player)
         if fc.f_container[player.fid].type == "gotojail":
-            player.move_to(screen, jail, players=players, dices=dices)
+            player.move_to(screen, turns, display_board, jail, dices=dices, players=players)
             player.fid = jail_fid
-            player.isInJail = True
+            player.jailStatus = True
+            player.jailStatus = 1
+            
+        elif fc.f_container[player.fid].type == "freeparking":
+            player.balance += r_algo.free_parking
+            r_algo.free_parking = 0
         
-        print(player.isInJail)
-
+        print(player.jailStatus)
+        r_algo.eventSelector(screen, jail, players, dices, jail_fid)
         turns += 1
         
-    else:
-        pass # Insert code for those who stay in jail here.
-    
-# def turns():
-#     turn = 0
-#     if turn 
-#     rollDices(player1, "player")
-#     rollDices(player2, "computer")
-
 # insert buttons here
 rodi_btn = btn.Button(
     screen,
@@ -155,51 +210,28 @@ while running:
             running = False
         rodi_btn.checkClick(event)
 
-    # fill the screen with a color to wipe away anything from last frame
-    screen.fill("purple")
+    display_board(screen, turns, dices)
+    # # fill the screen with a color to wipe away anything from last frame
+    # screen.fill("purple")
 
-    # RENDER YOUR GAME HERE
-    sb.sb_setup(screen)
+    # # RENDER YOUR GAME HERE
+    # sb.sb_setup(screen)
+    # # for fld in fc.f_container:
+    # #     fld.field_placement(screen)
+    # fc.genBoard(screen)
+    # r_ui.ruleCard(screen)
     
-    for fld in fc.f_container:
-        fld.field_placement(screen)
-
-    """ while y <= 525:
-        x = 5
-
-        while x <= 785:
-            if x == 5 and y == 5:
-                fc.contain(screen, "freeparking", "Free parking", "None", 0, 0, x, y)
-            
-            elif x == 785 and y == 5:
-                fc.contain(screen, "gotojail", "Go to jail", "None", 0, 0, x, y)
-
-            elif x == 5 and y == 525:
-                fc.contain(screen, "jail", "Jail", "None", 50, 0, x, y)
-
-            elif x == 785 and y == 525:
-                fc.contain(screen, "start", "Start", "None", 200, 0, x, y)
-
-            else:
-                if y == 5 or y == 525 or x == 5 or x == 785:
-                    fc.contain(screen, "street", "Street", "Bank", 60, 8, x, y)
-
-            x += 130
-
-        y += 130 """
-
+    #player components
     player1.spawn(screen)
-    pc.player_card(screen, players[(turns-1) % len(players)+1])
-    pc.win_condition_Card(screen,  players[(turns-1) % len(players)+1])
-    
-    r_ui.ruleCard(screen)
-    
     player2.spawn(screen)
+    # pc.player_card(screen, players[(turns-1) % len(players)+1])
+    # pc.win_condition_Card(screen,  players[(turns-1) % len(players)+1])
 
-    dc1.spawnDice(screen)
-    dc2.spawnDice(screen)
+    
+    # dc1.spawnDice(screen)
+    # dc2.spawnDice(screen)
 
-    rodi_btn.updateButton(rodi_btn.bg_colour, rodi_btn.txt_colour)
+    # rodi_btn.updateButton(rodi_btn.bg_colour, rodi_btn.txt_colour)
 
     # flip() the display to put your work on screen
     pygame.display.flip()

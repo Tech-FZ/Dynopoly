@@ -24,3 +24,7 @@ def genStInvest():
 def genRegularField(x, y, player):
     selectedType = genStInvest()
     contain(selectedType[0], selectedType[1], player, 60, 8, x, y)
+    
+def genBoard(screen):
+    for fld in f_container:
+        fld.field_placement(screen)
