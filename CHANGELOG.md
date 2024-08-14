@@ -6,6 +6,10 @@ This build is not intended for submission, but rather for the developers to keep
 
 ## Changes
 
+- The events are now shown in a separate card.
+  - The button has been repositioned and renamed to "OK".
+  - The line issues have been fixed
+  - The rule algo file no longer imports the offer module.
 - "Misonic Project" is now called "Dynopoly".
 - In the side bar, the label "Misonic Project" now shows "Current Player Info" instead.
 - The window title is now "Dynopoly".
