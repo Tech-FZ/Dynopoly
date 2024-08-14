@@ -8,6 +8,7 @@ This build is not intended for submission, but rather for the developers to keep
 
 - The events are now shown in a separate card.
   - The button has been repositioned and renamed to "OK".
+  - The line issues have been fixed
     
 ## Known issues
 

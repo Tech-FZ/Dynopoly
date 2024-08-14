@@ -32,7 +32,7 @@ def incomeTax(players, tax):
         free_parking += tax
         i += 1
         
-    r_ui.latest_event = [f"Income tax of {str(tax)} went into free parking."]
+    r_ui.latest_event = [f"Income tax of {str(tax)} went into free", "parking."]
         
     """ player = players[list(players.keys())[(turns -1) % len(players)]]
     for player in players:
