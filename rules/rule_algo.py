@@ -6,6 +6,7 @@ import rules.rule_ui as r_ui
 house_price = 50
 hotel_price = 100
 free_parking = 0
+bar_price = 5
 
 def stockMarketCrash(divisor):
     for field in fc.f_container:

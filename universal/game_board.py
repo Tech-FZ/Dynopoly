@@ -33,7 +33,7 @@ def draw_board(player):
 
     while x <= 785:
         if x == 785 and y == 5:
-            fc.contain("gotojail", "Go to jail", None, 0, 0, x, y)
+            fc.contain("bar", "Bar", None, 0, 0, x, y)
             
         else:
             fc.genRegularField(x, y, player)
@@ -44,10 +44,5 @@ def draw_board(player):
     y += 130
 
     while y <= 395:
-        if x == 785 and y == 5:
-            fc.contain("gotojail", "Go to jail", None, 0, 0, x, y)
-
-        else:
-            fc.genRegularField(x, y, player)
-            
+        fc.genRegularField(x, y, player)
         y += 130
