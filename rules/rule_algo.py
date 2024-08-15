@@ -172,7 +172,8 @@ def checkBankruptcy(screen, player, bank, players, turns):
         players.pop((turns -1) % len(players)+1)
         
     if len(players) == 1:
-        r_ui.latest_event = [f"{players.values().name} won"]        
+        pk = players.keys()
+        r_ui.latest_event = [f"{players[pk[0]]} won"]        
         ecp = True
     
         while ecp:

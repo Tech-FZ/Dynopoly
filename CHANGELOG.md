@@ -43,6 +43,15 @@ This build is not intended for submission, but rather for the developers to keep
   - You'd have to give consent now.
 - The icon by Tech-FZ has been included.
 - The successful trade is now a possible winning condition.
+- The readme has another introduction sentence.
+- The gitignore has been updated to exclude PyInstaller-made folders and files.
+- There is now doc for PyInstaller.
+- A section for running the game has been added.
+- The documentation now describes the nano procedure.
+- The GPL license has been added.
+- Win conditions are changed every 10 turns.
+- Streets stuff has been fixed.
+- Potential fix for bankruptcy
     
 ## Known issues
 
