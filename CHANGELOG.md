@@ -37,6 +37,7 @@ This build is not intended for submission, but rather for the developers to keep
 - The winning conditions are random.
 - The property damage event has been fixed.
 - The "Pass field without spending money" condition is stricter.
+- The icon by Tech-FZ has been included.
     
 ## Known issues
 
