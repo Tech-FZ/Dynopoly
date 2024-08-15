@@ -33,7 +33,8 @@ This build is not intended for submission, but rather for the developers to keep
 - Investments bought are assigned to the player
 - Game loop bug fixed when player lands on their own property
 - There is an effort in fixing "drunk rent crashes".
-    
+- Added welcome Screen to the game
+
 ## Known issues
 
 - The rules aren't shown yet.
