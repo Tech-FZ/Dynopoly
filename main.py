@@ -174,6 +174,7 @@ def rollDices(players=players):
         if new_fid >= len(fc.f_container):
             new_fid = 0 + (new_fid - len(fc.f_container))
             player.balance += 200
+            player.round_complete = True
     
         while player.fid != new_fid:
             if player.fid == len(fc.f_container)-1:

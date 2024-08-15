@@ -23,11 +23,11 @@ def everyProperty(player):
         
     return player_won
 
-def startPassWithoutMoneySpent(player):
-    if player.money_spent_round == False:
+def startPassWithoutMoneySpent(player):    
+    if player.money_spent_round == False and player.round_complete:
         return True
     
-    elif player.money_spent_round:
+    elif player.money_spent_round or player.round_complete == False:
         return False
     
 def hotel(player):
@@ -61,6 +61,7 @@ def checkWinningConditions(screen, player):
             
         elif win_cond == win_conditions["3"]:
             con = startPassWithoutMoneySpent(player)
+            player.round_complete = False
             
         elif win_cond == win_conditions["6"]:
             con = hotel(player)

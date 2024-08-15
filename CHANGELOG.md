@@ -46,7 +46,7 @@ This build is not intended for submission, but rather for the developers to keep
 - investment fields are not changing names on purchase even though ownership changes
   ~~ - infinite glitch occurs when player lands on their own investment. ~~ Fixed
 - Some winning conditions haven't been implemented yet.
-- Passing Start without spending money is easier than it should be.
+- ~~Passing Start without spending money is easier than it should be.~~ Fixed by Tech-FZ
 
 ## Potential improvements:
 
