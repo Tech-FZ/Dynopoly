@@ -19,6 +19,7 @@ import items.property as prop
 import items.investment as invest
 import rules.rule_ui as r_ui
 import rules.rule_algo as r_algo
+import player.check_win_conditions as cwc
 
 # pygame setup
 pygame.init()
@@ -33,14 +34,16 @@ bank.balance = 1000000
 
 
 player1 = pl.Player("Nicolas", "red")
-f = open('player/winConditions.json')
+cwc.genWinningConditions(player1)
+""" f = open('player/winConditions.json')
 win_conditions = json.load(f)
 player1.win_condition.append(win_conditions["1"])
-player1.win_condition.append(win_conditions["2"])
+player1.win_condition.append(win_conditions["2"]) """
 
 player2 = pl.Player("Player 2", "blue")
-player2.win_condition.append(win_conditions["1"])
-player2.win_condition.append(win_conditions["2"])
+cwc.genWinningConditions(player2)
+""" player2.win_condition.append(win_conditions["1"])
+player2.win_condition.append(win_conditions["2"]) """
 player2.position = pygame.Vector2(860, 600)
 
 dices = []
@@ -171,6 +174,7 @@ def rollDices(players=players):
         if new_fid >= len(fc.f_container):
             new_fid = 0 + (new_fid - len(fc.f_container))
             player.balance += 200
+            player.round_complete = True
     
         while player.fid != new_fid:
             if player.fid == len(fc.f_container)-1:
@@ -217,6 +221,7 @@ def rollDices(players=players):
         
         print(player.jailStatus)
         r_algo.checkBankruptcy(screen, player, bank, players, turns)
+        cwc.checkWinningConditions(screen, player)
         r_algo.eventSelector(screen, jail, players, dices, jail_fid)
         turns += 1
         
