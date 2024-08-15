@@ -50,6 +50,8 @@ This build is not intended for submission, but rather for the developers to keep
 - The documentation now describes the nano procedure.
 - The GPL license has been added.
 - Win conditions are changed every 10 turns.
+- Streets stuff has been fixed.
+- Potential fix for bankruptcy
     
 ## Known issues
 
