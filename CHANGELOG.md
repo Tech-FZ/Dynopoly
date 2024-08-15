@@ -44,12 +44,22 @@ This build is not intended for submission, but rather for the developers to keep
 - The icon by Tech-FZ has been included.
 - Added welcome Screen to the game
 - Added rules screen to the game
+- The successful trade is now a possible winning condition.
+- The readme has another introduction sentence.
+- The gitignore has been updated to exclude PyInstaller-made folders and files.
+- There is now doc for PyInstaller.
+- A section for running the game has been added.
+- The documentation now describes the nano procedure.
+- The GPL license has been added.
+- Win conditions are changed every 10 turns.
+- Streets stuff has been fixed.
+- Potential fix for bankruptcy
 
 ## Known issues
 
 - The rules aren't shown yet.
-- Birthdays crash the game, so they won't be initiated.
-- People won't be put to jail when they don't land on "Go to jail". This is because the event can't be randomised.
+- ~~Birthdays crash the game, so they won't be initiated.~~ Fixed by Tech-FZ
+- ~~People won't be put to jail when they don't land on "Go to jail". This is because the event can't be randomised.~~ Fixed by Tech-FZ
 - go to jail now crashes the game due to changes in the player.mo_to method (will be fixed: Makala)
 - changes to button class may cause issues (might need to create an inheritance class for seperate buttons)
 - investment fields are not changing names on purchase even though ownership changes
