@@ -62,7 +62,7 @@ def genWinningConditions(player):
         possible_conditions.pop(i)
     
 def checkWinningConditions(screen, player):
-    f = open('player/winConditions.json')
+    f = open(resource_path('player/winConditions.json'))
     win_conditions = json.load(f)
     
     for win_cond in player.win_condition:
