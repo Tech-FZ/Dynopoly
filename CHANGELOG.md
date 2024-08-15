@@ -56,8 +56,8 @@ This build is not intended for submission, but rather for the developers to keep
 ## Known issues
 
 - The rules aren't shown yet.
-- Birthdays crash the game, so they won't be initiated.
-- People won't be put to jail when they don't land on "Go to jail". This is because the event can't be randomised.
+- ~~Birthdays crash the game, so they won't be initiated.~~ Fixed by Tech-FZ
+- ~~People won't be put to jail when they don't land on "Go to jail". This is because the event can't be randomised.~~ Fixed by Tech-FZ
 - go to jail now crashes the game due to changes in the player.mo_to method (will be fixed: Makala)
 - changes to button class may cause issues (might need to create an inheritance class for seperate buttons)
 - investment fields are not changing names on purchase even though ownership changes
