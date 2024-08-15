@@ -24,6 +24,7 @@ class Player:
         self.jailTurns = 0
         self.jailCard = False
         self.drunkStatus = 0
+        self.successful_trade = False
         
     def spawn(self, screen):
         """Draw the player's token on the screen."""

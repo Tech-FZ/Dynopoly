@@ -2,6 +2,9 @@ def invest(player, investment):
     if player.balance >= investment.price:
         player.balance -= investment.price
         player.money_spent_round = True
+        if investment.owner.name != "Bank":
+            player.successful_trade = True
+            
         investment.change_owner(player)
         player.properties.append(investment)
         
