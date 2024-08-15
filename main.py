@@ -98,7 +98,7 @@ def afterTurn(player):
         if fc.f_container[player.fid].owner is None:
             break
             
-        elif fc.f_container[player.fid].type == "street":
+        elif fc.f_container[player.fid].type == "street" or fc.f_container[player.fid].type == "investment":
             if fc.f_container[player.fid].owner.name == "Bank":
                 trade_phase = offer.offer_card(screen,
                                                fc.f_container[player.fid],
@@ -131,32 +131,32 @@ def afterTurn(player):
                 #print(f"{player.name} Paid rent to {fc.f_container[player.fid].owner.name}")
                 #break
                 
-        elif fc.f_container[player.fid].type == "investment":
-            if fc.f_container[player.fid].owner.name == "Bank":
-                trade_phase = offer.offer_card(screen, 
-                                               fc.f_container[player.fid],
-                                               phase = trade_phase,
-                                               buysell="buy",
-                                               ftc = offer.trade_stuff, 
-                                               kw_args={"screen":screen,"player":player,
-                                               "field":fc.f_container[player.fid]} )
+        # elif fc.f_container[player.fid].type == "investment":
+        #     if fc.f_container[player.fid].owner.name == "Bank":
+        #         trade_phase = offer.offer_card(screen, 
+        #                                        fc.f_container[player.fid],
+        #                                        phase = trade_phase,
+        #                                        buysell="buy",
+        #                                        ftc = offer.trade_stuff, 
+        #                                        kw_args={"screen":screen,"player":player,
+        #                                        "field":fc.f_container[player.fid]} )
                 
-            elif fc.f_container[player.fid].owner != player and not None:
-                print("Offer should now show up")
-                trade_phase = offer.offer_card(screen,
-                                               fc.f_container[player.fid],
-                                               phase = trade_phase,
-                                               buysell="buy",
-                                               ftc = offer.clearance, 
-                                               kw_args={"screen":screen,"player":player,
-                                               "field":fc.f_container[player.fid]} )
-                #invest_transact.earn_money(player, fc.f_container[player.fid])
-                trade_phase = False
-                #print(f"{player.name} Paid interest to {fc.f_container[player.fid].owner.name}")
-                #break
+        #     elif fc.f_container[player.fid].owner != player and not None:
+        #         print("Offer should now show up")
+        #         trade_phase = offer.offer_card(screen,
+        #                                        fc.f_container[player.fid],
+        #                                        phase = trade_phase,
+        #                                        buysell="buy",
+        #                                        ftc = offer.clearance, 
+        #                                        kw_args={"screen":screen,"player":player,
+        #                                        "field":fc.f_container[player.fid]} )
+        #         #invest_transact.earn_money(player, fc.f_container[player.fid])
+        #         trade_phase = False
+        #         #print(f"{player.name} Paid interest to {fc.f_container[player.fid].owner.name}")
+        #         #break
             
-            else:
-                break
+        #     else:
+        #         break
         else:
             break
 

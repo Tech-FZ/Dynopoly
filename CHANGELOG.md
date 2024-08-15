@@ -38,6 +38,7 @@ This build is not intended for submission, but rather for the developers to keep
 - The property damage event has been fixed.
 - The "Pass field without spending money" condition is stricter.
 - There are efforts in adding trade dialogs.
+- The code could be shrunk a little.
     
 ## Known issues
 
