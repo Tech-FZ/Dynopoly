@@ -5,7 +5,7 @@ import universal.fonts as fonts
 def reject_ftc():
     pass
 
-def offer_card(screen, phase, ftc, kw_args = None):
+def offer_card(screen, field, phase, ftc, kw_args = None):
     accept = btn.Button(
     screen,
     "Yes",
@@ -42,6 +42,11 @@ def offer_card(screen, phase, ftc, kw_args = None):
 
     oc_header = fonts.default_font.render("Would you like to buy?", False, (0, 0, 0))
     screen.blit(oc_header, oc_location)
+    
+    price_lbl = fonts.small_font.render(f"Price: {field.price} | Rent: {field.rent}", False, (0, 0, 0))
+    price_pos = pygame.Vector2((screen.get_width() / 4)  + 50, screen.get_height()/2 + 25)
+    screen.blit(price_lbl, price_pos)
+    
     accept.updateButton(accept.bg_colour, accept.txt_colour)
     reject.updateButton(reject.bg_colour, reject.txt_colour)
     
