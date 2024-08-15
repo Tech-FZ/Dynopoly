@@ -20,11 +20,13 @@ import items.property as prop
 import items.investment as invest
 import rules.rule_ui as r_ui
 import rules.rule_algo as r_algo
+import player.check_win_conditions as cwc
 
 # pygame setup
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("Dynopoly")
+pygame.display.set_icon(pygame.image.load("./icon.png"))
 clock = pygame.time.Clock()
 running = True
 
@@ -34,14 +36,16 @@ bank.balance = 1000000
 
 
 player1 = pl.Player("Nicolas", "red")
-f = open('player/winConditions.json')
+cwc.genWinningConditions(player1)
+""" f = open('player/winConditions.json')
 win_conditions = json.load(f)
 player1.win_condition.append(win_conditions["1"])
-player1.win_condition.append(win_conditions["2"])
+player1.win_condition.append(win_conditions["2"]) """
 
 player2 = pl.Player("Player 2", "blue")
-player2.win_condition.append(win_conditions["1"])
-player2.win_condition.append(win_conditions["2"])
+cwc.genWinningConditions(player2)
+""" player2.win_condition.append(win_conditions["1"])
+player2.win_condition.append(win_conditions["2"]) """
 player2.position = pygame.Vector2(860, 600)
 
 dices = []
@@ -99,46 +103,64 @@ def afterTurn(player):
         if fc.f_container[player.fid].owner is None:
             break
             
-        elif fc.f_container[player.fid].type == "street":
+        elif fc.f_container[player.fid].type == "street" or fc.f_container[player.fid].type == "investment":
             if fc.f_container[player.fid].owner.name == "Bank":
                 trade_phase = offer.offer_card(screen,
                                                fc.f_container[player.fid],
                                                phase = trade_phase,
-                                               ftc = st_transact.buyStreet, 
-                                               kw_args={"player":player,
-                                               "street":fc.f_container[player.fid]} )
+                                               buysell="buy",
+                                               ftc = offer.trade_stuff, 
+                                               kw_args={"screen":screen,"player":player,
+                                               "field":fc.f_container[player.fid]} )
                 
             elif fc.f_container[player.fid].owner == player:
                 trade_phase = offer.house_hotel_card(screen, 
                                                phase = trade_phase,
                                                ftc_house= st_transact.buyHouse, 
                                                ftc_hotel= st_transact.buyHotel,
-                                               kw_args={"player":player,
-                                               "street":fc.f_container[player.fid]} )
+                                               kw_args={"screen":screen,"player":player,
+                                               "field":fc.f_container[player.fid]} )
             
             else:
-                st_transact.payRent(player, fc.f_container[player.fid])
-                trade_phase = False
-                print(f"{player.name} Paid rent to {fc.f_container[player.fid].owner.name}")
-                break
-                
-        elif fc.f_container[player.fid].type == "investment":
-            if fc.f_container[player.fid].owner.name == "Bank":
-                trade_phase = offer.offer_card(screen, 
+                trade_phase = offer.offer_card(screen,
                                                fc.f_container[player.fid],
                                                phase = trade_phase,
-                                               ftc = invest_transact.invest, 
-                                               kw_args={"player":player,
-                                               "investment":fc.f_container[player.fid]} )
+                                               buysell="buy",
+                                               ftc = offer.clearance, 
+                                               kw_args={"screen":screen,"player":player,
+                                               "field":fc.f_container[player.fid]} )
                 
-            elif fc.f_container[player.fid].owner != player and not None:
-                invest_transact.earn_money(player, fc.f_container[player.fid])
-                trade_phase = False
-                print(f"{player.name} Paid interest to {fc.f_container[player.fid].owner.name}")
-                break
+                #st_transact.payRent(player, fc.f_container[player.fid])
+                #trade_phase = False
+                #print(f"{player.name} Paid rent to {fc.f_container[player.fid].owner.name}")
+                #break
+                
+        # elif fc.f_container[player.fid].type == "investment":
+        #     if fc.f_container[player.fid].owner.name == "Bank":
+        #         trade_phase = offer.offer_card(screen, 
+        #                                        fc.f_container[player.fid],
+        #                                        phase = trade_phase,
+        #                                        buysell="buy",
+        #                                        ftc = offer.trade_stuff, 
+        #                                        kw_args={"screen":screen,"player":player,
+        #                                        "field":fc.f_container[player.fid]} )
+                
+        #     elif fc.f_container[player.fid].owner != player and not None:
+        #         print("Offer should now show up")
+        #         trade_phase = offer.offer_card(screen,
+        #                                        fc.f_container[player.fid],
+        #                                        phase = trade_phase,
+        #                                        buysell="buy",
+        #                                        ftc = offer.clearance, 
+        #                                        kw_args={"screen":screen,"player":player,
+        #                                        "field":fc.f_container[player.fid]} )
+        #         #invest_transact.earn_money(player, fc.f_container[player.fid])
+        #         trade_phase = False
+        #         #print(f"{player.name} Paid interest to {fc.f_container[player.fid].owner.name}")
+        #         #break
             
-            else:
-                break
+        #     else:
+        #         break
         else:
             break
 
@@ -175,6 +197,7 @@ def rollDices(players=players):
         if new_fid >= len(fc.f_container):
             new_fid = 0 + (new_fid - len(fc.f_container))
             player.balance += 200
+            player.round_complete = True
     
         while player.fid != new_fid:
             if player.fid == len(fc.f_container)-1:
@@ -221,6 +244,7 @@ def rollDices(players=players):
         
         print(player.jailStatus)
         r_algo.checkBankruptcy(screen, player, bank, players, turns)
+        cwc.checkWinningConditions(screen, player)
         r_algo.eventSelector(screen, jail, players, dices, jail_fid)
         turns += 1
         
