@@ -41,6 +41,7 @@ This build is not intended for submission, but rather for the developers to keep
 - The code could be shrunk a little.
 - The trade dialogs are working now.
   - You'd have to give consent now.
+- The icon by Tech-FZ has been included.
     
 ## Known issues
 
