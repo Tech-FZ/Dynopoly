@@ -43,6 +43,7 @@ This build is not intended for submission, but rather for the developers to keep
   - You'd have to give consent now.
 - The icon by Tech-FZ has been included.
 - The successful trade is now a possible winning condition.
+- Win conditions are changed every 10 turns.
     
 ## Known issues
 
