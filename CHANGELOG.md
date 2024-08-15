@@ -39,6 +39,7 @@ This build is not intended for submission, but rather for the developers to keep
 - The "Pass field without spending money" condition is stricter.
 - There are efforts in adding trade dialogs.
 - The code could be shrunk a little.
+- The trade dialogs are working now.
     
 ## Known issues
 
@@ -51,7 +52,7 @@ This build is not intended for submission, but rather for the developers to keep
   ~~ - infinite glitch occurs when player lands on their own investment. ~~ Fixed
 - Some winning conditions haven't been implemented yet.
 - ~~Passing Start without spending money is easier than it should be.~~ Fixed by Tech-FZ
-- Trading doesn't work.
+- ~~Trading doesn't work.~~ If your opponent wants to buy the house, you automatically give consent.
 
 ## Potential improvements:
 

@@ -29,6 +29,7 @@ def clearance(screen, player, field):
                                     "street":field} )
 
 def offer_card(screen, field, phase, buysell, ftc, kw_args = None):
+    print("Offer card function initialised")
     accept = btn.Button(
     screen,
     "Yes",

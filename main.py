@@ -127,7 +127,7 @@ def afterTurn(player):
                                                "field":fc.f_container[player.fid]} )
                 
                 #st_transact.payRent(player, fc.f_container[player.fid])
-                trade_phase = False
+                #trade_phase = False
                 #print(f"{player.name} Paid rent to {fc.f_container[player.fid].owner.name}")
                 #break
                 
