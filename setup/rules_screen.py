@@ -43,15 +43,18 @@ def show_rules(screen):
         screen.blit(title_font.render(rules_data["title"], True, (0, 0, 0)), pygame.Vector2(50, 20))
         screen.blit(subtitle_font.render(rules_data["subtitle"], True, (0, 0, 0)), pygame.Vector2(50, 70))
         screen.blit(bold_font.render("Rules", True, (0, 0, 0)), pygame.Vector2(50, 120))
-        screen.blit(bold_font.render("But there's a twist...", True, (0,0,0), pygame.Vector2()))
         
         # Render rules based on the screen part
         if screen_part == 1:
             render_rules(screen, first_half, bold_font, rules_font, y_offset=170)
+            screen.blit(title_font.render("But there's a twist...", True, (0,0,0)), pygame.Vector2(screen.get_width()/2-100))
             next_surface = rules_font.render("Press N for Next", True, (0, 0, 0))
             screen.blit(next_surface, pygame.Vector2(rules_width - 200, rules_height - 50))
         else:
             render_rules(screen, second_half, bold_font, rules_font, y_offset=170)
+            main_menu = rules_font.render("Press ESC for Main Menu", True, (0, 0, 0))
+            screen.blit(main_menu, pygame.Vector2(50, rules_height - 50))
+            
             back_surface = rules_font.render("Press B to go Back", True, (0, 0, 0))
             screen.blit(back_surface, pygame.Vector2(rules_width - 200, rules_height - 50))
 
