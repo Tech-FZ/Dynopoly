@@ -33,7 +33,7 @@ This build is not intended for submission, but rather for the developers to keep
 - Investments bought are assigned to the player
 - Game loop bug fixed when player lands on their own property
 - There is an effort in fixing "drunk rent crashes".
-- The game would now check for *some* winning conditions.
+- The game would now check for _some_ winning conditions.
 - The winning conditions are random.
 - The property damage event has been fixed.
 - The "Pass field without spending money" condition is stricter.
@@ -42,6 +42,8 @@ This build is not intended for submission, but rather for the developers to keep
 - The trade dialogs are working now.
   - You'd have to give consent now.
 - The icon by Tech-FZ has been included.
+- Added welcome Screen to the game
+- Added rules screen to the game
 - The successful trade is now a possible winning condition.
 - The readme has another introduction sentence.
 - The gitignore has been updated to exclude PyInstaller-made folders and files.
@@ -52,7 +54,7 @@ This build is not intended for submission, but rather for the developers to keep
 - Win conditions are changed every 10 turns.
 - Streets stuff has been fixed.
 - Potential fix for bankruptcy
-    
+
 ## Known issues
 
 - The rules aren't shown yet.

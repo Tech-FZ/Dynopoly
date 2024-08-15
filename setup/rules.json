@@ -1,0 +1,35 @@
+{"title":"Welcome to DYNOPOLY",
+"subtitle":"It's like Monopoly but not as you know it.",
+
+"decription":"Can you build a functional monopoly under dysfunction conditions? Dynopoly is a game where you should always expect the unexpected",
+
+"classic_rules":[
+"Players take turns to roll the dice and move around the board",
+{"each_turn":[
+    "When a player lands on an unowned asset they will be given the option to but the asset",
+    "Whne a player lands on their own property they have the option to build a house or hotel",
+    "When the player lands on an asset owned by another player they will pay rent/interest to the owner"
+]
+},
+"A player wins when all other players become bankrupt however there is also an additional win codition which players can use to win the game"
+],
+"jail_twist":[
+"Another twist introduced to the game is the jail mechanic. There's no Go to Jail field, instead there's a new bar in it's place.",
+"When a player lands on the bar field they will become drunk and chaos ensues.",
+{"When a player is drunk":[
+"The movement will be affected and the player may move and random number of spaces between what the dice rolled and 0",
+"The player's abiliy to purchase will be affected and they may end up surprised by their own decisions",
+"A player could even end up paying rent to an opponent even on their own property (Too many Mai Thais I guess)"
+]}
+],
+
+"dynamic_rules":[
+"At the end of each player's turn a random event occurs which influence the conditions of the similar to real world events.",
+{"events_include" : [
+    "Changing of property value which will affect each player's ability to collect rent or the value of rent collected",
+    "Global financial market simulation could lead to a boom or bust of investments and change the interest each player earns"
+]
+},
+"Player's win condition will change every 10 turns so you could stall if the current win condition isn't achievable"
+]
+}

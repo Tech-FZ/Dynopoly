@@ -5,6 +5,7 @@ import random
 
 # Other code files
 import universal.side_bar as sb
+import setup.setup as setup
 import fields.fields as fields
 import fields.fcontainer as fc
 import player.player as pl
@@ -60,6 +61,9 @@ dices.append(dc2)
 
 players[1] = player1
 players[2] = player2
+
+# Welcome Screen
+setup.welcome_screen(screen)
 
 # Initialize game fields
 gb.draw_board(bank)
