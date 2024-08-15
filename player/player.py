@@ -21,8 +21,6 @@ class Player:
         self.jailStatus = False
         self.jailTurns = 0
         self.jailCard = False
-        # {'in_jail':False, "jail_turn":0, "has_jail_card":False}
-        self.jailStatus = {'in_jail':False, "jail_turn":0, "has_jail_card":False}
         self.drunkStatus = 0
         
     def spawn(self, screen):
