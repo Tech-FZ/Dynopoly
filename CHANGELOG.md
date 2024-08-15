@@ -42,6 +42,7 @@ This build is not intended for submission, but rather for the developers to keep
 - The trade dialogs are working now.
   - You'd have to give consent now.
 - The icon by Tech-FZ has been included.
+- The successful trade is now a possible winning condition.
     
 ## Known issues
 

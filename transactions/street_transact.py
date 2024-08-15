@@ -5,6 +5,9 @@ import transactions.offers as offer
 def buyStreet(player, street):
     if player.balance >= street.price and street.owner is not None:
         player.balance -= street.price
+        if street.owner.name != "Bank":
+            player.successful_trade = True
+            
         street.change_owner(player)
         player.properties.append(street)
         player.money_spent_round = True
