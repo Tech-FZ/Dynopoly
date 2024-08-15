@@ -47,6 +47,7 @@ This build is not intended for submission, but rather for the developers to keep
 - The gitignore has been updated to exclude PyInstaller-made folders and files.
 - There is now doc for PyInstaller.
 - A section for running the game has been added.
+- The documentation now describes the nano procedure.
     
 ## Known issues
 

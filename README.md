@@ -42,7 +42,30 @@ Build up a functional monopoly while dealing with dysfunctional events that occu
 2. Open PowerShell/Windows Terminal within the folder where the code is stored. Refer to 4 in the [part for everyone](#part-for-everyone).
 3. Type in `"(your-venv-path)\Scripts\Activate.ps1"` to activate the venv.
 4. Run `pip install --upgrade pygame==2.6.0`.
-5. Try to run the game. If it works, good.
+5. Try to run the game by running `python main.py`. If it works, good.
+    - If that doesn't work, type in the following: `(your-venv-path)\Scripts\python main.py`
+
+### Nano
+
+Attention: A window manager (like Xorg or Wayland) and a desktop (e. g. GNOME, KDE Plasma or Xfce) are still required. If you love the terminal so much, it's your decision.
+
+1. You need to open a terminal in your project directory. Refer to 4 in the [part for everyone](#part-for-everyone)
+2. Type in `nano (file-to-edit)`, replacing (file-to-edit) with the actual name of the file you want to edit.
+    - If the file is in a subdirectory, change to it with `cd` first. This part should be self-explanatory.
+3. Edit the file.
+4. Save the file by pressing <kbd>Ctrl</kbd> + <kbd>O</kbd>, then <kbd>Enter</kbd>.
+5. Close Nano by pressing <kbd>Ctrl</kbd> + <kbd>X</kbd>.
+    - If you are in a subdirectory, navigate back to the root of the project with `cd ..` when you're done.
+6. Repeat the process until you edited all of the files you want to edit.
+7. Type in the following to activate your venv:
+    - Windows: `"(your-venv-path)\Scripts\Activate.ps1"`
+    - macOS & Linux: `(your-venv-path)/bin/activate.sh`
+8. Run the game with `python main.py`.
+    - On Linux, you may have to run `python ./main.py`.
+    - If that doesn't work, run the following:
+        - Windows: `(your-venv-path)\Scripts\python main.py`
+        - Linux: `(your-venv-path)/bin/python main.py` or `(your-venv-path)/bin/python ./main.py`
+9. If it works, good.
 
 ## Compile the game
 
@@ -53,7 +76,7 @@ Build up a functional monopoly while dealing with dysfunctional events that occu
 5. Run the following:
     - Windows: `pyinstaller --icon icon.png --onefile main.py`
     - Other platforms: `pyinstaller --onefile main.py`
-6. After PyInstaller did its job, double-click on dist and press Ctrl+V to paste the files.
+6. After PyInstaller did its job, double-click on dist and press <kbd>Ctrl</kbd> + <kbd>V</kbd> to paste the files.
 7. Test the binaries. If they work, good.
     - On Windows (and probably also macOS), your antivirus may interfere. This is completely normal behaviour from the overprotective software and it is safe to restore the game from quarantine.
 
@@ -69,5 +92,4 @@ Build up a functional monopoly while dealing with dysfunctional events that occu
     - Executables: Double-click on "main" (Linux) or "main.exe" (Windows)
         - On Windows (and probably also macOS), your antivirus may interfere. This is completely normal behaviour from the overprotective software and it is safe to restore the game from quarantine.
         - On Linux, you may have to right-click, then click on "Properties", then on "Permissions" and check "File may be run as program" before running.
-
 4. If it works, good.
