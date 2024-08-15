@@ -31,6 +31,7 @@ def incomeTax(players, tax):
     while i < len(players):
         players[list(players.keys())[i - 1 % len(players)]].balance -= tax
         free_parking += tax
+        players[list(players.keys())[i - 1 % len(players)]].money_spent_round = True
         i += 1
         
     r_ui.latest_event = [f"Income tax of {str(tax)} per player went into free", "parking."]
@@ -73,6 +74,8 @@ def propertyDamage(field, housesDamaged, hotelDamaged):
             
             if hotelDamaged and field.hotelAvailable:
                 field.owner.balance -= hotel_price
+                
+            field.owner.money_spent_round = True
                 
         r_ui.latest_event.append("Repairs to be done")
     
@@ -141,6 +144,7 @@ def jailFreeEvent(screen, turns, board, player, players, dices, doubles, total_v
                                dices=dices)
     elif player.jailTurns == 3:
         player.balance -= fine
+        player.money_spent_round = True
         player.jailStatus = False
         print(f"{player.name} paid a fine, he is free")
     else:
