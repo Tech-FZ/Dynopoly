@@ -37,6 +37,10 @@ This build is not intended for submission, but rather for the developers to keep
 - The winning conditions are random.
 - The property damage event has been fixed.
 - The "Pass field without spending money" condition is stricter.
+- There are efforts in adding trade dialogs.
+- The code could be shrunk a little.
+- The trade dialogs are working now.
+  - You'd have to give consent now.
 - The icon by Tech-FZ has been included.
     
 ## Known issues
@@ -50,6 +54,7 @@ This build is not intended for submission, but rather for the developers to keep
   ~~ - infinite glitch occurs when player lands on their own investment. ~~ Fixed
 - Some winning conditions haven't been implemented yet.
 - ~~Passing Start without spending money is easier than it should be.~~ Fixed by Tech-FZ
+- ~~Trading doesn't work.~~ ~~If your opponent wants to buy the house, you automatically give consent.~~ ~~When you give consent and sell an investment, the game crashes.~~ Fixed by Tech-FZ
 
 ## Potential improvements:
 

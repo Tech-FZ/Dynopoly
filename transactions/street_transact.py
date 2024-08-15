@@ -1,5 +1,6 @@
 import fields.fcontainer as fc
 import rules.rule_algo as r_algo
+import transactions.offers as offer
 
 def buyStreet(player, street):
     if player.balance >= street.price and street.owner is not None:
