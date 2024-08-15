@@ -257,7 +257,6 @@ def rollDices(players=players):
         r_algo.checkBankruptcy(screen, player, bank, players, turns)
         cwc.checkWinningConditions(screen, player)
         r_algo.eventSelector(screen, jail, players, dices, jail_fid, turns, display_board)
-        r_algo.eventSelector(screen, jail, players, dices, jail_fid)
         
         if turns % 10 == 0 or (turns + 1) % 10 == 0:
             player.win_condition = []
