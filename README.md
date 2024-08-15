@@ -56,3 +56,18 @@ Build up a functional monopoly while dealing with dysfunctional events that occu
 6. After PyInstaller did its job, double-click on dist and press Ctrl+V to paste the files.
 7. Test the binaries. If they work, good.
     - On Windows (and probably also macOS), your antivirus may interfere. This is completely normal behaviour from the overprotective software and it is safe to restore the game from quarantine.
+
+## Run the game
+
+1. Download it from the releases.
+2. Extract the file.
+    - Windows (ZIP files): Right-click, then click on "Extract to" and follow the procedure.
+    - Windows (other compressed files): Download [7-Zip](https://www.7-zip.org) and follow the installation procedure, then right-click on the file of the game, then on "Extract to (insert-file-name-here)/".
+    - Linux (GUI): Right-click, then click on "Open with Archive Manager" or something, then on "Extract" and save where you want to.
+3. Access your extracted files and run the executables as follows:
+    - Script: Follow [Dev environment setup](#dev-environment-setup)
+    - Executables: Double-click on "main" (Linux) or "main.exe" (Windows)
+        - On Windows (and probably also macOS), your antivirus may interfere. This is completely normal behaviour from the overprotective software and it is safe to restore the game from quarantine.
+        - On Linux, you may have to right-click, then click on "Properties", then on "Permissions" and check "File may be run as program" before running.
+
+4. If it works, good.

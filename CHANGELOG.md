@@ -46,6 +46,7 @@ This build is not intended for submission, but rather for the developers to keep
 - The readme has another introduction sentence.
 - The gitignore has been updated to exclude PyInstaller-made folders and files.
 - There is now doc for PyInstaller.
+- A section for running the game has been added.
     
 ## Known issues
 
