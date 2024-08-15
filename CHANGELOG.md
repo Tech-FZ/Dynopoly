@@ -27,7 +27,22 @@ This build is not intended for submission, but rather for the developers to keep
   - Or they move to the wrong field.
 - On the player info, you can see how drunk the current player is.
 - A bug where the game crashed when you're drunk and the owner of the field is non-existant has been fixed.
+- Price and rent are now listed on the offers.
 - Income taxes got fixed.
+- Bankruptcy introduced.
+- Investments bought are assigned to the player
+- Game loop bug fixed when player lands on their own property
+- There is an effort in fixing "drunk rent crashes".
+- The game would now check for *some* winning conditions.
+- The winning conditions are random.
+- The property damage event has been fixed.
+- The "Pass field without spending money" condition is stricter.
+- There are efforts in adding trade dialogs.
+- The code could be shrunk a little.
+- The trade dialogs are working now.
+  - You'd have to give consent now.
+- The icon by Tech-FZ has been included.
+- The successful trade is now a possible winning condition.
     
 ## Known issues
 
@@ -37,6 +52,10 @@ This build is not intended for submission, but rather for the developers to keep
 - go to jail now crashes the game due to changes in the player.mo_to method (will be fixed: Makala)
 - changes to button class may cause issues (might need to create an inheritance class for seperate buttons)
 - investment fields are not changing names on purchase even though ownership changes
+  ~~ - infinite glitch occurs when player lands on their own investment. ~~ Fixed
+- Some winning conditions haven't been implemented yet.
+- ~~Passing Start without spending money is easier than it should be.~~ Fixed by Tech-FZ
+- ~~Trading doesn't work.~~ ~~If your opponent wants to buy the house, you automatically give consent.~~ ~~When you give consent and sell an investment, the game crashes.~~ Fixed by Tech-FZ
 
 ## Potential improvements:
 

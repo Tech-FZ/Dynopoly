@@ -12,6 +12,8 @@ class Player:
         self.name = name
         self.colour = colour
         self.balance = 1500.00
+        self.money_spent_round = False
+        self.round_complete = False
         self.position = pygame.Vector2(835, 575)
         self.ability = {}
         self.win_condition = []
@@ -21,9 +23,8 @@ class Player:
         self.jailStatus = False
         self.jailTurns = 0
         self.jailCard = False
-        # {'in_jail':False, "jail_turn":0, "has_jail_card":False}
-        self.jailStatus = {'in_jail':False, "jail_turn":0, "has_jail_card":False}
         self.drunkStatus = 0
+        self.successful_trade = False
         
     def spawn(self, screen):
         """Draw the player's token on the screen."""

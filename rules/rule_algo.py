@@ -31,6 +31,7 @@ def incomeTax(players, tax):
     while i < len(players):
         players[list(players.keys())[i - 1 % len(players)]].balance -= tax
         free_parking += tax
+        players[list(players.keys())[i - 1 % len(players)]].money_spent_round = True
         i += 1
         
     r_ui.latest_event = [f"Income tax of {str(tax)} per player went into free", "parking."]
@@ -44,37 +45,39 @@ def propertyDamage(field, housesDamaged, hotelDamaged):
     decision = random.randint(0, 1)
     
     if housesDamaged > 0:
-        if hotelDamaged:
+        if hotelDamaged and field.hotelAvailable:
             r_ui.latest_event = [f"{str(housesDamaged)} house(s) & the hotel in {field.name} damaged."]
             
         else:
             r_ui.latest_event = [f"{str(housesDamaged)} house(s) in {field.name} damaged."]
             
-    elif hotelDamaged:
+    elif hotelDamaged and field.hotelAvailable:
         r_ui.latest_event = [f"Hotel in {field.name} damaged."]
     
     if decision == 0:
         if field.houseCount > 0:
             field.houseCount -= housesDamaged
         
-        field.price /= housesDamaged
-        field.rent /= housesDamaged
+            field.price /= housesDamaged
+            field.rent /= housesDamaged
         
-        if hotelDamaged:
+        if hotelDamaged and field.hotelAvailable:
+            field.hotelAvailable = False
             field.price -= 40
             field.rent -= 4
             
-        r_ui.latest_event.append("Price 40 less. Rent 4 less.")
+        r_ui.latest_event.append("Price and rent decrease.")
     
     elif decision == 1:
         if field.owner != "Bank":
-            field.owner.balance -= 25 * housesDamaged # Can be changed
+            field.owner.balance -= house_price * housesDamaged # Can be changed
             
-            if hotelDamaged:
-                field.owner.balance -= 50
+            if hotelDamaged and field.hotelAvailable:
+                field.owner.balance -= hotel_price
                 
-        r_ui.latest_event.append("Repairs: 25 per house & 50 for")
-        r_ui.latest_event.append("hotel")
+            field.owner.money_spent_round = True
+                
+        r_ui.latest_event.append("Repairs to be done")
     
 def shopOpens(field):
     field.price *= 1.5
@@ -141,6 +144,7 @@ def jailFreeEvent(screen, turns, board, player, players, dices, doubles, total_v
                                dices=dices)
     elif player.jailTurns == 3:
         player.balance -= fine
+        player.money_spent_round = True
         player.jailStatus = False
         print(f"{player.name} paid a fine, he is free")
     else:
@@ -155,6 +159,21 @@ def jailEvent(screen, player, jail, players, dices, jail_fid):
     player.fid = jail_fid
     player.jailStatus = True
     r_ui.latest_event = [f"{player.name} went to jail."]
+    
+def checkBankruptcy(screen, player, bank, players, turns):
+    if player.balance < 0:
+        for field in fc.f_container:
+            if field.owner == player:
+                field.owner = bank
+                
+        players.pop((turns -1) % len(players)+1)
+        
+    if len(players) == 1:
+        r_ui.latest_event = [f"{players.values().name} won"]        
+        ecp = True
+    
+        while ecp:
+            ecp = r_ui.event_card(screen, True)
     
 def eventSelector(screen, jail, players, dices, jail_fid):
     """
@@ -190,7 +209,10 @@ def eventSelector(screen, jail, players, dices, jail_fid):
             if field.type == "street":
                 st_container.append(field)
         
-        propertyDamage(st_container[random.randint(0, len(st_container) - 1)], random.randint(1, 4), random.choice([True, False]))
+        street_chosen = st_container[random.randint(0, len(st_container) - 1)]
+        
+        if street_chosen.houseCount > 0 or street_chosen.hotelAvailable:
+            propertyDamage(street_chosen, random.randint(1, street_chosen.houseCount), random.choice([True, False]))
         
     elif eventSel == 4:
         st_container = []
