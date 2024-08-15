@@ -2,9 +2,10 @@ from items.property import Property
 from player import player_card as pc
 import universal.game_board as gb
 import fields.fcontainer as fc
-import rules.rule_ui as r_ui
+import universal.side_bar as sb
 import pygame
 import math
+import rules.rule_ui as r_ui
 
 class Player:
     def __init__(self, name, colour):
@@ -17,13 +18,18 @@ class Player:
         self.task = []
         self.fid = 0 # Starting point
         self.properties = []  # Changed to plural for clarity
-        self.isInJail = False
+        self.jailStatus = False
+        self.jailTurns = 0
+        self.jailCard = False
+        # {'in_jail':False, "jail_turn":0, "has_jail_card":False}
+        self.jailStatus = {'in_jail':False, "jail_turn":0, "has_jail_card":False}
+        self.drunkStatus = 0
         
     def spawn(self, screen):
         """Draw the player's token on the screen."""
         pygame.draw.circle(screen, self.colour, self.position, 20)
         
-    def move_to(self, screen, field, dices, players, steps=20, hop_height=30):
+    def move_to(self, screen, turns, board, field, dices, players, steps=5, hop_height=30):
         """Move the player to a new position with a hopping animation."""
         target_position = pygame.Vector2(field.x + 50, field.y + 50)
         start_position = self.position
@@ -42,14 +48,16 @@ class Player:
             # hop_position = pygame.Vector2(self.position.x, self.position.y - hop)
 
             # Clear the screen (or redraw the background)
-            screen.fill("purple")
-            r_ui.rule_ui_setup(screen)
-            pc.player_card(screen,self)
-            pc.win_condition_Card(screen, self)
-            for fld in fc.f_container:
-                fld.field_placement(screen)
-            dices[0].spawnDice(screen)
-            dices[1].spawnDice(screen)
+            # screen.fill("purple")
+            # sb.sb_setup(screen)
+            # pc.player_card(screen,self)
+            # pc.win_condition_Card(screen, self)
+            # r_ui.ruleCard(screen)
+            # for fld in fc.f_container:
+            #     fld.field_placement(screen)
+            # dices[0].spawnDice(screen)
+            # dices[1].spawnDice(screen)
+            board(screen,turns,dices)
             
             # Draw all players, including the moving player and the others
             for player in players.values():
