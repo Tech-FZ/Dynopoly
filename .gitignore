@@ -7,3 +7,6 @@ player/__pycache__/
 rules/__pycache__/
 transactions/__pycache__/
 universal/__pycache__/
+build/
+dist/
+main.spec

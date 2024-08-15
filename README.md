@@ -15,7 +15,7 @@ Build up a functional monopoly while dealing with dysfunctional events that occu
     - Linux (GUI, may differ from desktop to desktop): Open the folder, then right-click on the empty space and "Open with Terminal".
     - Windows 10: Open the folder, then click on "File", then on "Open Windows PowerShell".
     - Windows 11: Open the folder, then right-click on the empty space and "Open in Terminal".
-    - macOS: Pending (if at all possible). Figure this out yourself or set up a Windows or Linux VM.
+    - macOS: If you don't know how to do it, set up a Windows or Linux VM and test the game on there. None of us have a Mac because it's too expensive. Sorry. :(
 5. Type in `git clone https://github.com/Tech-FZ/Misonic-Project`.
 6. Open the project in your desired IDE/code editor. Nicolas is using Visual Studio Code, Mizuki is using Notepad++. Due to the variety, it is too complicated to tell you how to do it. If you need help, ask.
 7. Prepare a folder where you store your virtual environment and apply number 4 to open your terminal application again.
@@ -43,3 +43,16 @@ Build up a functional monopoly while dealing with dysfunctional events that occu
 3. Type in `"(your-venv-path)\Scripts\Activate.ps1"` to activate the venv.
 4. Run `pip install --upgrade pygame==2.6.0`.
 5. Try to run the game. If it works, good.
+
+## Compile the game
+
+1. Do everything in [Dev environment setup](#dev-environment-setup) if you haven't already done so.
+2. In the terminal, activate the venv if you deactivated it.
+3. Run `pip install pyinstaller pillow` to install PyInstaller, which compiles the program, and Pillow, which converts the icon.
+4. Copy and paste all files except the .git folder, the build and dist folders and the main.spec file.
+5. Run the following:
+    - Windows: `pyinstaller --icon icon.png --onefile main.py`
+    - Other platforms: `pyinstaller --onefile main.py`
+6. After PyInstaller did its job, double-click on dist and press Ctrl+V to paste the files.
+7. Test the binaries. If they work, good.
+    - On Windows (and probably also macOS), your antivirus may interfere. This is completely normal behaviour from the overprotective software and it is safe to restore the game from quarantine.

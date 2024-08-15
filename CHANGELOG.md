@@ -44,6 +44,8 @@ This build is not intended for submission, but rather for the developers to keep
 - The icon by Tech-FZ has been included.
 - The successful trade is now a possible winning condition.
 - The readme has another introduction sentence.
+- The gitignore has been updated to exclude PyInstaller-made folders and files.
+- There is now doc for PyInstaller.
     
 ## Known issues
 
