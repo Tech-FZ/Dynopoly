@@ -6,6 +6,8 @@ import rules.rule_ui as r_ui
 house_price = 50
 hotel_price = 100
 free_parking = 0
+fine = 100
+bar_price = 5
 
 def stockMarketCrash(divisor):
     for field in fc.f_container:
@@ -26,12 +28,12 @@ def stockMarketGoesUp(multiplier):
 def incomeTax(players, tax):
     global free_parking
     i = 0
-    while i > len(players):
+    while i < len(players):
         players[list(players.keys())[i - 1 % len(players)]].balance -= tax
         free_parking += tax
         i += 1
         
-    r_ui.latest_event = [f"Income tax of {str(tax)} went into free", "parking."]
+    r_ui.latest_event = [f"Income tax of {str(tax)} per player went into free", "parking."]
         
     """ player = players[list(players.keys())[(turns -1) % len(players)]]
     for player in players:
@@ -109,19 +111,65 @@ def birthday(bd_player, other_players):
     
     r_ui.latest_event = [f"{bd_player.name}'s birthday - They get 10 dollars from everyone else"]
     
-def jailFreeEvent(player):
-    get_free = random.randint(0, 12)
-    print(get_free)
+def jailFreeEvent(screen, turns, board, player, players, dices, doubles, total_value):
+    if doubles:
+        player.jailStatus = False
+        player.kailTurns = 0
+        new_fid = player.fid + total_value
     
-    if get_free == 3 or get_free == 7 or get_free == 12:
-        player.jailStatus['in_jail'] = False
-        r_ui.latest_event = [f"{player.name} is no longer in jail."]
+        if new_fid >= len(fc.f_container):
+            new_fid = 0 + (new_fid - len(fc.f_container))
+            player.balance += 200
+    
+        while player.fid != new_fid:
+            if player.fid == len(fc.f_container)-1:
+                player.fid = 0
+                player.move_to(screen,
+                               turns, 
+                               board, 
+                               fc.f_container[player.fid], 
+                               players=players, 
+                               dices=dices)
+        
+            else:
+                player.fid += 1
+                player.move_to(screen,
+                               turns, 
+                               board, 
+                               fc.f_container[player.fid], 
+                               players=players, 
+                               dices=dices)
+    elif player.jailTurns == 3:
+        player.balance -= fine
+        player.jailStatus = False
+        print(f"{player.name} paid a fine, he is free")
+    else:
+        player.jaiilTurns += 1
+        get_free = random.randint(0, 12)
+        if get_free == 3 or get_free == 7 or get_free == 12:
+            player.jailStatus = False
+            r_ui.latest_event = [f"{player.name} is no longer in jail."]
         
 def jailEvent(screen, player, jail, players, dices, jail_fid):
     player.move_to(screen, jail, players=players, dices=dices)
     player.fid = jail_fid
-    player.jailStatus['in_jail'] = True
+    player.jailStatus = True
     r_ui.latest_event = [f"{player.name} went to jail."]
+    
+def checkBankruptcy(screen, player, bank, players, turns):
+    if player.balance < 0:
+        for field in fc.f_container:
+            if field.owner.name == player.name:
+                field.owner = bank
+                
+        players.pop((turns -1) % len(players))
+        
+    if len(players) <= 1:
+        r_ui.latest_event = [f"{players} won"]        
+        ecp = True
+    
+        while ecp:
+            ecp = r_ui.event_card(screen, True)
     
 def eventSelector(screen, jail, players, dices, jail_fid):
     """
