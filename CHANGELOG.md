@@ -43,6 +43,7 @@ This build is not intended for submission, but rather for the developers to keep
   - You'd have to give consent now.
 - The icon by Tech-FZ has been included.
 - Added welcome Screen to the game
+- Added rules screen to the game
 
 ## Known issues
 
