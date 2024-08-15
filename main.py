@@ -81,7 +81,6 @@ def display_board(screen,turns,dices):
 
 #Initialize jail for moving mechanism
 for index, field in enumerate(fc.f_container):
-    # jail = fields.Field(5,525,None)
     if field.type == "jail":
         jail = field
         jail_fid = index
@@ -89,6 +88,7 @@ for index, field in enumerate(fc.f_container):
 turns = 1
 
 def afterTurn(player):
+    global turns
     trade_phase = True
     
     while trade_phase:
@@ -102,7 +102,7 @@ def afterTurn(player):
                                                ftc = st_transact.buyStreet, 
                                                kw_args={"player":player,
                                                "street":fc.f_container[player.fid]} )
-                # st_transact.buyStreet(player, fc.f_container[player.fid])
+                
             elif fc.f_container[player.fid].owner == player:
                 trade_phase = offer.house_hotel_card(screen, 
                                                phase = trade_phase,
@@ -124,15 +124,16 @@ def afterTurn(player):
                                                ftc = invest_transact.invest, 
                                                kw_args={"player":player,
                                                "investment":fc.f_container[player.fid]} )
-                # invest_transact.invest(player, fc.f_container[player.fid])
                 
             elif fc.f_container[player.fid].owner != player and not None:
                 invest_transact.earn_money(player, fc.f_container[player.fid])
                 trade_phase = False
                 print(f"{player.name} Paid interest to {fc.f_container[player.fid].owner.name}")
                 break
-                
-        else: 
+            
+            else:
+                break
+        else:
             break
 
 def rollDices(players=players):
@@ -212,7 +213,6 @@ def rollDices(players=players):
                     except:
                         print("Well, the rent was paid to the bank.")
         
-        print(player.jailStatus)
         r_algo.eventSelector(screen, jail, players, dices, jail_fid)
         turns += 1
         
@@ -240,29 +240,11 @@ while running:
         rodi_btn.checkClick(event)
 
     display_board(screen, turns, dices)
-    # # fill the screen with a color to wipe away anything from last frame
-    # screen.fill("purple")
-
-    # # RENDER YOUR GAME HERE
-    # sb.sb_setup(screen)
-    # # for fld in fc.f_container:
-    # #     fld.field_placement(screen)
-    # fc.genBoard(screen)
-    # r_ui.ruleCard(screen)
     
     #player components
     player1.spawn(screen)
     player2.spawn(screen)
-    # pc.player_card(screen, players[(turns-1) % len(players)+1])
-    # pc.win_condition_Card(screen,  players[(turns-1) % len(players)+1])
-
     
-    # dc1.spawnDice(screen)
-    # dc2.spawnDice(screen)
-
-    # rodi_btn.updateButton(rodi_btn.bg_colour, rodi_btn.txt_colour)
-
-    # flip() the display to put your work on screen
     pygame.display.flip()
 
     clock.tick(60)  # limits FPS to 60

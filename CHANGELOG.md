@@ -28,6 +28,8 @@ This build is not intended for submission, but rather for the developers to keep
 - On the player info, you can see how drunk the current player is.
 - A bug where the game crashed when you're drunk and the owner of the field is non-existant has been fixed.
 - Income taxes got fixed.
+- Investments bought are assigned to the player
+- Game loop bug fixed when player lands on their own property
 - There is an effort in fixing "drunk rent crashes".
     
 ## Known issues
@@ -38,6 +40,7 @@ This build is not intended for submission, but rather for the developers to keep
 - go to jail now crashes the game due to changes in the player.mo_to method (will be fixed: Makala)
 - changes to button class may cause issues (might need to create an inheritance class for seperate buttons)
 - investment fields are not changing names on purchase even though ownership changes
+  ~~ - infinite glitch occurs when player lands on their own investment. ~~ Fixed
 
 ## Potential improvements:
 
