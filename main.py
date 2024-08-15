@@ -117,12 +117,11 @@ def afterTurn(player):
                                                "field":fc.f_container[player.fid]} )
             
             else:
-                print("Offer should now show up")
                 trade_phase = offer.offer_card(screen,
                                                fc.f_container[player.fid],
                                                phase = trade_phase,
                                                buysell="buy",
-                                               ftc = offer.trade_stuff, 
+                                               ftc = offer.clearance, 
                                                kw_args={"screen":screen,"player":player,
                                                "field":fc.f_container[player.fid]} )
                 

@@ -20,16 +20,21 @@ def trade_stuff(screen, player, field):
         invest_transact.invest(player, field)
             
 def clearance(screen, player, field):
-    trade_phase = offer_card(screen,
+    tphase = True
+    """ print("Tphase initialised")
+    pygame.time.delay(500)
+    print("Delay is over") """
+    
+    while tphase:
+        tphase = offer_card(screen,
                                     field,
-                                    phase = trade_phase,
+                                    phase = tphase,
                                     buysell="sell",
                                     ftc = trade_stuff, 
                                     kw_args={"player":player,
                                     "street":field} )
 
 def offer_card(screen, field, phase, buysell, ftc, kw_args = None):
-    print("Offer card function initialised")
     accept = btn.Button(
     screen,
     "Yes",
