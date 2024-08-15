@@ -34,6 +34,7 @@ This build is not intended for submission, but rather for the developers to keep
 - Game loop bug fixed when player lands on their own property
 - There is an effort in fixing "drunk rent crashes".
 - The game would now check for *some* winning conditions.
+- The winning conditions are random.
     
 ## Known issues
 
@@ -45,6 +46,7 @@ This build is not intended for submission, but rather for the developers to keep
 - investment fields are not changing names on purchase even though ownership changes
   ~~ - infinite glitch occurs when player lands on their own investment. ~~ Fixed
 - Some winning conditions haven't been implemented yet.
+- Passing Start without spending money is easier than it should be.
 
 ## Potential improvements:
 

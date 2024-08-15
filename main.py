@@ -34,14 +34,16 @@ bank.balance = 1000000
 
 
 player1 = pl.Player("Nicolas", "red")
-f = open('player/winConditions.json')
+cwc.genWinningConditions(player1)
+""" f = open('player/winConditions.json')
 win_conditions = json.load(f)
 player1.win_condition.append(win_conditions["1"])
-player1.win_condition.append(win_conditions["2"])
+player1.win_condition.append(win_conditions["2"]) """
 
 player2 = pl.Player("Player 2", "blue")
-player2.win_condition.append(win_conditions["1"])
-player2.win_condition.append(win_conditions["2"])
+cwc.genWinningConditions(player2)
+""" player2.win_condition.append(win_conditions["1"])
+player2.win_condition.append(win_conditions["2"]) """
 player2.position = pygame.Vector2(860, 600)
 
 dices = []

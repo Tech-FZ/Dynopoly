@@ -1,5 +1,6 @@
 import fields.fcontainer as fc
 import json
+import random
 import rules.rule_ui as r_ui
 
 def everyStreet():
@@ -39,6 +40,16 @@ def hotel(player):
             break
         
     return player_won
+
+def genWinningConditions(player):
+    f = open('player/winConditions.json')
+    win_conditions = json.load(f)
+    possible_conditions = ["1", "3", "6"] # temporary tuple to make sure the game is doable
+    
+    for k in range(2):
+        i = random.randint(0, len(possible_conditions) - 1)
+        player.win_condition.append(win_conditions[possible_conditions[i]])
+        possible_conditions.pop(i)
     
 def checkWinningConditions(screen, player):
     f = open('player/winConditions.json')
@@ -55,7 +66,7 @@ def checkWinningConditions(screen, player):
             con = hotel(player)
             
         if con:
-            player.win_conditions.remove(win_cond)
+            player.win_condition.remove(win_cond)
             
         if len(player.win_condition) <= 0:
             r_ui.latest_event = [f"{player.name} won!"]
