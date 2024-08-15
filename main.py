@@ -103,38 +103,57 @@ def afterTurn(player):
                 trade_phase = offer.offer_card(screen,
                                                fc.f_container[player.fid],
                                                phase = trade_phase,
-                                               ftc = st_transact.buyStreet, 
-                                               kw_args={"player":player,
-                                               "street":fc.f_container[player.fid]} )
+                                               buysell="buy",
+                                               ftc = offer.trade_stuff, 
+                                               kw_args={"screen":screen,"player":player,
+                                               "field":fc.f_container[player.fid]} )
                 
             elif fc.f_container[player.fid].owner == player:
                 trade_phase = offer.house_hotel_card(screen, 
                                                phase = trade_phase,
                                                ftc_house= st_transact.buyHouse, 
                                                ftc_hotel= st_transact.buyHotel,
-                                               kw_args={"player":player,
-                                               "street":fc.f_container[player.fid]} )
+                                               kw_args={"screen":screen,"player":player,
+                                               "field":fc.f_container[player.fid]} )
             
             else:
-                st_transact.payRent(player, fc.f_container[player.fid])
+                print("Offer should now show up")
+                trade_phase = offer.offer_card(screen,
+                                               fc.f_container[player.fid],
+                                               phase = trade_phase,
+                                               buysell="buy",
+                                               ftc = offer.trade_stuff, 
+                                               kw_args={"screen":screen,"player":player,
+                                               "field":fc.f_container[player.fid]} )
+                
+                #st_transact.payRent(player, fc.f_container[player.fid])
                 trade_phase = False
-                print(f"{player.name} Paid rent to {fc.f_container[player.fid].owner.name}")
-                break
+                #print(f"{player.name} Paid rent to {fc.f_container[player.fid].owner.name}")
+                #break
                 
         elif fc.f_container[player.fid].type == "investment":
             if fc.f_container[player.fid].owner.name == "Bank":
                 trade_phase = offer.offer_card(screen, 
                                                fc.f_container[player.fid],
                                                phase = trade_phase,
-                                               ftc = invest_transact.invest, 
-                                               kw_args={"player":player,
-                                               "investment":fc.f_container[player.fid]} )
+                                               buysell="buy",
+                                               ftc = offer.trade_stuff, 
+                                               kw_args={"screen":screen,"player":player,
+                                               "field":fc.f_container[player.fid]} )
                 
             elif fc.f_container[player.fid].owner != player and not None:
-                invest_transact.earn_money(player, fc.f_container[player.fid])
+                print("Offer should now show up")
+                trade_phase = offer.offer_card(screen,
+                                               fc.f_container[player.fid],
+                                               phase = trade_phase,
+                                               buysell="buy",
+                                               ftc = offer.clearance, 
+                                               kw_args={"screen":screen,"player":player,
+                                               "field":fc.f_container[player.fid]} )
+                #invest_transact.earn_money(player, fc.f_container[player.fid])
                 trade_phase = False
-                print(f"{player.name} Paid interest to {fc.f_container[player.fid].owner.name}")
-                break
+                #print(f"{player.name} Paid interest to {fc.f_container[player.fid].owner.name}")
+                #break
             
             else:
                 break
