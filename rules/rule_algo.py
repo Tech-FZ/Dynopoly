@@ -154,8 +154,8 @@ def jailFreeEvent(screen, turns, board, player, players, dices, doubles, total_v
             player.jailStatus = False
             r_ui.latest_event = [f"{player.name} is no longer in jail."]
         
-def jailEvent(screen, player, jail, players, dices, jail_fid):
-    player.move_to(screen, jail, players=players, dices=dices)
+def jailEvent(screen, player, jail, players, dices, jail_fid, turns, board):
+    player.move_to(screen, turns, board, jail, players=players, dices=dices)
     player.fid = jail_fid
     player.jailStatus = True
     r_ui.latest_event = [f"{player.name} went to jail."]
@@ -175,7 +175,7 @@ def checkBankruptcy(screen, player, bank, players, turns):
         while ecp:
             ecp = r_ui.event_card(screen, True)
     
-def eventSelector(screen, jail, players, dices, jail_fid):
+def eventSelector(screen, jail, players, dices, jail_fid, turns, board):
     """
     Event IDs
     0. Stock Market Crash
@@ -238,9 +238,9 @@ def eventSelector(screen, jail, players, dices, jail_fid):
     elif eventSel == 7:
         housingAbundance(round(random.randint(1, 4) + random.random(), 2))
         
-    #elif eventSel == 9:
+    elif eventSel == 9:
         # May or may not be removed
-        #jailEvent(screen, random.choice(players), jail, players, dices, jail_fid)
+        jailEvent(screen, players[random.choice([1, 2])], jail, players, dices, jail_fid, turns, board)
         
     """ elif eventSel == 8:
         bd_player_idx = random.randint(1, len(players))

@@ -241,7 +241,7 @@ def rollDices(players=players):
         print(player.jailStatus)
         r_algo.checkBankruptcy(screen, player, bank, players, turns)
         cwc.checkWinningConditions(screen, player)
-        r_algo.eventSelector(screen, jail, players, dices, jail_fid)
+        r_algo.eventSelector(screen, jail, players, dices, jail_fid, turns, display_board)
         turns += 1
         
 # insert buttons here
