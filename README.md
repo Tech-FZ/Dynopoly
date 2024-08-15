@@ -1,6 +1,6 @@
 # Dynopoly
 
-Basically Monopoly with a twist.
+Build up a functional monopoly while dealing with dysfunctional events that occur every turn.
 
 ## Dev environment setup
 
