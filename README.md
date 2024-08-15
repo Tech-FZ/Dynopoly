@@ -74,8 +74,8 @@ Attention: A window manager (like Xorg or Wayland) and a desktop (e. g. GNOME, K
 3. Run `pip install pyinstaller pillow` to install PyInstaller, which compiles the program, and Pillow, which converts the icon.
 4. Copy and paste all files except the .git folder, the build and dist folders and the main.spec file.
 5. Run the following:
-    - Windows: `pyinstaller --icon icon.png --onefile main.py`
-    - Other platforms: `pyinstaller --onefile main.py`
+    - Windows: `pyinstaller --icon icon.png --onefile --windowed --add-data "icon.png:." --add-data "player/winConditions.json:player/" main.py`
+    - Other platforms: `pyinstaller --onefile --windowed --add-data "icon.png:." --add-data "player/winConditions.json:player/" main.py`
 6. After PyInstaller did its job, double-click on dist and press <kbd>Ctrl</kbd> + <kbd>V</kbd> to paste the files.
 7. Test the binaries. If they work, good.
     - On Windows (and probably also macOS), your antivirus may interfere. This is completely normal behaviour from the overprotective software and it is safe to restore the game from quarantine.
