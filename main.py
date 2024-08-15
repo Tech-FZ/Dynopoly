@@ -3,6 +3,16 @@ import pygame
 import json
 import random
 
+# https://stackoverflow.com/questions/31836104/
+import os, sys
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 # Other code files
 import universal.side_bar as sb
 import setup.setup as setup
@@ -26,7 +36,7 @@ import player.check_win_conditions as cwc
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("Dynopoly")
-pygame.display.set_icon(pygame.image.load("./icon.png"))
+pygame.display.set_icon(pygame.image.load(resource_path("icon.png")))
 clock = pygame.time.Clock()
 running = True
 

@@ -3,6 +3,16 @@ import json
 import random
 import rules.rule_ui as r_ui
 
+# https://stackoverflow.com/questions/31836104/
+import os, sys
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 def everyStreet():
     streets = []
     
@@ -42,7 +52,7 @@ def hotel(player):
     return player_won
 
 def genWinningConditions(player):
-    f = open('player/winConditions.json')
+    f = open(resource_path('player/winConditions.json'))
     win_conditions = json.load(f)
     possible_conditions = ["1", "3", "5", "6"] # temporary tuple to make sure the game is doable
     
