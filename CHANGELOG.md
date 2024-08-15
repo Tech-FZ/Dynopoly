@@ -29,6 +29,7 @@ This build is not intended for submission, but rather for the developers to keep
 - A bug where the game crashed when you're drunk and the owner of the field is non-existant has been fixed.
 - Price and rent are now listed on the offers.
 - Income taxes got fixed.
+- Bankruptcy introduced.
 - Investments bought are assigned to the player
 - Game loop bug fixed when player lands on their own property
 - There is an effort in fixing "drunk rent crashes".

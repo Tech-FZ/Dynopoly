@@ -215,6 +215,8 @@ def rollDices(players=players):
                     except:
                         print("Well, the rent was paid to the bank.")
         
+        print(player.jailStatus)
+        r_algo.checkBankruptcy(screen, player, bank, players, turns)
         r_algo.eventSelector(screen, jail, players, dices, jail_fid)
         turns += 1
         
