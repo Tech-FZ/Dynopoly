@@ -202,7 +202,15 @@ def rollDices(players=players):
         if player_drunk and player_buys_anyway == 1 and fc.f_container[player.fid].owner != None:
             if fc.f_container[player.fid].owner.name == player.name:
                 player.balance -= fc.f_container[player.fid].rent
-                players[list(players.keys())[((turns -1) % len(players)) + 1]].balance += fc.f_container[player.fid].rent
+                try:
+                    players[list(players.keys())[((turns -1) % len(players)) + 1]].balance += fc.f_container[player.fid].rent
+                    
+                except:
+                    try:
+                        players[list(players.keys())[((turns -1) % len(players)) - 1]].balance += fc.f_container[player.fid].rent
+                        
+                    except:
+                        print("Well, the rent was paid to the bank.")
         
         print(player.jailStatus)
         r_algo.eventSelector(screen, jail, players, dices, jail_fid)
