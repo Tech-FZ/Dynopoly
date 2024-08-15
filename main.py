@@ -19,6 +19,7 @@ import items.property as prop
 import items.investment as invest
 import rules.rule_ui as r_ui
 import rules.rule_algo as r_algo
+import player.check_win_conditions as cwc
 
 # pygame setup
 pygame.init()
@@ -217,6 +218,7 @@ def rollDices(players=players):
         
         print(player.jailStatus)
         r_algo.checkBankruptcy(screen, player, bank, players, turns)
+        cwc.checkWinningConditions(screen, player)
         r_algo.eventSelector(screen, jail, players, dices, jail_fid)
         turns += 1
         

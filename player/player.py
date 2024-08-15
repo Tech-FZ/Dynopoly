@@ -12,6 +12,7 @@ class Player:
         self.name = name
         self.colour = colour
         self.balance = 1500.00
+        self.money_spent_round = False
         self.position = pygame.Vector2(835, 575)
         self.ability = {}
         self.win_condition = []
