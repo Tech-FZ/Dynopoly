@@ -31,8 +31,8 @@ def clearance(screen, player, field):
                                     phase = tphase,
                                     buysell="sell",
                                     ftc = trade_stuff, 
-                                    kw_args={"player":player,
-                                    "street":field} )
+                                    kw_args={"screen": screen, "player":player,
+                                    "field":field} )
 
 def offer_card(screen, field, phase, buysell, ftc, kw_args = None):
     accept = btn.Button(
