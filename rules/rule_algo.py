@@ -159,12 +159,12 @@ def jailEvent(screen, player, jail, players, dices, jail_fid):
 def checkBankruptcy(screen, player, bank, players, turns):
     if player.balance < 0:
         for field in fc.f_container:
-            if field.owner.name == player.name:
+            if field.owner == player:
                 field.owner = bank
                 
-        players.pop((turns -1) % len(players))
+        players.pop((turns -1) % len(players)+1)
         
-    if len(players) <= 1:
+    if len(players) == 1:
         r_ui.latest_event = [f"{players} won"]        
         ecp = True
     
