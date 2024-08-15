@@ -35,6 +35,8 @@ This build is not intended for submission, but rather for the developers to keep
 - There is an effort in fixing "drunk rent crashes".
 - The game would now check for *some* winning conditions.
 - The winning conditions are random.
+- The property damage event has been fixed.
+- The "Pass field without spending money" condition is stricter.
     
 ## Known issues
 

@@ -62,6 +62,7 @@ def checkWinningConditions(screen, player):
         elif win_cond == win_conditions["3"]:
             con = startPassWithoutMoneySpent(player)
             player.round_complete = False
+            player.money_spent_round = False
             
         elif win_cond == win_conditions["6"]:
             con = hotel(player)
