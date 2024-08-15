@@ -25,6 +25,7 @@ import player.check_win_conditions as cwc
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("Dynopoly")
+pygame.display.set_icon(pygame.image.load("./icon.png"))
 clock = pygame.time.Clock()
 running = True
 
