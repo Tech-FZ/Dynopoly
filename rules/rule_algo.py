@@ -214,7 +214,11 @@ def eventSelector(screen, jail, players, dices, jail_fid, turns, board, player):
         street_chosen = st_container[random.randint(0, len(st_container) - 1)]
         
         if street_chosen.houseCount > 0 or street_chosen.hotelAvailable:
-            propertyDamage(street_chosen, random.randint(1, street_chosen.houseCount), random.choice([True, False]))
+            try:
+                propertyDamage(street_chosen, random.randint(1, street_chosen.houseCount), random.choice([True, False]))
+                
+            except:
+                propertyDamage(street_chosen, 1, random.choice([True, False]))
         
     elif eventSel == 4:
         st_container = []

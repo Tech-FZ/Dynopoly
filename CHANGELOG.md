@@ -16,6 +16,7 @@
 - Fixed income tax dialog layout.
 - You can only buy one hotel.
 - Rounded off all player balance assignments
+- Fixed a bug which crashes game when less than two houses are on street.
 
 ## Known issues
 
