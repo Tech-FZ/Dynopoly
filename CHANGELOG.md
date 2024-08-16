@@ -12,6 +12,7 @@
 - Altered `git clone` to contain the new link.
 - More unnecessary code has been removed.
 - FIxed infinite loop cause by player landing on their own investment
+- Fixed income tax dialog layout.
 
 ## Known issues
 
