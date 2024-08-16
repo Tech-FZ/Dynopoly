@@ -1,3 +1,21 @@
+# Dynopoly Internal Development Build 9
+
+## Attention
+
+This build is not intended for submission, but rather for the developers to keep track of development while working on the game.
+
+## Changes
+
+- Cleanin up commented out code not going to be used
+- Changed event numbers to 2 point floating numbers
+- updated player movement to show only one token at the end of the movement cycle
+- Jail mechanics fixed
+
+## Known Issues:
+
+- Jail mechanism needs to be fixed to pass turn when player goes to jail
+- Player moves the total roll dice for previous turns after leaving jail
+
 # Dynopoly Internal Development Build 8
 
 ## Attention
@@ -54,7 +72,6 @@ This build is not intended for submission, but rather for the developers to keep
 - Win conditions are changed every 10 turns.
 - Streets stuff has been fixed.
 - Potential fix for bankruptcy
-- Changed event numbers to 2 point floating numbers
 
 ## Known issues
 
