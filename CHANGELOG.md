@@ -1,3 +1,26 @@
+# Dynopoly v0.1.0.9_hsr "Hackathon Submission Release"
+
+## Changes
+
+- An error which occurs after rolling the dice has been fixed.
+- The numbers for the rules algo have been changed to 2 point floating decimals
+- "Nicolas" is now called "Player 1".
+- Cleanin up commented out code not going to be used
+- Changed event numbers to 2 point floating numbers
+- updated player movement to show only one token at the end of the movement cycle
+- Jail mechanics fixed
+- Altered `git clone` to contain the new link.
+- More unnecessary code has been removed.
+- FIxed infinite loop cause by player landing on their own investment
+- A potential fix for winning conditions have been made. For now, you'd quit the game and have to re-launch it. Sorry.
+- Fixed income tax dialog layout.
+- 
+## Known issues
+
+- When landing on investments, you may runinto issues.
+- Jail mechanism needs to be fixed to pass turn when player goes to jail
+~~Player moves the total roll dice for previous turns after leaving jail~~ Fixed
+
 # Dynopoly Internal Development Build 8
 
 ## Attention
@@ -33,7 +56,7 @@ This build is not intended for submission, but rather for the developers to keep
 - Investments bought are assigned to the player
 - Game loop bug fixed when player lands on their own property
 - There is an effort in fixing "drunk rent crashes".
-- The game would now check for *some* winning conditions.
+- The game would now check for _some_ winning conditions.
 - The winning conditions are random.
 - The property damage event has been fixed.
 - The "Pass field without spending money" condition is stricter.
@@ -42,12 +65,24 @@ This build is not intended for submission, but rather for the developers to keep
 - The trade dialogs are working now.
   - You'd have to give consent now.
 - The icon by Tech-FZ has been included.
-    
+- Added welcome Screen to the game
+- Added rules screen to the game
+- The successful trade is now a possible winning condition.
+- The readme has another introduction sentence.
+- The gitignore has been updated to exclude PyInstaller-made folders and files.
+- There is now doc for PyInstaller.
+- A section for running the game has been added.
+- The documentation now describes the nano procedure.
+- The GPL license has been added.
+- Win conditions are changed every 10 turns.
+- Streets stuff has been fixed.
+- Potential fix for bankruptcy
+
 ## Known issues
 
 - The rules aren't shown yet.
-- Birthdays crash the game, so they won't be initiated.
-- People won't be put to jail when they don't land on "Go to jail". This is because the event can't be randomised.
+- ~~Birthdays crash the game, so they won't be initiated.~~ Fixed by Tech-FZ
+- ~~People won't be put to jail when they don't land on "Go to jail". This is because the event can't be randomised.~~ Fixed by Tech-FZ
 - go to jail now crashes the game due to changes in the player.mo_to method (will be fixed: Makala)
 - changes to button class may cause issues (might need to create an inheritance class for seperate buttons)
 - investment fields are not changing names on purchase even though ownership changes

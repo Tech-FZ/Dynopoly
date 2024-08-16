@@ -44,7 +44,7 @@ def hotel(player):
 def genWinningConditions(player):
     f = open('player/winConditions.json')
     win_conditions = json.load(f)
-    possible_conditions = ["1", "3", "6"] # temporary tuple to make sure the game is doable
+    possible_conditions = ["1", "3", "5", "6"] # temporary tuple to make sure the game is doable
     
     for k in range(2):
         i = random.randint(0, len(possible_conditions) - 1)
@@ -64,6 +64,9 @@ def checkWinningConditions(screen, player):
             player.round_complete = False
             player.money_spent_round = False
             
+        elif win_cond == win_conditions["5"]:
+            con = player.successful_trade
+            
         elif win_cond == win_conditions["6"]:
             con = hotel(player)
             
@@ -75,4 +78,4 @@ def checkWinningConditions(screen, player):
             phase = True
             
             while phase:
-                phase = r_ui.event_card(screen, phase)
+                phase = r_ui.event_card(screen, phase, exit)
