@@ -21,9 +21,6 @@ def trade_stuff(screen, player, field):
             
 def clearance(screen, player, field):
     tphase = True
-    """ print("Tphase initialised")
-    pygame.time.delay(500)
-    print("Delay is over") """
     
     while tphase:
         tphase = offer_card(screen,

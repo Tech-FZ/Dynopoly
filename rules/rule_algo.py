@@ -34,7 +34,7 @@ def incomeTax(players, tax):
         players[list(players.keys())[i - 1 % len(players)]].money_spent_round = True
         i += 1
         
-    r_ui.latest_event = [f"Income tax of {str(tax)} per player went into free", "parking."]
+    r_ui.latest_event = [f"Income tax of {str(tax)} per player", "went into free parking."]
         
 def propertyDamage(field, housesDamaged, hotelDamaged):
     decision = random.choice([0,0.5,1])
