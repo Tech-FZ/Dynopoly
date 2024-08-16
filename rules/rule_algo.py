@@ -176,7 +176,7 @@ def checkBankruptcy(screen, player, bank, players, turns):
         ecp = True
     
         while ecp:
-            ecp = r_ui.event_card(screen, True)
+            ecp = r_ui.event_card(screen, True, exit)
     
 def eventSelector(screen, jail, players, dices, jail_fid, turns, board, player):
     """

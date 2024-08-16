@@ -78,4 +78,4 @@ def checkWinningConditions(screen, player):
             phase = True
             
             while phase:
-                phase = r_ui.event_card(screen, phase)
+                phase = r_ui.event_card(screen, phase, exit)

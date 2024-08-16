@@ -29,7 +29,7 @@ def ruleCard(screen):
     screen.blit(hotel_pr_lbl, hotel_pr_loc)
     screen.blit(fp_lbl, fp_loc)
     
-def event_card(screen, phase, kw_args = None):    
+def event_card(screen, phase, ftc = None, kw_args = None):    
     global latest_event
     reject = btn.Button(
     screen,
@@ -42,6 +42,7 @@ def event_card(screen, phase, kw_args = None):
     (screen.get_height()/2+100),
     65,
     25,
+    ftc
 )
     oc_width = int(screen.get_width() / 5)
     
