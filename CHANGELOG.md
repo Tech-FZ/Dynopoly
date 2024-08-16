@@ -14,6 +14,7 @@
 - FIxed infinite loop cause by player landing on their own investment
 - A potential fix for winning conditions have been made. For now, you'd quit the game and have to re-launch it. Sorry.
 - Fixed income tax dialog layout.
+- You can only buy one hotel.
 - Rounded off all player balance assignments
 
 ## Known issues
