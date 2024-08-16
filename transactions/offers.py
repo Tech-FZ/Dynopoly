@@ -88,7 +88,7 @@ def offer_card(screen, field, phase, buysell, ftc, kw_args = None):
     
     return phase
 
-def house_hotel_card(screen, phase, ftc_house, ftc_hotel, kw_args = None):
+def house_hotel_card(screen, phase, field, ftc_house, ftc_hotel, kw_args = None):
     house = btn.Button(
     screen,
     "House",
@@ -103,21 +103,24 @@ def house_hotel_card(screen, phase, ftc_house, ftc_hotel, kw_args = None):
     ftc_house,
     kw_args=kw_args
 )
-    
-    hotel = btn.Button(
-    screen,
-    "Hotel",
-    (255, 255, 255),
-    (0, 0, 0),
-    (5, 5, 5),
-    (0, 0, 0),
-    ((screen.get_width() / 4)  + 100),
-    (screen.get_height()/2+100),
-    65,
-    25,
-    ftc_hotel,
-    kw_args=kw_args
-)
+    if field.hotelAvailable == False:
+        hotel = btn.Button(
+        screen,
+        "Hotel",
+        (255, 255, 255),
+        (0, 0, 0),
+        (5, 5, 5),
+        (0, 0, 0),
+        ((screen.get_width() / 4)  + 100),
+        (screen.get_height()/2+100),
+        65,
+        25,
+        ftc_hotel,
+        kw_args=kw_args
+    )
+        
+    else:
+        hotel = None
     
     reject = btn.Button(
     screen,
@@ -143,13 +146,19 @@ def house_hotel_card(screen, phase, ftc_house, ftc_hotel, kw_args = None):
     oc_header1 = fonts.default_font.render("Would you like to buy", False, (0, 0, 0))
     screen.blit(oc_header1, oc_location1)
     house.updateButton(house.bg_colour, house.txt_colour)
-    hotel.updateButton(hotel.bg_colour, hotel.txt_colour)
+    
+    if hotel != None:
+        hotel.updateButton(hotel.bg_colour, hotel.txt_colour)
+        
     reject.updateButton(reject.bg_colour, reject.txt_colour)
     
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
             house.checkClick(event)
-            hotel.checkClick(event)
+            
+            if hotel != None:
+                hotel.checkClick(event)
+                
             reject.checkClick(event)
             phase = not phase
     

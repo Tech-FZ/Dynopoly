@@ -103,6 +103,7 @@ def afterTurn(player):
                 if fc.f_container[player.fid].type == "street":
                     trade_phase = offer.house_hotel_card(screen, 
                                                phase = trade_phase,
+                                               field = fc.f_container[player.fid],
                                                ftc_house= st_transact.buyHouse, 
                                                ftc_hotel= st_transact.buyHotel,
                                                kw_args={"player":player,
