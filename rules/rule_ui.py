@@ -32,7 +32,7 @@ def ruleCard(screen):
     screen.blit(fp_lbl, fp_loc)
     #screen.blit(lat_ev_lbl, lat_ev_loc)
     
-def event_card(screen, phase, kw_args = None):    
+def event_card(screen, phase, ftc = None, kw_args = None):    
     global latest_event
     reject = btn.Button(
     screen,
@@ -45,6 +45,7 @@ def event_card(screen, phase, kw_args = None):
     (screen.get_height()/2+100),
     65,
     25,
+    ftc
 )
     oc_width = int(screen.get_width() / 5)
     #oc_location = pygame.Vector2((screen.get_width() / 4)  + 5, screen.get_height()/2)
