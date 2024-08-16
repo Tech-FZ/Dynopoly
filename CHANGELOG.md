@@ -9,6 +9,7 @@
 - Changed event numbers to 2 point floating numbers
 - updated player movement to show only one token at the end of the movement cycle
 - Jail mechanics fixed
+- Altered `git clone` to contain the new link.
 
 ## Known issues
 
