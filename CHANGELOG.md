@@ -1,3 +1,13 @@
+# Dynopoly v0.1.0.9_hsr "Hackathon Submission Release"
+
+## Changes
+
+- An error which occurs after rolling the dice has been fixed.
+
+## Known issues
+
+None at this time.
+
 # Dynopoly Internal Development Build 8
 
 ## Attention
