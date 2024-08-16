@@ -12,16 +12,16 @@ bar_price = 5
 def stockMarketCrash(divisor):
     for field in fc.f_container:
         if field.type == "investment":
-            field.price /= divisor
-            field.rent /= divisor
+            field.price = round(field.price / divisor , 2)
+            field.rent = round(field.rent / divisor , 2)
             
     r_ui.latest_event = [f"Stock market crashed! Stock has", f"{str(divisor)}x less worth."]
             
 def stockMarketGoesUp(multiplier):
     for field in fc.f_container:
         if field.type == "investment":
-            field.price *= multiplier
-            field.rent *= multiplier
+            field.price = round(field.price / multiplier , 2)
+            field.rent = round(field.rent / multiplier , 2)
             
     r_ui.latest_event = [f"Stock market went up! Stock has", f"{str(multiplier)}x more worth."]
             
@@ -42,7 +42,7 @@ def incomeTax(players, tax):
         # insert tax added to free parking here
         
 def propertyDamage(field, housesDamaged, hotelDamaged):
-    decision = random.randint(0, 1)
+    decision = random.choice([0,0.5,1])
     
     if housesDamaged > 0:
         if hotelDamaged and field.hotelAvailable:
@@ -58,8 +58,8 @@ def propertyDamage(field, housesDamaged, hotelDamaged):
         if field.houseCount > 0:
             field.houseCount -= housesDamaged
         
-            field.price /= housesDamaged
-            field.rent /= housesDamaged
+            field.price = round(field.price / housesDamaged , 2)
+            field.rent = round(field.rent / housesDamaged , 2)
         
         if hotelDamaged and field.hotelAvailable:
             field.hotelAvailable = False
@@ -70,7 +70,7 @@ def propertyDamage(field, housesDamaged, hotelDamaged):
     
     elif decision == 1:
         if field.owner != "Bank":
-            field.owner.balance -= house_price * housesDamaged # Can be changed
+            field.owner.balance -= house_price * housesDamaged
             
             if hotelDamaged and field.hotelAvailable:
                 field.owner.balance -= hotel_price
@@ -80,27 +80,27 @@ def propertyDamage(field, housesDamaged, hotelDamaged):
         r_ui.latest_event.append("Repairs to be done")
     
 def shopOpens(field):
-    field.price *= 1.5
-    field.rent *= 1.5
+        field.price = round(field.price * 1.5 , 2)
+        field.rent = round(field.rent * 1.5 , 2)
     r_ui.latest_event = [f"A shop has opened in {field.name}.", "Price and rent increase by 50 %."]
     
 def shopCloses(field):
-    field.price /= 1.5
-    field.rent /= 1.5
+    field.price = round(field.price / 1.5 , 2)
+    field.rent = round(field.rent / 1.5 , 2)
     r_ui.latest_event = [f"A shop has closed in {field.name}.", "Price and rent decrease by 50 %."]
     
 def housingCrisis(multiplier):
     global house_price
     global hotel_price
-    house_price *= multiplier
-    hotel_price *= multiplier
+    house_price = round(house_price*multiplier)
+    hotel_price = round(hotel_price*multiplier)
     r_ui.latest_event = [f"A housing crisis is ongoing.", f"Prices for houses & hotels {str(multiplier)}x", "higher."]
     
 def housingAbundance(divisor):
     global house_price
     global hotel_price
-    house_price /= divisor
-    hotel_price /= divisor
+    house_price = round(house_price*divisor)
+    hotel_price = round(hotel_price*divisor)
     r_ui.latest_event = [f"A housing abundance is ongoing.", f"Prices for houses & hotels {str(divisor)}x", "lower."]
     
 def birthday(bd_player, other_players):
@@ -120,7 +120,7 @@ def birthday(bd_player, other_players):
 def jailFreeEvent(screen, turns, board, player, players, dices, doubles, total_value):
     if doubles:
         player.jailStatus = False
-        player.kailTurns = 0
+        player.jailTurns = 0
         new_fid = player.fid + total_value
     
         if new_fid >= len(fc.f_container):
