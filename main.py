@@ -33,7 +33,7 @@ bank = pl.Player("Bank", "white")
 bank.balance = 1000000
 
 
-player1 = pl.Player("Nicolas", "red")
+player1 = pl.Player("Player 1", "red")
 cwc.genWinningConditions(player1)
 
 player2 = pl.Player("Player 2", "blue")

@@ -1,15 +1,18 @@
-# Dynopoly Internal Development Build 9
-
-## Attention
-
-This build is not intended for submission, but rather for the developers to keep track of development while working on the game.
+# Dynopoly v0.1.0.9_hsr "Hackathon Submission Release"
 
 ## Changes
 
+- An error which occurs after rolling the dice has been fixed.
+- The numbers for the rules algo have been changed to 2 point floating decimals
+- "Nicolas" is now called "Player 1".
 - Cleanin up commented out code not going to be used
 - Changed event numbers to 2 point floating numbers
 - updated player movement to show only one token at the end of the movement cycle
 - Jail mechanics fixed
+
+## Known issues
+
+None at this time.
 
 ## Known Issues:
 
