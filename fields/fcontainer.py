@@ -1,6 +1,7 @@
 import fields.fields as fields
 import random
 
+# Container for holding the generated fields
 f_container = []
 
 def contain(f_type, f_name, f_owner, f_price, f_rent, fx, fy):

@@ -5,8 +5,8 @@ from typing import List
 
 class Field:
     def __init__(self, x, y, player:Player, rent:List[int] = [8, 20, 35, 50, 65, 100]):
-        self.type = "street"
-        self.name = "Street"
+        self.type = ""
+        self.name = ""
         self.owner = player
         self.price = 60
         self.rent = rent
