@@ -3,6 +3,7 @@
 ## Changes
 
 - An error which occurs after rolling the dice has been fixed.
+- The numbers for the rules algo have been changed to 2 point floating decimals
 
 ## Known issues
 
