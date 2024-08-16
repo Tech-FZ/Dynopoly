@@ -193,8 +193,7 @@ def eventSelector(screen, jail, players, dices, jail_fid, turns, board, player):
     9. Jail Event (A player is brought to jail)
     """
     
-    # eventSel = random.randint(0, 9)
-    eventSel = 9
+    eventSel = random.randint(0, 9)
     
     if eventSel == 0:
         stockMarketCrash(round(random.randint(1, 4) + random.random(), 2))
