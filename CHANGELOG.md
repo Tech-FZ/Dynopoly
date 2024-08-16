@@ -65,7 +65,6 @@ This build is not intended for submission, but rather for the developers to keep
 - Win conditions are changed every 10 turns.
 - Streets stuff has been fixed.
 - Potential fix for bankruptcy
-- Changed event numbers to 2 point floating numbers
 
 ## Known issues
 
