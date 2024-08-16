@@ -36,11 +36,6 @@ def incomeTax(players, tax):
         
     r_ui.latest_event = [f"Income tax of {str(tax)} per player went into free", "parking."]
         
-    """ player = players[list(players.keys())[(turns -1) % len(players)]]
-    for player in players:
-        player.balance -= tax """
-        # insert tax added to free parking here
-        
 def propertyDamage(field, housesDamaged, hotelDamaged):
     decision = random.choice([0,0.5,1])
     
@@ -120,8 +115,9 @@ def birthday(bd_player, other_players):
 def jailFreeEvent(screen, turns, board, player, players, dices, doubles, total_value):
     if doubles:
         player.jailStatus = False
-        player.jailTurns = 0
+        player.jailTurns = 1
         new_fid = player.fid + total_value
+        
     
         if new_fid >= len(fc.f_container):
             new_fid = 0 + (new_fid - len(fc.f_container))
@@ -146,12 +142,14 @@ def jailFreeEvent(screen, turns, board, player, players, dices, doubles, total_v
                                players=players, 
                                dices=dices)
     elif player.jailTurns == 3:
+        player.jailTurns = 1
         player.balance -= fine
         player.money_spent_round = True
         player.jailStatus = False
-        print(f"{player.name} paid a fine, he is free")
+        r_ui.latest_event  = [f"{player.name} paid a fine, he is free"]
+        
     else:
-        player.jaiilTurns += 1
+        player.jailTurns += 1
         get_free = random.randint(0, 12)
         if get_free == 3 or get_free == 7 or get_free == 12:
             player.jailStatus = False
@@ -161,6 +159,7 @@ def jailEvent(screen, player, jail, players, dices, jail_fid, turns, board):
     player.move_to(screen, turns, board, jail, players=players, dices=dices)
     player.fid = jail_fid
     player.jailStatus = True
+    player.jailTurns = 1
     r_ui.latest_event = [f"{player.name} went to jail."]
     
 def checkBankruptcy(screen, player, bank, players, turns):
@@ -179,7 +178,7 @@ def checkBankruptcy(screen, player, bank, players, turns):
         while ecp:
             ecp = r_ui.event_card(screen, True)
     
-def eventSelector(screen, jail, players, dices, jail_fid, turns, board):
+def eventSelector(screen, jail, players, dices, jail_fid, turns, board, player):
     """
     Event IDs
     0. Stock Market Crash
@@ -192,7 +191,6 @@ def eventSelector(screen, jail, players, dices, jail_fid, turns, board):
     7. Housing Abundance
     8. Birthday
     9. Jail Event (A player is brought to jail)
-    10. Jailbreak Event (A prisoner gets out of jail if lucky enough)
     """
     
     eventSel = random.randint(0, 9)
@@ -243,15 +241,12 @@ def eventSelector(screen, jail, players, dices, jail_fid, turns, board):
         housingAbundance(round(random.randint(1, 4) + random.random(), 2))
         
     elif eventSel == 9:
-        # May or may not be removed
-        jailEvent(screen, players[random.choice([1, 2])], jail, players, dices, jail_fid, turns, board)
+        jailEvent(screen, player, jail, players, dices, jail_fid, turns, board)
         
     elif eventSel == 8:
         bd_player_idx = random.randint(1, len(players))
         bd_player = players[bd_player_idx]
         birthday(bd_player, players)
-        
-    print(r_ui.latest_event)
     
     ecp = True
     

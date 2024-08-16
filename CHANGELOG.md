@@ -5,10 +5,19 @@
 - An error which occurs after rolling the dice has been fixed.
 - The numbers for the rules algo have been changed to 2 point floating decimals
 - "Nicolas" is now called "Player 1".
+- Cleanin up commented out code not going to be used
+- Changed event numbers to 2 point floating numbers
+- updated player movement to show only one token at the end of the movement cycle
+- Jail mechanics fixed
 
 ## Known issues
 
 None at this time.
+
+## Known Issues:
+
+- Jail mechanism needs to be fixed to pass turn when player goes to jail
+- Player moves the total roll dice for previous turns after leaving jail
 
 # Dynopoly Internal Development Build 8
 

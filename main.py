@@ -10,17 +10,15 @@ import fields.fields as fields
 import fields.fcontainer as fc
 import player.player as pl
 import player.player_card as pc
+import player.check_win_conditions as cwc
 import dice.dice as dc
 import universal.button as btn
 import universal.game_board as gb
 import transactions.street_transact as st_transact
 import transactions.invest_transact as invest_transact
 import transactions.offers as offer
-import items.property as prop
-import items.investment as invest
 import rules.rule_ui as r_ui
 import rules.rule_algo as r_algo
-import player.check_win_conditions as cwc
 
 # pygame setup
 pygame.init()
@@ -37,15 +35,9 @@ bank.balance = 1000000
 
 player1 = pl.Player("Player 1", "red")
 cwc.genWinningConditions(player1)
-""" f = open('player/winConditions.json')
-win_conditions = json.load(f)
-player1.win_condition.append(win_conditions["1"])
-player1.win_condition.append(win_conditions["2"]) """
 
 player2 = pl.Player("Player 2", "blue")
 cwc.genWinningConditions(player2)
-""" player2.win_condition.append(win_conditions["1"])
-player2.win_condition.append(win_conditions["2"]) """
 player2.position = pygame.Vector2(860, 600)
 
 dices = []
@@ -71,9 +63,6 @@ gb.draw_board(bank)
 # Function to spawn game components
 def display_board(screen,turns,dices):
     screen.fill("purple")
-    
-    # fc.genBoard(screen)
-    
     fc.genBoard(screen),
     sb.sb_setup(screen),
     r_ui.ruleCard(screen),
@@ -87,7 +76,7 @@ def display_board(screen,turns,dices):
     rodi_btn.updateButton(rodi_btn.bg_colour, rodi_btn.txt_colour)
         
 
-#Initialize jail for moving mechanism
+#Initialize jail field for moving mechanism
 for index, field in enumerate(fc.f_container):
     if field.type == "jail":
         jail = field
@@ -130,43 +119,12 @@ def afterTurn(player):
                                                ftc = offer.clearance, 
                                                kw_args={"screen":screen,"player":player,
                                                "field":fc.f_container[player.fid]} )
-                
-                #st_transact.payRent(player, fc.f_container[player.fid])
-                #trade_phase = False
-                #print(f"{player.name} Paid rent to {fc.f_container[player.fid].owner.name}")
-                #break
-                
-        # elif fc.f_container[player.fid].type == "investment":
-        #     if fc.f_container[player.fid].owner.name == "Bank":
-        #         trade_phase = offer.offer_card(screen, 
-        #                                        fc.f_container[player.fid],
-        #                                        phase = trade_phase,
-        #                                        buysell="buy",
-        #                                        ftc = offer.trade_stuff, 
-        #                                        kw_args={"screen":screen,"player":player,
-        #                                        "field":fc.f_container[player.fid]} )
-                
-        #     elif fc.f_container[player.fid].owner != player and not None:
-        #         print("Offer should now show up")
-        #         trade_phase = offer.offer_card(screen,
-        #                                        fc.f_container[player.fid],
-        #                                        phase = trade_phase,
-        #                                        buysell="buy",
-        #                                        ftc = offer.clearance, 
-        #                                        kw_args={"screen":screen,"player":player,
-        #                                        "field":fc.f_container[player.fid]} )
-        #         #invest_transact.earn_money(player, fc.f_container[player.fid])
-        #         trade_phase = False
-        #         #print(f"{player.name} Paid interest to {fc.f_container[player.fid].owner.name}")
-        #         #break
-            
-        #     else:
-        #         break
         else:
             break
 
 def rollDices(players=players):
     global turns
+    is_doubles = False
     player = players[list(players.keys())[(turns -1) % len(players)]]
     player_drunk = False
     
@@ -183,9 +141,9 @@ def rollDices(players=players):
         
         if dices[0].value == dices[1].value:
             is_doubles = True
-            r_algo.jailFreeEvent(screen, turns, display_board, player, players, dices, is_doubles, total_value)
+        r_algo.jailFreeEvent(screen, turns, display_board, player, players, dices, is_doubles, total_value)
     
-    if not player.jailStatus:
+    elif not player.jailStatus:
         for dice in dices:
             dice.rollDice(screen)
             total_value += dice.value
@@ -243,16 +201,15 @@ def rollDices(players=players):
                     except:
                         print("Well, the rent was paid to the bank.")
         
-        print(player.jailStatus)
         r_algo.checkBankruptcy(screen, player, bank, players, turns)
         cwc.checkWinningConditions(screen, player)
-        r_algo.eventSelector(screen, jail, players, dices, jail_fid, turns, display_board)
+        r_algo.eventSelector(screen, jail, players, dices, jail_fid, turns, display_board,player)
         
-        if turns % 10 == 0 or (turns + 1) % 10 == 0:
-            player.win_condition = []
-            cwc.genWinningConditions(player)
+    if turns % 10 == 0 or (turns + 1) % 10 == 0:
+        player.win_condition = []
+        cwc.genWinningConditions(player)
         
-        turns += 1
+    turns += 1
         
 # insert buttons here
 rodi_btn = btn.Button(
