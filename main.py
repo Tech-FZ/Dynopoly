@@ -107,6 +107,9 @@ def afterTurn(player):
                                                ftc_hotel= st_transact.buyHotel,
                                                kw_args={"player":player,
                                                "street":fc.f_container[player.fid]} )
+                    
+                else:
+                    break
             
             else:
                 trade_phase = offer.offer_card(screen,
