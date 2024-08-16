@@ -80,8 +80,8 @@ def propertyDamage(field, housesDamaged, hotelDamaged):
         r_ui.latest_event.append("Repairs to be done")
     
 def shopOpens(field):
-        field.price = round(field.price * 1.5 , 2)
-        field.rent = round(field.rent * 1.5 , 2)
+    field.price = round(field.price * 1.5 , 2)
+    field.rent = round(field.rent * 1.5 , 2)
     r_ui.latest_event = [f"A shop has opened in {field.name}.", "Price and rent increase by 50 %."]
     
 def shopCloses(field):
