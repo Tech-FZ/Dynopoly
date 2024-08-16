@@ -16,7 +16,7 @@ Build up a functional monopoly while dealing with dysfunctional events that occu
     - Windows 10: Open the folder, then click on "File", then on "Open Windows PowerShell".
     - Windows 11: Open the folder, then right-click on the empty space and "Open in Terminal".
     - macOS: If you don't know how to do it, set up a Windows or Linux VM and test the game on there. None of us have a Mac because it's too expensive. Sorry. :(
-5. Type in `git clone https://github.com/Tech-FZ/Misonic-Project`.
+5. Type in `git clone https://github.com/Tech-FZ/Dynopoly`.
 6. Open the project in your desired IDE/code editor. Nicolas is using Visual Studio Code, Mizuki is using Notepad++. Due to the variety, it is too complicated to tell you how to do it. If you need help, ask.
 7. Prepare a folder where you store your virtual environment and apply number 4 to open your terminal application again.
 8. Type in one of the following, replacing `(your-venv-name)` with the actual venv name you're planning to use:
