@@ -15,12 +15,13 @@
 - A potential fix for winning conditions have been made. For now, you'd quit the game and have to re-launch it. Sorry.
 - Fixed income tax dialog layout.
 - You can only buy one hotel.
+- Rounded off all player balance assignments
 
 ## Known issues
 
 - When landing on investments, you may runinto issues.
 - Jail mechanism needs to be fixed to pass turn when player goes to jail
-~~Player moves the total roll dice for previous turns after leaving jail~~ Fixed
+  ~~Player moves the total roll dice for previous turns after leaving jail~~ Fixed
 
 # Dynopoly Internal Development Build 8
 
