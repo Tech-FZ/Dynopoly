@@ -10,13 +10,11 @@
 - updated player movement to show only one token at the end of the movement cycle
 - Jail mechanics fixed
 - Altered `git clone` to contain the new link.
+- More unnecessary code has been removed.
 
 ## Known issues
 
-None at this time.
-
-## Known Issues:
-
+- When landing on investments, you may runinto issues.
 - Jail mechanism needs to be fixed to pass turn when player goes to jail
 - Player moves the total roll dice for previous turns after leaving jail
 

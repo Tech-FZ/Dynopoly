@@ -1,12 +1,10 @@
 # Third-party libraries
 import pygame
-import json
 import random
 
 # Other code files
 import universal.side_bar as sb
 import setup.setup as setup
-import fields.fields as fields
 import fields.fcontainer as fc
 import player.player as pl
 import player.player_card as pc
@@ -15,7 +13,6 @@ import dice.dice as dc
 import universal.button as btn
 import universal.game_board as gb
 import transactions.street_transact as st_transact
-import transactions.invest_transact as invest_transact
 import transactions.offers as offer
 import rules.rule_ui as r_ui
 import rules.rule_algo as r_algo
